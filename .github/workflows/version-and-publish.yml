@@ -1,0 +1,124 @@
+# Modified by 0xkey
+name: Publish to GitHub Packages (Kotlin)
+
+# Publishes every publishable module (see `publishable` in build.gradle.kts) to the private registry
+# https://maven.pkg.github.com/0xkey-io/sdk-kotlin. Runs only when started by hand or when a `v*`
+# tag is pushed; merging a pull request or pushing to a branch never publishes.
+#
+#   - tag `vX.Y.Z`: every module must be at version X.Y.Z, and the tagged commit must be on main;
+#     a GitHub release is created for the tag after the upload.
+#   - workflow_dispatch: publishes the committed version of the selected ref (no release is created).
+# A -SNAPSHOT or mixed module version is refused in both cases (`verifyPublishVersion`). A released
+# version is immutable; bump the version to publish a change.
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-kotlin
+  cancel-in-progress: false
+
+env:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.workers.max=2"
+  CI: "true"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Release version
+        id: version
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          if [ "$REF_TYPE" = tag ]; then
+            if [[ ! "$REF_NAME" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+              echo "::error::Tag does not look like vX.Y.Z (got: $REF_NAME)"
+              exit 1
+            fi
+            if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+              echo "::error::Tag $REF_NAME points at a commit that is not on main"
+              exit 1
+            fi
+            echo "version=${REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Java
+        uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
+        with:
+          distribution: temurin
+          java-version: "22"
+
+      - name: Set up Android SDK (cmdline)
+        uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3.2.2
+        with:
+          packages: platform-tools
+
+      - name: Install Android platforms/build-tools
+        run: |
+          sdkmanager --install "platforms;android-36" "build-tools;36.0.0" || true
+          yes | sdkmanager --licenses || true
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@748248ddd2a24f49513d8f472f81c3a07d4d50e1 # v4.4.4
+
+      - name: Bump Gradle/JVM memory
+        run: |
+          mkdir -p ~/.gradle
+          cat >> ~/.gradle/gradle.properties <<'EOF'
+            org.gradle.jvmargs=-Xmx6g -XX:MaxMetaspaceSize=1536m -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError
+            org.gradle.parallel=false
+            org.gradle.workers.max=1
+            org.gradle.caching=true
+          EOF
+
+      - name: Check the version before building
+        env:
+          EXPECTED_VERSION: ${{ steps.version.outputs.version }}
+        run: ./gradlew --no-daemon verifyPublishVersion ${EXPECTED_VERSION:+-PexpectedVersion=$EXPECTED_VERSION}
+
+      - name: Build and test
+        run: ./gradlew --no-daemon test publishAllToMavenLocal
+
+      - name: Publish to GitHub Packages
+        env:
+          EXPECTED_VERSION: ${{ steps.version.outputs.version }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew --no-daemon publishAllToGitHubPackages ${EXPECTED_VERSION:+-PexpectedVersion=$EXPECTED_VERSION}
+
+  github-release:
+    name: GitHub release for the tag
+    needs: publish
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          generate_release_notes: true
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

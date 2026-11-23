@@ -1,0 +1,15 @@
+# Copy to local.properties (git-ignored) in this directory or the repository root.
+# Blank values fall back to the SDK defaults.
+
+# Required
+ZEROXKEY_ORGANIZATION_ID=
+ZEROXKEY_AUTH_PROXY_CONFIG_ID=
+# Passkeys: a domain whose /.well-known/assetlinks.json lists this app (see the root README).
+ZEROXKEY_RP_ID=
+
+# Optional
+ZEROXKEY_API_BASE_URL=
+ZEROXKEY_AUTH_PROXY_BASE_URL=
+ZEROXKEY_APP_SCHEME=
+ZEROXKEY_GOOGLE_CLIENT_ID=
+ZEROXKEY_GOOGLE_SECONDARY_CLIENT_IDS=

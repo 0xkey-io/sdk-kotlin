@@ -1,0 +1,301 @@
+public final class io/zeroxkey/crypto/CryptoKt {
+	public static final fun decryptCredentialBundle (Ljava/lang/String;Ljava/security/interfaces/ECPrivateKey;)Lio/zeroxkey/crypto/models/P256KeyPair;
+	public static final fun decryptExportBundle (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/crypto/models/KeyFormat;Z)Ljava/lang/String;
+	public static synthetic fun decryptExportBundle$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/crypto/models/KeyFormat;ZILjava/lang/Object;)Ljava/lang/String;
+	public static final fun encryptOtpCodeToBundle (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun encryptOtpCodeToBundle$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun encryptPrivateKeyToBundle (Ljava/lang/String;Lio/zeroxkey/crypto/models/KeyFormat;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun encryptPrivateKeyToBundle$default (Ljava/lang/String;Lio/zeroxkey/crypto/models/KeyFormat;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun encryptWalletToBundle (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static final fun generateP256KeyPair ()Lio/zeroxkey/crypto/models/RawP256KeyPair;
+	public static final fun verifySessionJwtSignature (Ljava/lang/String;Ljava/lang/String;)Z
+	public static synthetic fun verifySessionJwtSignature$default (Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Z
+}
+
+public final class io/zeroxkey/crypto/P256 {
+	public static final field INSTANCE Lio/zeroxkey/crypto/P256;
+	public final fun compress ([B)[B
+	public final fun decompress ([B)[B
+	public final fun getDomain ()Lorg/bouncycastle/crypto/params/ECDomainParameters;
+	public final fun keyPairFromScalar ([B)Lorg/bouncycastle/crypto/AsymmetricCipherKeyPair;
+	public final fun publicFromScalar ([B)Lorg/bouncycastle/crypto/params/ECPublicKeyParameters;
+	public final fun publicFromUncompressed ([B)Lorg/bouncycastle/crypto/params/ECPublicKeyParameters;
+}
+
+public final class io/zeroxkey/crypto/TrustAnchors {
+	public static final field Companion Lio/zeroxkey/crypto/TrustAnchors$Companion;
+	public static final field PRODUCTION Lio/zeroxkey/crypto/TrustAnchors;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static final fun dangerouslyOverride (Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/crypto/TrustAnchors;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getNotarizerOverride ()Ljava/lang/String;
+	public final fun getNotarizerPublicKey ()Ljava/lang/String;
+	public final fun getSignerOverride ()Ljava/lang/String;
+	public final fun getSignerPublicKey ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isProduction ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/TrustAnchors$Companion {
+	public final fun dangerouslyOverride (Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/crypto/TrustAnchors;
+	public static synthetic fun dangerouslyOverride$default (Lio/zeroxkey/crypto/TrustAnchors$Companion;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/crypto/TrustAnchors;
+}
+
+public final class io/zeroxkey/crypto/models/KeyFormat : java/lang/Enum {
+	public static final field other Lio/zeroxkey/crypto/models/KeyFormat;
+	public static final field solana Lio/zeroxkey/crypto/models/KeyFormat;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/crypto/models/KeyFormat;
+	public static fun values ()[Lio/zeroxkey/crypto/models/KeyFormat;
+}
+
+public final class io/zeroxkey/crypto/models/P256KeyPair {
+	public fun <init> (Ljava/security/interfaces/ECPublicKey;Ljava/security/interfaces/ECPrivateKey;)V
+	public final fun component1 ()Ljava/security/interfaces/ECPublicKey;
+	public final fun component2 ()Ljava/security/interfaces/ECPrivateKey;
+	public final fun copy (Ljava/security/interfaces/ECPublicKey;Ljava/security/interfaces/ECPrivateKey;)Lio/zeroxkey/crypto/models/P256KeyPair;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/models/P256KeyPair;Ljava/security/interfaces/ECPublicKey;Ljava/security/interfaces/ECPrivateKey;ILjava/lang/Object;)Lio/zeroxkey/crypto/models/P256KeyPair;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPrivateKey ()Ljava/security/interfaces/ECPrivateKey;
+	public final fun getPublicKey ()Ljava/security/interfaces/ECPublicKey;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/models/RawP256KeyPair {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/crypto/models/RawP256KeyPair;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/models/RawP256KeyPair;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/crypto/models/RawP256KeyPair;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPrivateKey ()Ljava/lang/String;
+	public final fun getPublicKeyCompressed ()Ljava/lang/String;
+	public final fun getPublicKeyUncompressed ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyConstants {
+	public static final field HPKE_INFO Ljava/lang/String;
+	public static final field INSTANCE Lio/zeroxkey/crypto/utils/ZeroXKeyConstants;
+	public static final field PRODUCTION_NOTARIZER_PUBLIC_KEY Ljava/lang/String;
+	public static final field PRODUCTION_SIGNER_PUBLIC_KEY Ljava/lang/String;
+	public static final field PRODUCTION_TLS_FETCHER_ENCRYPT_PUBLIC_KEY Ljava/lang/String;
+	public final fun getHpkeInfo ()[B
+}
+
+public abstract class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError : java/lang/Exception {
+	public static final field Companion Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$Companion {
+	public final fun wrap (Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$DecodingFailed : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$DecodingFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$DecodingFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$DecodingFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$EncodingFailed : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$EncodingFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$EncodingFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$EncodingFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidCompressedKeyLength : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (ILjava/lang/Throwable;)V
+	public synthetic fun <init> (ILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (ILjava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidCompressedKeyLength;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidCompressedKeyLength;ILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidCompressedKeyLength;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getFound ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidHexString : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidHexString;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidHexString;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidHexString;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getS ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPrivateKey : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPrivateKey;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPrivateKey;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPrivateKey;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPrivateLength : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (IILjava/lang/Throwable;)V
+	public synthetic fun <init> (IILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/Throwable;
+	public final fun copy (IILjava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPrivateLength;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPrivateLength;IILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPrivateLength;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getExpected ()I
+	public final fun getFound ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPublicKey : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPublicKey;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPublicKey;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPublicKey;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPublicLength : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (IILjava/lang/Throwable;)V
+	public synthetic fun <init> (IILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/Throwable;
+	public final fun copy (IILjava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPublicLength;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPublicLength;IILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$InvalidPublicLength;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getExpected ()I
+	public final fun getFound ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$MissingCiphertext : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$MissingCiphertext;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$MissingCiphertext;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$MissingCiphertext;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$MissingEncappedPublic : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$MissingEncappedPublic;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$MissingEncappedPublic;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$MissingEncappedPublic;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$OperationFailed : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$OperationFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$OperationFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$OperationFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$OrgIdMismatch : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$OrgIdMismatch;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$OrgIdMismatch;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$OrgIdMismatch;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getExpected ()Ljava/lang/String;
+	public final fun getFound ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$SignatureVerificationFailed : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$SignatureVerificationFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$SignatureVerificationFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$SignatureVerificationFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$SignerMismatch : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$SignerMismatch;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$SignerMismatch;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$SignerMismatch;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getExpected ()Ljava/lang/String;
+	public final fun getFound ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/crypto/utils/ZeroXKeyCryptoError$UserIdMismatch : io/zeroxkey/crypto/utils/ZeroXKeyCryptoError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$UserIdMismatch;
+	public static synthetic fun copy$default (Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$UserIdMismatch;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/crypto/utils/ZeroXKeyCryptoError$UserIdMismatch;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getExpected ()Ljava/lang/String;
+	public final fun getFound ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

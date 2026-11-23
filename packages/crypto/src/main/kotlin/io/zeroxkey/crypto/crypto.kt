@@ -1,0 +1,435 @@
+// Modified by 0xkey
+package io.zeroxkey.crypto
+
+import io.zeroxkey.encoding.base58CheckDecode
+import io.zeroxkey.encoding.base58Decode
+import io.zeroxkey.encoding.base58Encode
+import io.zeroxkey.encoding.decodeBase64Url
+import io.zeroxkey.encoding.decodeHexStrict
+import io.zeroxkey.encoding.sha256
+import io.zeroxkey.encoding.decodeHex
+import io.zeroxkey.encoding.decodeUtf8Strict
+import io.zeroxkey.encoding.toHexString
+import io.zeroxkey.crypto.internal.BundleOuter
+import io.zeroxkey.crypto.internal.bigIntToFixed
+import io.zeroxkey.crypto.internal.formatHpkeBundle
+import io.zeroxkey.crypto.internal.decodeBundleOuter
+import io.zeroxkey.crypto.internal.decodeSignedInner
+import io.zeroxkey.crypto.internal.deriveEd25519PublicKey
+import io.zeroxkey.crypto.internal.ecPointCompressedToUncompressed
+import io.zeroxkey.crypto.internal.hpkeDecrypt
+import io.zeroxkey.crypto.internal.hpkeEncrypt
+import io.zeroxkey.crypto.internal.verifyEnclaveSignature
+import io.zeroxkey.crypto.models.KeyFormat
+import io.zeroxkey.crypto.models.P256KeyPair
+import io.zeroxkey.crypto.models.RawP256KeyPair
+import io.zeroxkey.crypto.utils.ZeroXKeyCryptoError
+import io.zeroxkey.crypto.utils.ZeroXKeyConstants
+import kotlinx.serialization.json.Json
+import org.bouncycastle.asn1.nist.NISTNamedCurves
+import org.bouncycastle.crypto.AsymmetricCipherKeyPair
+import org.bouncycastle.crypto.signers.ECDSASigner
+import org.bouncycastle.crypto.params.ECDomainParameters
+import org.bouncycastle.crypto.params.ECPrivateKeyParameters
+import org.bouncycastle.crypto.params.ECPublicKeyParameters
+import java.math.BigInteger
+import java.nio.charset.StandardCharsets
+import java.security.AlgorithmParameters
+import java.security.KeyFactory
+import java.security.KeyPairGenerator
+import java.security.interfaces.ECPrivateKey
+import java.security.interfaces.ECPublicKey
+import java.security.spec.ECGenParameterSpec
+import java.security.spec.ECParameterSpec
+import java.security.spec.ECPoint
+import java.security.spec.ECPrivateKeySpec
+import java.security.spec.ECPublicKeySpec
+import kotlin.jvm.Throws
+
+object P256 {
+    private val x9 = NISTNamedCurves.getByName("P-256")
+    val domain = ECDomainParameters(x9.curve, x9.g, x9.n, x9.h)
+
+    /** Compute Q = d*G and return ECPublicKeyParameters. */
+    fun publicFromScalar(d: ByteArray): ECPublicKeyParameters {
+        val q = domain.g.multiply(BigInteger(1, d)).normalize()
+        return ECPublicKeyParameters(q, domain)
+    }
+
+    /** Decompress 33-byte compressed point → 65-byte uncompressed (X9.62). */
+    fun decompress(compressed: ByteArray): ByteArray =
+        domain.curve.decodePoint(compressed).getEncoded(false)
+
+    /** Compress 65-byte uncompressed point → 33-byte compressed (X9.62). */
+    fun compress(uncompressed: ByteArray): ByteArray =
+        domain.curve.decodePoint(uncompressed).getEncoded(true)
+
+    /** Parse 65-byte uncompressed (0x04 || X || Y) into ECPublicKeyParameters. */
+    fun publicFromUncompressed(uncompressed: ByteArray): ECPublicKeyParameters =
+        ECPublicKeyParameters(domain.curve.decodePoint(uncompressed), domain)
+
+    /** Make AsymmetricCipherKeyPair from private scalar. */
+    fun keyPairFromScalar(d: ByteArray): AsymmetricCipherKeyPair {
+        val priv = ECPrivateKeyParameters(BigInteger(1, d), domain)
+        val pub = publicFromScalar(d)
+        return AsymmetricCipherKeyPair(pub, priv)
+    }
+}
+
+/**
+ * Generates a new P-256 (secp256r1) key pair.
+ *
+ * @return RawP256KeyPair containing the public key in both uncompressed and compressed formats,
+ *         along with the private key scalar in hex format.
+ */
+fun generateP256KeyPair(): RawP256KeyPair{
+    val kpg = KeyPairGenerator.getInstance("EC")
+    kpg.initialize(ECGenParameterSpec("secp256r1"))
+    val keyPair = kpg.generateKeyPair()
+
+    val priv = keyPair.private as ECPrivateKey
+    val pub = keyPair.public as ECPublicKey
+
+    val coordLen = (pub.params.curve.field.fieldSize + 7) / 8
+
+    val d = bigIntToFixed(priv.s, coordLen)
+    val x = bigIntToFixed(pub.w.affineX, coordLen)
+    val y = bigIntToFixed(pub.w.affineY, coordLen)
+
+    // Uncompressed: 0x04 || X || Y
+    val uncompressed = ByteArray(1 + 2 * coordLen).apply {
+        this[0] = 0x04
+        System.arraycopy(x, 0, this, 1, coordLen)
+        System.arraycopy(y, 0, this, 1 + coordLen, coordLen)
+    }
+
+    // Compressed: 0x02 (Y even) or 0x03 (Y odd) || X
+    val prefix: Byte = if (pub.w.affineY.testBit(0)) 0x03 else 0x02
+    val compressed = ByteArray(1 + coordLen).apply {
+        this[0] = prefix
+        System.arraycopy(x, 0, this, 1, coordLen)
+    }
+
+    return RawP256KeyPair(
+        publicKeyUncompressed = uncompressed.toHexString(),
+        publicKeyCompressed   = compressed.toHexString(),
+        privateKey            = d.toHexString()
+    )
+}
+
+/**
+ * Decrypts a credential bundle encrypted with HPKE.
+ *
+ * @param encryptedBundle Base58Check-encoded bundle containing the encapsulated key and ciphertext.
+ * @param ephemeralPrivateKey The ephemeral P-256 private key used for decryption.
+ * @return P256KeyPair containing the decrypted credential as Java EC key pair.
+ * @throws ZeroXKeyCryptoError if decryption fails or bundle format is invalid.
+ */
+@Throws(ZeroXKeyCryptoError::class)
+fun decryptCredentialBundle(
+    encryptedBundle: String,
+    ephemeralPrivateKey: ECPrivateKey
+): P256KeyPair = try {
+    val decoded = base58CheckDecode(encryptedBundle)
+    if (decoded.size <= 33) throw ZeroXKeyCryptoError.InvalidCompressedKeyLength(decoded.size)
+
+    val compressedEncapped = decoded.copyOfRange(0, 33)
+    val ciphertext = decoded.copyOfRange(33, decoded.size)
+
+    // Decompress to X9.62 uncompressed for HPKE
+    val encappedUncompressed = P256.decompress(compressedEncapped)
+
+    // extract scalar value (s) and left-pad to 32 bytes
+    val receiverPrivScalar = bigIntToFixed(ephemeralPrivateKey.s, 32)
+    val plaintext = hpkeDecrypt(
+        ciphertext = ciphertext,
+        encappedUncompressed = encappedUncompressed,
+        receiverPrivScalar = receiverPrivScalar,
+    )
+
+    // Interpret plaintext as raw P-256 signing private key, derive pub:
+    if (plaintext.size != 32) throw ZeroXKeyCryptoError.InvalidPrivateLength(32, plaintext.size)
+
+    // Build ECPrivateKey on secp256r1
+    val ecSpec: ECParameterSpec = AlgorithmParameters.getInstance("EC")
+        .apply { init(ECGenParameterSpec("secp256r1")) }
+        .getParameterSpec(ECParameterSpec::class.java)
+
+    val d = BigInteger(1, plaintext)
+    val kf = KeyFactory.getInstance("EC")
+
+    val privKey = kf.generatePrivate(ECPrivateKeySpec(d, ecSpec)) as ECPrivateKey
+
+    val q = P256.publicFromScalar(plaintext).q.normalize()
+    val pubSpec = ECPublicKeySpec(
+        ECPoint(q.affineXCoord.toBigInteger(), q.affineYCoord.toBigInteger()),
+        ecSpec
+    )
+    val pubKey = kf.generatePublic(pubSpec) as ECPublicKey
+
+    P256KeyPair(publicKey = pubKey, privateKey = privKey)
+} catch (e: Exception) {
+    throw ZeroXKeyCryptoError.wrap(e)
+}
+
+/**
+ * Decrypts an export bundle and returns either a hex string or mnemonic depending on configuration.
+ *
+ * @param exportBundle A signed and encrypted bundle from 0xkey's enclave.
+ * @param organizationId The expected organization ID to verify against.
+ * @param embeddedPrivateKey The raw embedded private key in hex format (32-byte P-256 scalar, big-endian).
+ * @param dangerouslyOverrideSignerPublicKey Optional override of the signer public key (for dev/test).
+ * @param keyFormat The output format for Solana or other keys.
+ * @return The decrypted payload as either a mnemonic or hex string.
+ * @throws ZeroXKeyCryptoError if any validation, decoding, or decryption fails.
+ */
+@Throws(ZeroXKeyCryptoError::class)
+fun decryptExportBundle(
+    exportBundle: String,
+    organizationId: String,
+    embeddedPrivateKey: String,
+    dangerouslyOverrideSignerPublicKey: String? = null,
+    keyFormat: KeyFormat? = null,
+    returnMnemonic: Boolean = false,
+): String = try {
+    val keyBytes = try {
+        decodeHex(embeddedPrivateKey)
+    }
+    catch (_: Exception) { throw ZeroXKeyCryptoError.InvalidHexString(embeddedPrivateKey) }
+
+    // Basic sanity check: P-256 private key should be 32 bytes.
+    if (keyBytes.size != 32) throw ZeroXKeyCryptoError.InvalidHexString(embeddedPrivateKey)
+
+    val d = BigInteger(1, keyBytes)
+
+    // Build ECPrivateKey on secp256r1
+    val ecSpec: ECParameterSpec = AlgorithmParameters.getInstance("EC")
+        .apply { init(ECGenParameterSpec("secp256r1")) }
+        .getParameterSpec(ECParameterSpec::class.java)
+
+    val ecPrivate: ECPrivateKey = try {
+        val spec = ECPrivateKeySpec(d, ecSpec)
+        KeyFactory.getInstance("EC").generatePrivate(spec) as ECPrivateKey
+    } catch (e: Exception) {
+        throw ZeroXKeyCryptoError.InvalidPrivateKey(e)
+    }
+
+    // Parse outer JSON
+    val outer = decodeBundleOuter(exportBundle)
+    requireEnclaveSignature(outer, dangerouslyOverrideSignerPublicKey)
+
+    val inner = decodeSignedInner(outer.data)
+
+    if (inner.organizationId != organizationId) {
+        throw ZeroXKeyCryptoError.OrgIdMismatch(organizationId, inner.organizationId)
+    }
+
+    val encappedHex = inner.encappedPublic ?: throw ZeroXKeyCryptoError.MissingEncappedPublic()
+    val ciphertextHex = inner.ciphertext ?: throw ZeroXKeyCryptoError.MissingCiphertext()
+
+    val ct = decodeHex(ciphertextHex)
+    val ek = decodeHex(encappedHex)
+
+    // extract scalar value (s) and left-pad to 32 bytes
+    val receiverPrivScalar = bigIntToFixed(ecPrivate.s, 32)
+    val plaintext = hpkeDecrypt(ct, ek, receiverPrivScalar)
+
+    when {
+        keyFormat == KeyFormat.solana && !returnMnemonic -> {
+            if (plaintext.size != 32) throw ZeroXKeyCryptoError.InvalidPrivateLength(32, plaintext.size)
+
+            val pubKey = deriveEd25519PublicKey(plaintext)
+            if (pubKey.size != 32) throw ZeroXKeyCryptoError.InvalidPublicLength(32, pubKey.size)
+
+            base58Encode(plaintext + pubKey)
+        }
+        returnMnemonic -> {
+            val mnemonic = decodeUtf8Strict(plaintext)
+            mnemonic
+        }
+        else -> {
+            plaintext.toHexString()
+        }
+    }
+} catch (e: Exception) {
+    throw ZeroXKeyCryptoError.wrap(e)
+}
+
+/**
+ * Encrypts a mnemonic into a bundle using the import payload
+ *
+ *  @param mnemonic The plaintext mnemonic string to encrypt.
+ *  @param importBundle The enclave-generated bundle to use for encryption.
+ *  @param userId The expected user ID to verify against.
+ *  @param organizationId The expected organization ID to verify against.
+ *  @param dangerouslyOverrideSignerPublicKey Optional override of the signer public key (for dev/test).
+ *  @return The encrypted bundle as a JSON string.
+ *  @throws ZeroXKeyCryptoError if validation or encryption fails.
+ */
+@Throws(ZeroXKeyCryptoError::class)
+fun encryptWalletToBundle(
+    mnemonic: String,
+    importBundle: String,
+    userId: String,
+    organizationId: String,
+    dangerouslyOverrideSignerPublicKey: String?
+): String = encryptToImportBundle(
+    mnemonic.toByteArray(StandardCharsets.UTF_8), importBundle, userId, organizationId, dangerouslyOverrideSignerPublicKey
+)
+
+/**
+ * Encrypts a private key into a bundle using the import payload.
+ *
+ * [KeyFormat.solana] keys are base58 strings of 64 bytes (seed || public key); only the 32-byte seed is
+ * encrypted. Other keys are hex, optionally `0x`-prefixed.
+ *
+ *  @param privateKey The private key to encrypt.
+ *  @param keyFormat Format of [privateKey].
+ *  @param importBundle The enclave-generated bundle to use for encryption.
+ *  @param userId The expected user ID to verify against.
+ *  @param organizationId The expected organization ID to verify against.
+ *  @param dangerouslyOverrideSignerPublicKey Optional override of the signer public key (for dev/test).
+ *  @return The encrypted bundle as a JSON string.
+ *  @throws ZeroXKeyCryptoError if decoding, validation or encryption fails.
+ */
+@Throws(ZeroXKeyCryptoError::class)
+fun encryptPrivateKeyToBundle(
+    privateKey: String,
+    keyFormat: KeyFormat,
+    importBundle: String,
+    userId: String,
+    organizationId: String,
+    dangerouslyOverrideSignerPublicKey: String? = null,
+): String = try {
+    encryptToImportBundle(decodeImportKey(privateKey, keyFormat), importBundle, userId, organizationId, dangerouslyOverrideSignerPublicKey)
+} catch (e: Exception) {
+    throw ZeroXKeyCryptoError.wrap(e)
+}
+
+internal fun decodeImportKey(privateKey: String, keyFormat: KeyFormat): ByteArray = when (keyFormat) {
+    KeyFormat.solana -> {
+        val bytes = base58Decode(privateKey)
+        if (bytes.size != 64) throw ZeroXKeyCryptoError.InvalidPrivateLength(64, bytes.size)
+        bytes.copyOfRange(0, 32)
+    }
+    else -> decodeHexStrict(privateKey.removePrefix("0x"))
+}
+
+internal fun encryptToImportBundle(
+    plaintext: ByteArray,
+    importBundle: String,
+    userId: String,
+    organizationId: String,
+    dangerouslyOverrideSignerPublicKey: String?,
+    ephemeralPrivateKey: ByteArray? = null,
+): String = try {
+    val outer = decodeBundleOuter(importBundle)
+    requireEnclaveSignature(outer, dangerouslyOverrideSignerPublicKey)
+
+    val inner = decodeSignedInner(outer.data)
+
+    if (inner.organizationId.isNullOrEmpty() || inner.organizationId != organizationId) {
+        throw ZeroXKeyCryptoError.OrgIdMismatch(organizationId, inner.organizationId)
+    }
+    if (inner.userId.isNullOrEmpty() || inner.userId != userId) {
+        throw ZeroXKeyCryptoError.UserIdMismatch(userId, inner.userId)
+    }
+
+    val targetHex = inner.targetPublic ?: throw ZeroXKeyCryptoError.MissingEncappedPublic()
+    formatHpkeBundle(hpkeEncrypt(plaintext, targetHex, ephemeralPrivateKey = ephemeralPrivateKey))
+} catch (e: Exception) {
+    throw ZeroXKeyCryptoError.wrap(e)
+}
+
+/**
+ * Encrypts an OTP code and a client public key to the target encryption key
+ * provided by the enclave during initOtp. The resulting encrypted bundle is
+ * sent to verifyOtpV2 so the enclave can decrypt it, verify the OTP code,
+ * and issue a verification token bound to the client's public key.
+ *
+ * The target bundle is signed by the signer enclave's quorum signing key. Its signature is always
+ * verified before the OTP code is encrypted, against the production signing key
+ * ([ZeroXKeyConstants.PRODUCTION_SIGNER_PUBLIC_KEY]) unless [dangerouslyOverrideSignerPublicKey] is
+ * given, so a forged bundle cannot redirect the code to an attacker's key. There is no way to skip
+ * the check.
+ *
+ * @param otpCode The OTP code entered by the user.
+ * @param otpEncryptionTargetBundle The signed target encryption bundle returned from initOtp.
+ * @param publicKey Compressed hex public key to embed in the encrypted bundle.
+ * @param dangerouslyOverrideSignerPublicKey Signing key of a non-production enclave (uncompressed hex,
+ *   for example [TrustAnchors.signerOverride]). Never the quorum encryption key.
+ * @return The encrypted OTP bundle as a JSON string.
+ * @throws ZeroXKeyCryptoError.SignerMismatch if the bundle names a different quorum key.
+ * @throws ZeroXKeyCryptoError.SignatureVerificationFailed if the signature is missing or invalid.
+ * @throws ZeroXKeyCryptoError if decoding or encryption fails.
+ */
+@Throws(ZeroXKeyCryptoError::class)
+fun encryptOtpCodeToBundle(
+    otpCode: String,
+    otpEncryptionTargetBundle: String,
+    publicKey: String,
+    dangerouslyOverrideSignerPublicKey: String? = null,
+): String = encryptOtpCodeToBundle(otpCode, otpEncryptionTargetBundle, publicKey, dangerouslyOverrideSignerPublicKey, null)
+
+internal fun encryptOtpCodeToBundle(
+    otpCode: String,
+    otpEncryptionTargetBundle: String,
+    publicKey: String,
+    dangerouslyOverrideSignerPublicKey: String?,
+    ephemeralPrivateKey: ByteArray?,
+): String = try {
+    val outer = decodeBundleOuter(otpEncryptionTargetBundle)
+    requireEnclaveSignature(outer, dangerouslyOverrideSignerPublicKey)
+
+    val inner = decodeSignedInner(outer.data)
+    val targetHex = inner.targetPublic ?: throw ZeroXKeyCryptoError.MissingEncappedPublic()
+    encryptOtpCodeToTarget(otpCode, targetHex, publicKey, ephemeralPrivateKey)
+} catch (e: Exception) {
+    throw ZeroXKeyCryptoError.wrap(e)
+}
+
+/** HPKE part of [encryptOtpCodeToBundle], after the target bundle has been verified. */
+internal fun encryptOtpCodeToTarget(
+    otpCode: String,
+    targetPublicHex: String,
+    publicKey: String,
+    ephemeralPrivateKey: ByteArray?,
+): String {
+    val plaintext = Json.encodeToString(
+        mapOf("otp_code" to otpCode, "public_key" to publicKey)
+    ).toByteArray(StandardCharsets.UTF_8)
+    return formatHpkeBundle(hpkeEncrypt(plaintext, targetPublicHex, ephemeralPrivateKey = ephemeralPrivateKey))
+}
+
+/**
+ * Verifies a session JWT signed by the 0xkey notarizer: ECDSA P-256 over
+ * `sha256(sha256(header.payload))`, raw 64-byte `r || s` signature.
+ *
+ * @param jwt The session JWT.
+ * @param dangerouslyOverrideNotarizerPublicKey Optional notarizer key (uncompressed hex) for dev/test.
+ * @return true when the signature is valid for the notarizer key.
+ * @throws ZeroXKeyCryptoError if the JWT is malformed.
+ */
+@Throws(ZeroXKeyCryptoError::class)
+fun verifySessionJwtSignature(
+    jwt: String,
+    dangerouslyOverrideNotarizerPublicKey: String? = null,
+): Boolean {
+    val parts = jwt.split(".")
+    if (parts.size < 3 || parts[2].isEmpty()) throw ZeroXKeyCryptoError.DecodingFailed(IllegalArgumentException("invalid JWT: need 3 parts"))
+    val digest = sha256(sha256("${parts[0]}.${parts[1]}".toByteArray(StandardCharsets.UTF_8)))
+    val signature = try { decodeBase64Url(parts[2]) } catch (e: Exception) { throw ZeroXKeyCryptoError.DecodingFailed(e) }
+    if (signature.size != 64) return false
+    val keyHex = dangerouslyOverrideNotarizerPublicKey ?: ZeroXKeyConstants.PRODUCTION_NOTARIZER_PUBLIC_KEY
+    val publicKey = try { P256.publicFromUncompressed(decodeHex(keyHex)) } catch (e: Exception) { throw ZeroXKeyCryptoError.InvalidPublicKey(e) }
+    val signer = ECDSASigner().apply { init(false, publicKey) }
+    return signer.verifySignature(digest, BigInteger(1, signature.copyOfRange(0, 32)), BigInteger(1, signature.copyOfRange(32, 64)))
+}
+
+private fun requireEnclaveSignature(outer: BundleOuter, dangerouslyOverrideSignerPublicKey: String?) {
+    val quorumPublic = outer.enclaveQuorumPublic ?: throw ZeroXKeyCryptoError.SignatureVerificationFailed()
+    val signature = outer.dataSignature ?: throw ZeroXKeyCryptoError.SignatureVerificationFailed()
+    if (!verifyEnclaveSignature(quorumPublic, signature, outer.data, dangerouslyOverrideSignerPublicKey)) {
+        throw ZeroXKeyCryptoError.SignatureVerificationFailed()
+    }
+}

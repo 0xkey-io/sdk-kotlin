@@ -1,0 +1,513 @@
+public final class io/zeroxkey/http/InsecureTransportException : java/io/IOException {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun getReason ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/http/TransportSecurity : java/lang/Enum {
+	public static final field DANGEROUSLY_ALLOW_CLEARTEXT_LOOPBACK Lio/zeroxkey/http/TransportSecurity;
+	public static final field REQUIRE_HTTPS Lio/zeroxkey/http/TransportSecurity;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun requireAllowed (Ljava/lang/String;Ljava/lang/String;)V
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/http/TransportSecurity;
+	public static fun values ()[Lio/zeroxkey/http/TransportSecurity;
+	public final fun violation (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class io/zeroxkey/http/TransportSecurityKt {
+	public static final fun withTransportSecurity (Lokhttp3/OkHttpClient;Lio/zeroxkey/http/TransportSecurity;)Lokhttp3/OkHttpClient;
+}
+
+public final class io/zeroxkey/http/Version {
+	public static final field INSTANCE Lio/zeroxkey/http/Version;
+	public static final field VERSION Ljava/lang/String;
+}
+
+public final class io/zeroxkey/http/ZeroXKeyClient {
+	public static final field Companion Lio/zeroxkey/http/ZeroXKeyClient$Companion;
+	public fun <init> (Ljava/lang/String;Lio/zeroxkey/stamper/Stamper;Lokhttp3/OkHttpClient;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/http/utils/ActivityPollerConfig;Lio/zeroxkey/http/TransportSecurity;)V
+	public synthetic fun <init> (Ljava/lang/String;Lio/zeroxkey/stamper/Stamper;Lokhttp3/OkHttpClient;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/http/utils/ActivityPollerConfig;Lio/zeroxkey/http/TransportSecurity;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun activateBillingTier (Lio/zeroxkey/types/TActivateBillingTierBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun approveActivity (Lio/zeroxkey/types/TApproveActivityBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createApiKeys (Lio/zeroxkey/types/TCreateApiKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createAuthenticators (Lio/zeroxkey/types/TCreateAuthenticatorsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createFiatOnRampCredential (Lio/zeroxkey/types/TCreateFiatOnRampCredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createInvitations (Lio/zeroxkey/types/TCreateInvitationsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createMfaPolicy (Lio/zeroxkey/types/TCreateMfaPolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createOauth2Credential (Lio/zeroxkey/types/TCreateOauth2CredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createOauthProviders (Lio/zeroxkey/types/TCreateOauthProvidersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createOidcProvider (Lio/zeroxkey/types/TCreateOidcProviderBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createPolicies (Lio/zeroxkey/types/TCreatePoliciesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createPolicy (Lio/zeroxkey/types/TCreatePolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createPrivateKeyTag (Lio/zeroxkey/types/TCreatePrivateKeyTagBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createPrivateKeys (Lio/zeroxkey/types/TCreatePrivateKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createReadOnlySession (Lio/zeroxkey/types/TCreateReadOnlySessionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createReadWriteSession (Lio/zeroxkey/types/TCreateReadWriteSessionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createSessionProfile (Lio/zeroxkey/types/TCreateSessionProfileBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createSmartContractInterface (Lio/zeroxkey/types/TCreateSmartContractInterfaceBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createSubOrganization (Lio/zeroxkey/types/TCreateSubOrganizationBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createUserTag (Lio/zeroxkey/types/TCreateUserTagBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createUsers (Lio/zeroxkey/types/TCreateUsersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createWallet (Lio/zeroxkey/types/TCreateWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createWalletAccounts (Lio/zeroxkey/types/TCreateWalletAccountsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createWebhookEndpoint (Lio/zeroxkey/types/TCreateWebhookEndpointBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteApiKeys (Lio/zeroxkey/types/TDeleteApiKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteAuthenticators (Lio/zeroxkey/types/TDeleteAuthenticatorsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteFiatOnRampCredential (Lio/zeroxkey/types/TDeleteFiatOnRampCredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteInvitation (Lio/zeroxkey/types/TDeleteInvitationBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteMfaPolicy (Lio/zeroxkey/types/TDeleteMfaPolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteOauth2Credential (Lio/zeroxkey/types/TDeleteOauth2CredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteOauthProviders (Lio/zeroxkey/types/TDeleteOauthProvidersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteOidcProvider (Lio/zeroxkey/types/TDeleteOidcProviderBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deletePaymentMethod (Lio/zeroxkey/types/TDeletePaymentMethodBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deletePolicies (Lio/zeroxkey/types/TDeletePoliciesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deletePolicy (Lio/zeroxkey/types/TDeletePolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deletePrivateKeyTags (Lio/zeroxkey/types/TDeletePrivateKeyTagsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deletePrivateKeys (Lio/zeroxkey/types/TDeletePrivateKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteSmartContractInterface (Lio/zeroxkey/types/TDeleteSmartContractInterfaceBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteSubOrganization (Lio/zeroxkey/types/TDeleteSubOrganizationBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteUserTags (Lio/zeroxkey/types/TDeleteUserTagsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteUsers (Lio/zeroxkey/types/TDeleteUsersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteWalletAccounts (Lio/zeroxkey/types/TDeleteWalletAccountsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteWallets (Lio/zeroxkey/types/TDeleteWalletsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteWebhookEndpoint (Lio/zeroxkey/types/TDeleteWebhookEndpointBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun emailAuth (Lio/zeroxkey/types/TEmailAuthBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun ethSendTransaction (Lio/zeroxkey/types/TEthSendTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun exportPrivateKey (Lio/zeroxkey/types/TExportPrivateKeyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun exportWallet (Lio/zeroxkey/types/TExportWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun exportWalletAccount (Lio/zeroxkey/types/TExportWalletAccountBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getActivities (Lio/zeroxkey/types/TGetActivitiesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getActivity (Lio/zeroxkey/types/TGetActivityBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getApiKey (Lio/zeroxkey/types/TGetApiKeyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getApiKeys (Lio/zeroxkey/types/TGetApiKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getAppProofs (Lio/zeroxkey/types/TGetAppProofsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getAttestationDocument (Lio/zeroxkey/types/TGetAttestationDocumentBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getAuthenticator (Lio/zeroxkey/types/TGetAuthenticatorBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getAuthenticators (Lio/zeroxkey/types/TGetAuthenticatorsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getBootProof (Lio/zeroxkey/types/TGetBootProofBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getGasUsage (Lio/zeroxkey/types/TGetGasUsageBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getLatestBootProof (Lio/zeroxkey/types/TGetLatestBootProofBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getMfaPolicies (Lio/zeroxkey/types/TGetMfaPoliciesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getMfaPolicy (Lio/zeroxkey/types/TGetMfaPolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getMfaStatus (Lio/zeroxkey/types/TGetMfaStatusBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getNonces (Lio/zeroxkey/types/TGetNoncesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getOauth2Credential (Lio/zeroxkey/types/TGetOauth2CredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getOauthProviders (Lio/zeroxkey/types/TGetOauthProvidersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getOidcProviders (Lio/zeroxkey/types/TGetOidcProvidersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getOnRampTransactionStatus (Lio/zeroxkey/types/TGetOnRampTransactionStatusBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getOrganizationConfigs (Lio/zeroxkey/types/TGetOrganizationConfigsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getPolicies (Lio/zeroxkey/types/TGetPoliciesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getPolicy (Lio/zeroxkey/types/TGetPolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getPolicyEvaluations (Lio/zeroxkey/types/TGetPolicyEvaluationsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getPrivateKey (Lio/zeroxkey/types/TGetPrivateKeyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getPrivateKeys (Lio/zeroxkey/types/TGetPrivateKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getSendTransactionStatus (Lio/zeroxkey/types/TGetSendTransactionStatusBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getSessionProfile (Lio/zeroxkey/types/TGetSessionProfileBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getSessionProfiles (Lio/zeroxkey/types/TGetSessionProfilesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getSmartContractInterface (Lio/zeroxkey/types/TGetSmartContractInterfaceBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getSmartContractInterfaces (Lio/zeroxkey/types/TGetSmartContractInterfacesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getSubOrgIds (Lio/zeroxkey/types/TGetSubOrgIdsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getUser (Lio/zeroxkey/types/TGetUserBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getUsers (Lio/zeroxkey/types/TGetUsersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getVerifiedSubOrgIds (Lio/zeroxkey/types/TGetVerifiedSubOrgIdsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getWallet (Lio/zeroxkey/types/TGetWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getWalletAccount (Lio/zeroxkey/types/TGetWalletAccountBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getWalletAccounts (Lio/zeroxkey/types/TGetWalletAccountsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getWallets (Lio/zeroxkey/types/TGetWalletsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getWhoami (Lio/zeroxkey/types/TGetWhoamiBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun importPrivateKey (Lio/zeroxkey/types/TImportPrivateKeyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun importWallet (Lio/zeroxkey/types/TImportWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun initFiatOnRamp (Lio/zeroxkey/types/TInitFiatOnRampBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun initImportPrivateKey (Lio/zeroxkey/types/TInitImportPrivateKeyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun initImportWallet (Lio/zeroxkey/types/TInitImportWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun initOtp (Lio/zeroxkey/types/TInitOtpBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun initOtpAuth (Lio/zeroxkey/types/TInitOtpAuthBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun initUserEmailRecovery (Lio/zeroxkey/types/TInitUserEmailRecoveryBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listFiatOnRampCredentials (Lio/zeroxkey/types/TListFiatOnRampCredentialsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listGasSponsorshipUsage (Lio/zeroxkey/types/TListGasSponsorshipUsageBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listOauth2Credentials (Lio/zeroxkey/types/TListOauth2CredentialsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listPrivateKeyTags (Lio/zeroxkey/types/TListPrivateKeyTagsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listSendTransactions (Lio/zeroxkey/types/TListSendTransactionsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listUserTags (Lio/zeroxkey/types/TListUserTagsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listWebhookEndpoints (Lio/zeroxkey/types/TListWebhookEndpointsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun oauth (Lio/zeroxkey/types/TOauthBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun oauth2Authenticate (Lio/zeroxkey/types/TOauth2AuthenticateBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun oauthLogin (Lio/zeroxkey/types/TOauthLoginBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun otpAuth (Lio/zeroxkey/types/TOtpAuthBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun otpLogin (Lio/zeroxkey/types/TOtpLoginBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun prepareEthTransaction (Lio/zeroxkey/types/TPrepareEthTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun prepareSolTransaction (Lio/zeroxkey/types/TPrepareSolTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyGetAccount (Lio/zeroxkey/types/ProxyTGetAccountBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyGetWalletKitClientParams (Lio/zeroxkey/types/ProxyTGetWalletKitClientParamsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyGetWalletKitConfig (Lio/zeroxkey/types/ProxyTGetWalletKitConfigBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyInitOtp (Lio/zeroxkey/types/ProxyTInitOtpBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyInitOtpV2 (Lio/zeroxkey/types/ProxyTInitOtpV2Body;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyOAuth2Authenticate (Lio/zeroxkey/types/ProxyTOAuth2AuthenticateBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyOAuthLogin (Lio/zeroxkey/types/ProxyTOAuthLoginBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyOtpLogin (Lio/zeroxkey/types/ProxyTOtpLoginBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyOtpLoginV2 (Lio/zeroxkey/types/ProxyTOtpLoginV2Body;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxySignup (Lio/zeroxkey/types/ProxyTSignupBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxySignupV2 (Lio/zeroxkey/types/ProxyTSignupV2Body;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyVerifyOtp (Lio/zeroxkey/types/ProxyTVerifyOtpBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun proxyVerifyOtpV2 (Lio/zeroxkey/types/ProxyTVerifyOtpV2Body;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun recoverUser (Lio/zeroxkey/types/TRecoverUserBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun rejectActivity (Lio/zeroxkey/types/TRejectActivityBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun removeOrganizationFeature (Lio/zeroxkey/types/TRemoveOrganizationFeatureBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun setOrganizationFeature (Lio/zeroxkey/types/TSetOrganizationFeatureBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun setPaymentMethod (Lio/zeroxkey/types/TSetPaymentMethodBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun signRawPayload (Lio/zeroxkey/types/TSignRawPayloadBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun signRawPayloads (Lio/zeroxkey/types/TSignRawPayloadsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun signTransaction (Lio/zeroxkey/types/TSignTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun simulatePolicyChain (Lio/zeroxkey/types/TSimulatePolicyChainBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun solSendTransaction (Lio/zeroxkey/types/TSolSendTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampActivateBillingTier (Lio/zeroxkey/types/TActivateBillingTierBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampApproveActivity (Lio/zeroxkey/types/TApproveActivityBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateApiKeys (Lio/zeroxkey/types/TCreateApiKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateAuthenticators (Lio/zeroxkey/types/TCreateAuthenticatorsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateFiatOnRampCredential (Lio/zeroxkey/types/TCreateFiatOnRampCredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateInvitations (Lio/zeroxkey/types/TCreateInvitationsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateMfaPolicy (Lio/zeroxkey/types/TCreateMfaPolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateOauth2Credential (Lio/zeroxkey/types/TCreateOauth2CredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateOauthProviders (Lio/zeroxkey/types/TCreateOauthProvidersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateOidcProvider (Lio/zeroxkey/types/TCreateOidcProviderBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreatePolicies (Lio/zeroxkey/types/TCreatePoliciesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreatePolicy (Lio/zeroxkey/types/TCreatePolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreatePrivateKeyTag (Lio/zeroxkey/types/TCreatePrivateKeyTagBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreatePrivateKeys (Lio/zeroxkey/types/TCreatePrivateKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateReadOnlySession (Lio/zeroxkey/types/TCreateReadOnlySessionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateReadWriteSession (Lio/zeroxkey/types/TCreateReadWriteSessionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateSessionProfile (Lio/zeroxkey/types/TCreateSessionProfileBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateSmartContractInterface (Lio/zeroxkey/types/TCreateSmartContractInterfaceBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateSubOrganization (Lio/zeroxkey/types/TCreateSubOrganizationBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateUserTag (Lio/zeroxkey/types/TCreateUserTagBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateUsers (Lio/zeroxkey/types/TCreateUsersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateWallet (Lio/zeroxkey/types/TCreateWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateWalletAccounts (Lio/zeroxkey/types/TCreateWalletAccountsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampCreateWebhookEndpoint (Lio/zeroxkey/types/TCreateWebhookEndpointBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteApiKeys (Lio/zeroxkey/types/TDeleteApiKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteAuthenticators (Lio/zeroxkey/types/TDeleteAuthenticatorsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteFiatOnRampCredential (Lio/zeroxkey/types/TDeleteFiatOnRampCredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteInvitation (Lio/zeroxkey/types/TDeleteInvitationBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteMfaPolicy (Lio/zeroxkey/types/TDeleteMfaPolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteOauth2Credential (Lio/zeroxkey/types/TDeleteOauth2CredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteOauthProviders (Lio/zeroxkey/types/TDeleteOauthProvidersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteOidcProvider (Lio/zeroxkey/types/TDeleteOidcProviderBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeletePaymentMethod (Lio/zeroxkey/types/TDeletePaymentMethodBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeletePolicies (Lio/zeroxkey/types/TDeletePoliciesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeletePolicy (Lio/zeroxkey/types/TDeletePolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeletePrivateKeyTags (Lio/zeroxkey/types/TDeletePrivateKeyTagsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeletePrivateKeys (Lio/zeroxkey/types/TDeletePrivateKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteSmartContractInterface (Lio/zeroxkey/types/TDeleteSmartContractInterfaceBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteSubOrganization (Lio/zeroxkey/types/TDeleteSubOrganizationBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteUserTags (Lio/zeroxkey/types/TDeleteUserTagsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteUsers (Lio/zeroxkey/types/TDeleteUsersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteWalletAccounts (Lio/zeroxkey/types/TDeleteWalletAccountsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteWallets (Lio/zeroxkey/types/TDeleteWalletsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampDeleteWebhookEndpoint (Lio/zeroxkey/types/TDeleteWebhookEndpointBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampEmailAuth (Lio/zeroxkey/types/TEmailAuthBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampEthSendTransaction (Lio/zeroxkey/types/TEthSendTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampExportPrivateKey (Lio/zeroxkey/types/TExportPrivateKeyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampExportWallet (Lio/zeroxkey/types/TExportWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampExportWalletAccount (Lio/zeroxkey/types/TExportWalletAccountBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetActivities (Lio/zeroxkey/types/TGetActivitiesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetActivity (Lio/zeroxkey/types/TGetActivityBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetApiKey (Lio/zeroxkey/types/TGetApiKeyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetApiKeys (Lio/zeroxkey/types/TGetApiKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetAppProofs (Lio/zeroxkey/types/TGetAppProofsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetAttestationDocument (Lio/zeroxkey/types/TGetAttestationDocumentBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetAuthenticator (Lio/zeroxkey/types/TGetAuthenticatorBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetAuthenticators (Lio/zeroxkey/types/TGetAuthenticatorsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetBootProof (Lio/zeroxkey/types/TGetBootProofBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetGasUsage (Lio/zeroxkey/types/TGetGasUsageBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetLatestBootProof (Lio/zeroxkey/types/TGetLatestBootProofBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetMfaPolicies (Lio/zeroxkey/types/TGetMfaPoliciesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetMfaPolicy (Lio/zeroxkey/types/TGetMfaPolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetMfaStatus (Lio/zeroxkey/types/TGetMfaStatusBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetNonces (Lio/zeroxkey/types/TGetNoncesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetOauth2Credential (Lio/zeroxkey/types/TGetOauth2CredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetOauthProviders (Lio/zeroxkey/types/TGetOauthProvidersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetOidcProviders (Lio/zeroxkey/types/TGetOidcProvidersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetOnRampTransactionStatus (Lio/zeroxkey/types/TGetOnRampTransactionStatusBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetOrganizationConfigs (Lio/zeroxkey/types/TGetOrganizationConfigsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetPolicies (Lio/zeroxkey/types/TGetPoliciesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetPolicy (Lio/zeroxkey/types/TGetPolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetPolicyEvaluations (Lio/zeroxkey/types/TGetPolicyEvaluationsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetPrivateKey (Lio/zeroxkey/types/TGetPrivateKeyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetPrivateKeys (Lio/zeroxkey/types/TGetPrivateKeysBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetSendTransactionStatus (Lio/zeroxkey/types/TGetSendTransactionStatusBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetSessionProfile (Lio/zeroxkey/types/TGetSessionProfileBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetSessionProfiles (Lio/zeroxkey/types/TGetSessionProfilesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetSmartContractInterface (Lio/zeroxkey/types/TGetSmartContractInterfaceBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetSmartContractInterfaces (Lio/zeroxkey/types/TGetSmartContractInterfacesBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetSubOrgIds (Lio/zeroxkey/types/TGetSubOrgIdsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetUser (Lio/zeroxkey/types/TGetUserBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetUsers (Lio/zeroxkey/types/TGetUsersBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetVerifiedSubOrgIds (Lio/zeroxkey/types/TGetVerifiedSubOrgIdsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetWallet (Lio/zeroxkey/types/TGetWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetWalletAccount (Lio/zeroxkey/types/TGetWalletAccountBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetWalletAccounts (Lio/zeroxkey/types/TGetWalletAccountsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetWallets (Lio/zeroxkey/types/TGetWalletsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampGetWhoami (Lio/zeroxkey/types/TGetWhoamiBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampImportPrivateKey (Lio/zeroxkey/types/TImportPrivateKeyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampImportWallet (Lio/zeroxkey/types/TImportWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampInitFiatOnRamp (Lio/zeroxkey/types/TInitFiatOnRampBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampInitImportPrivateKey (Lio/zeroxkey/types/TInitImportPrivateKeyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampInitImportWallet (Lio/zeroxkey/types/TInitImportWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampInitOtp (Lio/zeroxkey/types/TInitOtpBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampInitOtpAuth (Lio/zeroxkey/types/TInitOtpAuthBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampInitUserEmailRecovery (Lio/zeroxkey/types/TInitUserEmailRecoveryBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampListFiatOnRampCredentials (Lio/zeroxkey/types/TListFiatOnRampCredentialsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampListGasSponsorshipUsage (Lio/zeroxkey/types/TListGasSponsorshipUsageBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampListOauth2Credentials (Lio/zeroxkey/types/TListOauth2CredentialsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampListPrivateKeyTags (Lio/zeroxkey/types/TListPrivateKeyTagsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampListSendTransactions (Lio/zeroxkey/types/TListSendTransactionsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampListUserTags (Lio/zeroxkey/types/TListUserTagsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampListWebhookEndpoints (Lio/zeroxkey/types/TListWebhookEndpointsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampLogin (Lio/zeroxkey/types/TStampLoginBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampOauth (Lio/zeroxkey/types/TOauthBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampOauth2Authenticate (Lio/zeroxkey/types/TOauth2AuthenticateBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampOauthLogin (Lio/zeroxkey/types/TOauthLoginBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampOtpAuth (Lio/zeroxkey/types/TOtpAuthBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampOtpLogin (Lio/zeroxkey/types/TOtpLoginBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampPrepareEthTransaction (Lio/zeroxkey/types/TPrepareEthTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampPrepareSolTransaction (Lio/zeroxkey/types/TPrepareSolTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampRecoverUser (Lio/zeroxkey/types/TRecoverUserBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampRejectActivity (Lio/zeroxkey/types/TRejectActivityBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampRemoveOrganizationFeature (Lio/zeroxkey/types/TRemoveOrganizationFeatureBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampSetOrganizationFeature (Lio/zeroxkey/types/TSetOrganizationFeatureBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampSetPaymentMethod (Lio/zeroxkey/types/TSetPaymentMethodBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampSignRawPayload (Lio/zeroxkey/types/TSignRawPayloadBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampSignRawPayloads (Lio/zeroxkey/types/TSignRawPayloadsBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampSignTransaction (Lio/zeroxkey/types/TSignTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampSimulatePolicyChain (Lio/zeroxkey/types/TSimulatePolicyChainBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampSolSendTransaction (Lio/zeroxkey/types/TSolSendTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampStampLogin (Lio/zeroxkey/types/TStampLoginBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampSubmitDelegation (Lio/zeroxkey/types/TSubmitDelegationBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampTronSendTransaction (Lio/zeroxkey/types/TTronSendTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateFiatOnRampCredential (Lio/zeroxkey/types/TUpdateFiatOnRampCredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateMfaPolicy (Lio/zeroxkey/types/TUpdateMfaPolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateOauth2Credential (Lio/zeroxkey/types/TUpdateOauth2CredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateOidcProvider (Lio/zeroxkey/types/TUpdateOidcProviderBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateOrganizationName (Lio/zeroxkey/types/TUpdateOrganizationNameBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdatePolicy (Lio/zeroxkey/types/TUpdatePolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdatePrivateKeyTag (Lio/zeroxkey/types/TUpdatePrivateKeyTagBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateRootQuorum (Lio/zeroxkey/types/TUpdateRootQuorumBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateUser (Lio/zeroxkey/types/TUpdateUserBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateUserEmail (Lio/zeroxkey/types/TUpdateUserEmailBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateUserName (Lio/zeroxkey/types/TUpdateUserNameBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateUserPhoneNumber (Lio/zeroxkey/types/TUpdateUserPhoneNumberBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateUserTag (Lio/zeroxkey/types/TUpdateUserTagBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateWallet (Lio/zeroxkey/types/TUpdateWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpdateWebhookEndpoint (Lio/zeroxkey/types/TUpdateWebhookEndpointBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampUpsertGasUsageConfig (Lio/zeroxkey/types/TUpsertGasUsageConfigBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stampVerifyOtp (Lio/zeroxkey/types/TVerifyOtpBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun submitDelegation (Lio/zeroxkey/types/TSubmitDelegationBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun tronSendTransaction (Lio/zeroxkey/types/TTronSendTransactionBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateFiatOnRampCredential (Lio/zeroxkey/types/TUpdateFiatOnRampCredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateMfaPolicy (Lio/zeroxkey/types/TUpdateMfaPolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateOauth2Credential (Lio/zeroxkey/types/TUpdateOauth2CredentialBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateOidcProvider (Lio/zeroxkey/types/TUpdateOidcProviderBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateOrganizationName (Lio/zeroxkey/types/TUpdateOrganizationNameBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updatePolicy (Lio/zeroxkey/types/TUpdatePolicyBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updatePrivateKeyTag (Lio/zeroxkey/types/TUpdatePrivateKeyTagBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateRootQuorum (Lio/zeroxkey/types/TUpdateRootQuorumBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateUser (Lio/zeroxkey/types/TUpdateUserBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateUserEmail (Lio/zeroxkey/types/TUpdateUserEmailBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateUserName (Lio/zeroxkey/types/TUpdateUserNameBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateUserPhoneNumber (Lio/zeroxkey/types/TUpdateUserPhoneNumberBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateUserTag (Lio/zeroxkey/types/TUpdateUserTagBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateWallet (Lio/zeroxkey/types/TUpdateWalletBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateWebhookEndpoint (Lio/zeroxkey/types/TUpdateWebhookEndpointBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun upsertGasUsageConfig (Lio/zeroxkey/types/TUpsertGasUsageConfigBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun verifyOtp (Lio/zeroxkey/types/TVerifyOtpBody;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/zeroxkey/http/ZeroXKeyClient$Companion {
+}
+
+public final class io/zeroxkey/http/utils/ActivityPollerConfig {
+	public fun <init> ()V
+	public fun <init> (JI)V
+	public synthetic fun <init> (JIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()I
+	public final fun copy (JI)Lio/zeroxkey/http/utils/ActivityPollerConfig;
+	public static synthetic fun copy$default (Lio/zeroxkey/http/utils/ActivityPollerConfig;JIILjava/lang/Object;)Lio/zeroxkey/http/utils/ActivityPollerConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIntervalMs ()J
+	public final fun getNumRetries ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/http/utils/ErrorBody {
+	public static final field Companion Lio/zeroxkey/http/utils/ErrorBody$Companion;
+	public fun <init> (Lio/zeroxkey/http/utils/ErrorBody$Kind;ILjava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Lio/zeroxkey/http/utils/ErrorBody$Kind;
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Lio/zeroxkey/http/utils/ErrorBody$Kind;ILjava/lang/String;Ljava/util/List;)Lio/zeroxkey/http/utils/ErrorBody;
+	public static synthetic fun copy$default (Lio/zeroxkey/http/utils/ErrorBody;Lio/zeroxkey/http/utils/ErrorBody$Kind;ILjava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lio/zeroxkey/http/utils/ErrorBody;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()I
+	public final fun getDetails ()Ljava/util/List;
+	public final fun getErrorInfoReasons ()Ljava/util/List;
+	public final fun getKind ()Lio/zeroxkey/http/utils/ErrorBody$Kind;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/http/utils/ErrorBody$Companion {
+	public final fun grpcCode (I)I
+	public final fun parse (ILjava/lang/String;)Lio/zeroxkey/http/utils/ErrorBody;
+}
+
+public final class io/zeroxkey/http/utils/ErrorBody$Kind : java/lang/Enum {
+	public static final field EMPTY Lio/zeroxkey/http/utils/ErrorBody$Kind;
+	public static final field GRPC_STATUS Lio/zeroxkey/http/utils/ErrorBody$Kind;
+	public static final field PLAIN_TEXT Lio/zeroxkey/http/utils/ErrorBody$Kind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/http/utils/ErrorBody$Kind;
+	public static fun values ()[Lio/zeroxkey/http/utils/ErrorBody$Kind;
+}
+
+public abstract class io/zeroxkey/http/utils/ZeroXKeyHttpError : java/lang/Exception {
+	public static final field Companion Lio/zeroxkey/http/utils/ZeroXKeyHttpError$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public abstract class io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted : io/zeroxkey/http/utils/ZeroXKeyHttpError {
+	public static final field Companion Lio/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted$Companion;
+	public synthetic fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getActivity ()Lio/zeroxkey/types/V1Activity;
+	public final fun getPath ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted$AuthenticatorsNeeded : io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted {
+	public fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted$Companion {
+	public final fun invoke (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted;
+	public static synthetic fun invoke$default (Lio/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted$Companion;Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted;
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted$ConsensusNeeded : io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted {
+	public fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted$Failed : io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted {
+	public fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted$NotFinished : io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted {
+	public fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted$Rejected : io/zeroxkey/http/utils/ZeroXKeyHttpError$ActivityNotCompleted {
+	public fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Lio/zeroxkey/types/V1Activity;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$Companion {
+	public final fun wrap (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError;
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$EmptyResponseBody : io/zeroxkey/http/utils/ZeroXKeyHttpError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$EmptyResponseBody;
+	public static synthetic fun copy$default (Lio/zeroxkey/http/utils/ZeroXKeyHttpError$EmptyResponseBody;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$EmptyResponseBody;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$InsecureTransport : io/zeroxkey/http/utils/ZeroXKeyHttpError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun getName ()Ljava/lang/String;
+	public final fun getReason ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$MissingAuthProxyConfigId : io/zeroxkey/http/utils/ZeroXKeyHttpError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$MissingAuthProxyConfigId;
+	public static synthetic fun copy$default (Lio/zeroxkey/http/utils/ZeroXKeyHttpError$MissingAuthProxyConfigId;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$MissingAuthProxyConfigId;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$OperationFailed : io/zeroxkey/http/utils/ZeroXKeyHttpError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$OperationFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/http/utils/ZeroXKeyHttpError$OperationFailed;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$OperationFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class io/zeroxkey/http/utils/ZeroXKeyHttpError$RequestFailed : io/zeroxkey/http/utils/ZeroXKeyHttpError {
+	public static final field Companion Lio/zeroxkey/http/utils/ZeroXKeyHttpError$RequestFailed$Companion;
+	public synthetic fun <init> (Ljava/lang/String;ILjava/lang/String;Lio/zeroxkey/http/utils/ErrorBody;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getBody ()Lio/zeroxkey/http/utils/ErrorBody;
+	public final fun getCode ()I
+	public final fun getDetails ()Ljava/util/List;
+	public final fun getErrorInfoReasons ()Ljava/util/List;
+	public final fun getErrorMessage ()Ljava/lang/String;
+	public final fun getHttpStatus ()I
+	public final fun getKind ()Lio/zeroxkey/http/utils/ErrorBody$Kind;
+	public final fun getPath ()Ljava/lang/String;
+	public final fun getRawBody ()Ljava/lang/String;
+	public final fun isUnauthenticated ()Z
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$RequestFailed$Companion {
+	public final fun invoke (Ljava/lang/String;ILjava/lang/String;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$RequestFailed;
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$RequestFailed$Generic : io/zeroxkey/http/utils/ZeroXKeyHttpError$RequestFailed {
+	public fun <init> (Ljava/lang/String;ILjava/lang/String;Lio/zeroxkey/http/utils/ErrorBody;)V
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$RequestFailed$WebAuthnOriginNotAllowed : io/zeroxkey/http/utils/ZeroXKeyHttpError$RequestFailed {
+	public fun <init> (Ljava/lang/String;ILjava/lang/String;Lio/zeroxkey/http/utils/ErrorBody;)V
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$RequestFailed$WebAuthnRpIdNotAllowed : io/zeroxkey/http/utils/ZeroXKeyHttpError$RequestFailed {
+	public fun <init> (Ljava/lang/String;ILjava/lang/String;Lio/zeroxkey/http/utils/ErrorBody;)V
+}
+
+public final class io/zeroxkey/http/utils/ZeroXKeyHttpError$StamperNotInitialized : io/zeroxkey/http/utils/ZeroXKeyHttpError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$StamperNotInitialized;
+	public static synthetic fun copy$default (Lio/zeroxkey/http/utils/ZeroXKeyHttpError$StamperNotInitialized;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/http/utils/ZeroXKeyHttpError$StamperNotInitialized;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

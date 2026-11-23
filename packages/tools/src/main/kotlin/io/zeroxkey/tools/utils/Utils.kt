@@ -1,0 +1,292 @@
+// Modified by 0xkey
+package io.zeroxkey.tools.utils
+
+import com.squareup.kotlinpoet.AnnotationSpec
+import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
+import com.squareup.kotlinpoet.TypeName
+import com.squareup.kotlinpoet.TypeSpec
+import io.swagger.v3.oas.models.media.ArraySchema
+import io.swagger.v3.oas.models.media.Schema
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
+import java.nio.file.Files
+import java.nio.file.Path
+
+/** Find the project root by walking up until we find openapi/ directory */
+fun findProjectRoot(): Path {
+    var current = Path.of("").toAbsolutePath()
+    while (current != null) {
+        if (Files.exists(current.resolve("openapi"))) {
+            return current
+        }
+        current = current.parent ?: break
+    }
+    error("Could not find project root (looking for openapi/ directory)")
+}
+
+private val STRING = ClassName("kotlin", "String")
+private val INT    = ClassName("kotlin", "Int")
+private val LONG   = ClassName("kotlin", "Long")
+private val DOUBLE = ClassName("kotlin", "Double")
+private val BOOL   = ClassName("kotlin", "Boolean")
+private val ANYN   = ClassName("kotlin", "Any")
+private val UNIT   = ClassName("kotlin", "Unit")
+private val LIST   = ClassName("kotlin.collections", "List")
+private val MAP    = ClassName("kotlin.collections", "Map")
+
+enum class OperationKind {
+    Activity,          // default
+    ActivityDecision,  // approveActivity / rejectActivity
+    Noop,              // noop / anchor / ping
+    Query,             // get*/list*/test* or HTTP GET
+    Proxy              // proxy
+}
+
+/** Very small mapper: OpenAPI param schema → Kotlin type. */
+fun kotlinTypeFromSchema(
+    schema: Schema<*>?,
+    modelPkg: String,
+    modelPrefix: String?
+): TypeName {
+    if (schema == null) return STRING.copy(nullable = true)
+    schema.`$ref`?.let { ref ->
+        val name = ref.substringAfterLast("/")
+        return ClassName(modelPkg, modelPrefix + name.capitalizeLeading())
+    }
+    val type = schema.type
+    val format = schema.format
+    return when (type) {
+        "string" -> STRING
+        "integer" -> if (format == "int64") LONG else INT
+        "number" -> DOUBLE
+        "boolean" -> BOOL
+        "array" -> {
+            val items = (schema as? ArraySchema)?.items
+            LIST.parameterizedBy(kotlinTypeFromSchema(items, modelPkg, modelPrefix))
+        }
+        "object" -> MAP.parameterizedBy(STRING, ANYN.copy(nullable = true))
+        else -> STRING
+    }
+}
+
+fun String.capitalizeLeading(): String =
+    replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+
+fun String.toScreamingSnake(): String =
+    fold(StringBuilder()) { acc, c ->
+        when {
+            c.isUpperCase() -> {
+                if (acc.isNotEmpty() && acc.last() != '_') acc.append('_')
+                acc.append(c)
+            }
+            c.isLowerCase() -> acc.append(c.uppercaseChar())
+            c.isDigit()     -> acc.append(c)
+            else            -> acc.append('_')
+        }
+        acc
+    }.toString()
+
+fun classifyOperation(
+    methodName: String,
+    path: String? = null,
+    prefix: String? = null
+): OperationKind {
+    val id = methodName.trim()
+    val lower = id.lowercase()
+
+    if (prefix?.lowercase() == "proxy") {
+        return OperationKind.Proxy
+    }
+
+    // Activity decision endpoints
+    if (id == "approveActivity" || id == "rejectActivity") {
+        return OperationKind.ActivityDecision
+    }
+
+    // NOOPs – allow detection by name or path hint
+    if (lower.startsWith("noop") || lower.startsWith("tnoop") || path?.contains("/noop", ignoreCase = true) == true) {
+        return OperationKind.Noop
+    }
+
+    // Queries – endpoints under /query/ are always queries, regardless of method name
+    // (e.g. validateTvcImage returns a plain response, not an activity result)
+    if (path?.contains("/query/", ignoreCase = true) == true) {
+        return OperationKind.Query
+    }
+
+    // Queries – GETs or method-name prefixes: get*/list*/test*
+    if (methodName.startsWith("get") || methodName.startsWith("tget", ignoreCase = true) ||
+        lower.startsWith("get") || lower.startsWith("tget") ||
+        lower.startsWith("list") || lower.startsWith("tlist") ||
+        lower.startsWith("test") || lower.startsWith("ttest")
+    ) {
+        return OperationKind.Query
+    }
+
+    // Default
+    return OperationKind.Activity
+}
+
+/**
+ * 0xkey: only POST operations under `/public/v1/query/` and `/public/v1/submit/` of the public API are
+ * generated (same scope as the 0xkey JS and Swift SDKs). Auth Proxy operations are all generated.
+ */
+fun isGeneratedPath(prefix: String?, path: String): Boolean =
+    !prefix.isNullOrBlank() || path.startsWith("/public/v1/query/") || path.startsWith("/public/v1/submit/")
+
+/**
+ * 0xkey: an activity-named operation whose request has no `type`/`parameters` envelope is a flat
+ * POST (e.g. submit_delegation, prepare_eth_transaction) and is generated like a query.
+ */
+fun refineKind(kind: OperationKind, requestDef: JsonObject?): OperationKind {
+    if (kind != OperationKind.Activity) return kind
+    val props = jsonProperties(requestDef) ?: return kind
+    return if ("parameters" in props && "type" in props) kind else OperationKind.Query
+}
+
+private fun isValidIdentifier(name: String): Boolean =
+    Regex("^[A-Za-z_][A-Za-z0-9_]*$").matches(name)
+
+fun sanitizeFieldName(key: String): String {
+    if (isValidIdentifier(key)) return key
+    var s = key.replace(Regex("[^A-Za-z0-9_]"), "")
+    if (s.isEmpty()) s = "field"
+    if (!Regex("^[A-Za-z_]").containsMatchIn(s)) s = "_$s"
+    return s
+}
+
+fun sanitizeEnumEntry(raw: String): String {
+    var v = raw.trim().lowercase().replace(Regex("[^a-z0-9]+"), "_")
+    v = v.replace(Regex("^_+|_+$"), "")
+    if (v.isEmpty()) v = "value"
+    if (Regex("^\\d").containsMatchIn(v)) v = "_$v"
+    return v
+}
+
+fun sanitizeTypeName(raw: String): String {
+    val base = raw.replace(".", "")
+    return if (base.isEmpty()) "Type" else base.replaceFirstChar { it.uppercaseChar() }
+}
+
+fun ucFirst(s: String): String =
+    if (s.isEmpty()) s else s[0].uppercaseChar() + s.substring(1)
+
+fun TypeSpec.Builder.addSerializableAnnotations(): TypeSpec.Builder {
+    addAnnotation(AnnotationSpec.builder(Serializable::class).build())
+    return this
+}
+
+/** One spec input + an optional prefix applied to operation/type names. */
+data class SpecCfg(val path: Path, val prefix: String)
+
+data class LatestVersion(
+    val fullName: String,
+    val formattedKeyName: String,
+    val versionSuffix: String?
+)
+
+private val keyVersionRegex = Regex("""^(v\d+)([A-Z][A-Za-z0-9]*?)(V\d+)?$""")
+
+/**
+ * Takes Swagger/OpenAPI definition names and returns, per base type,
+ * the latest version (by numeric suffix, e.g., V4 > V2; no suffix = 0).
+ *
+ * Keys like: v1CreateSubOrganizationResult, v1CreateSubOrganizationResultV2, ...
+ * Result map key is the base name (e.g., "CreateSubOrganizationResult").
+ */
+fun extractLatestVersions(definitions: Map<String, *>): Map<String, LatestVersion> {
+    fun String.lcFirst(): String =
+        if (isEmpty()) this else replaceFirstChar { it.lowercase() }
+
+    fun parseSuffixToInt(suffix: String?): Int =
+        suffix?.removePrefix("V")?.toIntOrNull() ?: 0
+
+    val latest = linkedMapOf<String, LatestVersion>()
+
+    for (key in definitions.keys) {
+        val m = keyVersionRegex.matchEntire(key) ?: continue
+
+        val fullName = m.groupValues[0]
+        val baseName = m.groupValues[2]                // unversioned core, e.g. "CreateSubOrganizationResult"
+        val versionSuffix = m.groupValues.getOrNull(3).takeUnless { it.isNullOrEmpty() } // e.g. "V4" or null
+
+        val formattedKeyName = baseName.lcFirst() + (versionSuffix ?: "")
+
+        val current = latest[baseName]
+        val currentVer = parseSuffixToInt(current?.versionSuffix)
+        val nextVer = parseSuffixToInt(versionSuffix)
+
+        if (current == null || nextVer > currentVer) {
+            latest[baseName] = LatestVersion(fullName, formattedKeyName, versionSuffix)
+        }
+    }
+
+    return latest
+}
+
+fun JsonObject.definitions(): Map<String, JsonObject> =
+    (this["definitions"] as? JsonObject)?.mapValues { it.value.jsonObject } ?: emptyMap()
+
+fun JsonObject.paths(): Map<String, JsonObject> =
+    (this["paths"] as? JsonObject)?.mapValues { it.value.jsonObject } ?: emptyMap()
+
+fun JsonObject.tags(): JsonArray? =
+    this["tags"] as? JsonArray
+
+/** "#/definitions/Foo.Bar" -> "FooBar" */
+fun refToName(ref: String): String =
+    ref.removePrefix("#/definitions/").replace(".", "")
+
+fun schemaRefName(obj: JsonObject?): String? =
+    obj?.get("\$ref")?.jsonPrimitive?.contentOrNull?.let { refToName(it) }
+
+fun jsonTypeOf(schema: JsonObject?): String? =
+    schema?.get("type")?.jsonPrimitive?.contentOrNull
+
+fun jsonEnum(schema: JsonObject?): JsonArray? =
+    schema?.get("enum") as? JsonArray
+
+fun jsonProperties(schema: JsonObject?): JsonObject? =
+    schema?.get("properties") as? JsonObject
+
+/**
+ * The single `type` enum value declared on an activity request schema
+ * (e.g. `v1SolSendTransactionRequest.type` -> "ACTIVITY_TYPE_SOL_SEND_TRANSACTION_V2"), or null if absent.
+ * Both generators must derive the activity type from this one place so `type` and `parameters` never drift.
+ */
+fun declaredActivityType(requestDef: JsonObject?): String? =
+    (jsonProperties(requestDef)?.get("type") as? JsonObject)
+        ?.let { jsonEnum(it) }
+        ?.firstOrNull()
+        ?.jsonPrimitive?.contentOrNull
+
+fun jsonRequired(schema: JsonObject?): Set<String> =
+    (schema?.get("required") as? JsonArray)?.mapNotNull { it.jsonPrimitive.contentOrNull }?.toSet() ?: emptySet()
+
+fun jsonItems(schema: JsonObject?): JsonObject? =
+    (schema?.get("items") as? JsonObject)
+
+fun jsonAdditionalProperties(schema: JsonObject?): JsonElement? =
+    schema?.get("additionalProperties")
+
+/** Parse OpenAPI JSON file */
+fun readJson(path: Path): JsonObject {
+    val jsonLoose = kotlinx.serialization.json.Json {
+        ignoreUnknownKeys = false
+        isLenient = true
+        allowSpecialFloatingPointValues = true
+    }
+    val raw = java.nio.file.Files.readString(path)
+    val el = try {
+        jsonLoose.parseToJsonElement(raw)
+    } catch (e: Exception) {
+        error("Failed to parse JSON at $path: ${e.message}")
+    }
+    return el as? JsonObject ?: error("Top-level JSON must be an object at $path")
+}

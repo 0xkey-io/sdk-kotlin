@@ -1,0 +1,1594 @@
+public final class io/zeroxkey/core/OAuthEvents {
+	public static final field INSTANCE Lio/zeroxkey/core/OAuthEvents;
+	public final fun getDeepLinks ()Lkotlinx/coroutines/flow/MutableSharedFlow;
+}
+
+public class io/zeroxkey/core/OAuthRedirectActivity : androidx/appcompat/app/AppCompatActivity {
+	public fun <init> ()V
+	protected fun onCreate (Landroid/os/Bundle;)V
+	protected fun onNewIntent (Landroid/content/Intent;)V
+}
+
+public final class io/zeroxkey/core/ZeroXKeyContext {
+	public static final field INSTANCE Lio/zeroxkey/core/ZeroXKeyContext;
+	public static field appContext Landroid/content/Context;
+	public final fun addPasskey (Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun addPasskey$default (Lio/zeroxkey/core/ZeroXKeyContext;Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun awaitReady (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun clearAllSessions (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun clearSession (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun clearSession$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun createKeyPair ()Ljava/lang/String;
+	public final fun createSession (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createSession$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun createWallet (Ljava/lang/String;Ljava/util/List;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createZeroXKeyClient (Lio/zeroxkey/core/models/ZeroXKeyConfig;Lio/zeroxkey/stamper/Stamper;Ljava/lang/String;)Lio/zeroxkey/http/ZeroXKeyClient;
+	public static synthetic fun createZeroXKeyClient$default (Lio/zeroxkey/core/ZeroXKeyContext;Lio/zeroxkey/core/models/ZeroXKeyConfig;Lio/zeroxkey/stamper/Stamper;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/http/ZeroXKeyClient;
+	public final fun deleteKeyPair (Ljava/lang/String;)V
+	public final fun deleteUnusedKeyPairs ()V
+	public final fun exportWallet (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getAppContext ()Landroid/content/Context;
+	public final fun getAuthState ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun getClient ()Lio/zeroxkey/http/ZeroXKeyClient;
+	public final fun getSelectedSessionKey ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun getSession ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun getUser ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun getWallets ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun handleAppleOAuth (Landroid/app/Activity;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLio/zeroxkey/core/models/CreateSubOrgParams;Lkotlin/jvm/functions/Function3;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun handleAppleOAuth$default (Lio/zeroxkey/core/ZeroXKeyContext;Landroid/app/Activity;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLio/zeroxkey/core/models/CreateSubOrgParams;Lkotlin/jvm/functions/Function3;JLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun handleDiscordOAuth (Landroid/app/Activity;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLio/zeroxkey/core/models/CreateSubOrgParams;Lkotlin/jvm/functions/Function3;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun handleDiscordOAuth$default (Lio/zeroxkey/core/ZeroXKeyContext;Landroid/app/Activity;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLio/zeroxkey/core/models/CreateSubOrgParams;Lkotlin/jvm/functions/Function3;JLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun handleGoogleOAuth (Landroid/app/Activity;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLio/zeroxkey/core/models/CreateSubOrgParams;Lkotlin/jvm/functions/Function3;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun handleGoogleOAuth$default (Lio/zeroxkey/core/ZeroXKeyContext;Landroid/app/Activity;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLio/zeroxkey/core/models/CreateSubOrgParams;Lkotlin/jvm/functions/Function3;JLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun handleXOAuth (Landroid/app/Activity;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLio/zeroxkey/core/models/CreateSubOrgParams;Lkotlin/jvm/functions/Function3;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun handleXOAuth$default (Lio/zeroxkey/core/ZeroXKeyContext;Landroid/app/Activity;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLio/zeroxkey/core/models/CreateSubOrgParams;Lkotlin/jvm/functions/Function3;JLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun importWallet (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun init (Landroid/app/Application;Lio/zeroxkey/core/models/ZeroXKeyConfig;)V
+	public final fun initOtp (Lio/zeroxkey/core/models/OtpType;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun initSuspend (Landroid/app/Application;Lio/zeroxkey/core/models/ZeroXKeyConfig;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun loginOrSignUpWithOAuth (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLio/zeroxkey/core/models/CreateSubOrgParams;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun loginOrSignUpWithOAuth$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLio/zeroxkey/core/models/CreateSubOrgParams;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun loginOrSignUpWithOtp (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/OtpType;Ljava/lang/String;ZLjava/lang/String;Lio/zeroxkey/core/models/CreateSubOrgParams;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun loginOrSignUpWithOtp$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/OtpType;Ljava/lang/String;ZLjava/lang/String;Lio/zeroxkey/core/models/CreateSubOrgParams;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun loginWithOAuth (Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun loginWithOAuth$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun loginWithOtp (Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun loginWithOtp$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun loginWithPasskey (Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun loginWithPasskey$default (Lio/zeroxkey/core/ZeroXKeyContext;Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun persistSession (Lio/zeroxkey/core/models/Session;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun persistSession$default (Lio/zeroxkey/core/ZeroXKeyContext;Lio/zeroxkey/core/models/Session;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun purgeStoredSession (Landroid/content/Context;Ljava/lang/String;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun refreshSession (Ljava/lang/String;Ljava/lang/String;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun refreshSession$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;Ljava/lang/String;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun refreshUser (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun refreshWallets (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun registerForegroundObserver (Lkotlin/jvm/functions/Function0;)V
+	public final fun rescheduleAllSessionExpiries (Landroid/content/Context;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun restoreSelectedSession (Landroid/content/Context;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun scheduleExpiryTimer (Ljava/lang/String;DDLio/zeroxkey/core/models/Session;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun scheduleExpiryTimer$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;DDLio/zeroxkey/core/models/Session;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun sessionKeySecurityLevel (Ljava/lang/String;)Lio/zeroxkey/stamper/KeySecurityLevel;
+	public static synthetic fun sessionKeySecurityLevel$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/stamper/KeySecurityLevel;
+	public final fun setAppContext (Landroid/content/Context;)V
+	public final fun setSelectedSession (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun signMessage (Ljava/lang/String;Lio/zeroxkey/types/V1AddressFormat;Ljava/lang/String;Lio/zeroxkey/types/V1PayloadEncoding;Lio/zeroxkey/types/V1HashFunction;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun signMessage$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;Lio/zeroxkey/types/V1AddressFormat;Ljava/lang/String;Lio/zeroxkey/types/V1PayloadEncoding;Lio/zeroxkey/types/V1HashFunction;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun signRawPayload (Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/types/V1PayloadEncoding;Lio/zeroxkey/types/V1HashFunction;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun signTransaction (Lio/zeroxkey/types/V1WalletAccount;Ljava/lang/String;Lio/zeroxkey/types/V1TransactionType;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun signTransaction (Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/types/V1TransactionType;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun signUpWithOAuth (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/CreateSubOrgParams;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun signUpWithOAuth$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/CreateSubOrgParams;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun signUpWithOtp (Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/OtpType;Ljava/lang/String;Lio/zeroxkey/core/models/CreateSubOrgParams;ZLjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun signUpWithOtp$default (Lio/zeroxkey/core/ZeroXKeyContext;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/OtpType;Ljava/lang/String;Lio/zeroxkey/core/models/CreateSubOrgParams;ZLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun signUpWithPasskey (Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/CreateSubOrgParams;ZLjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun signUpWithPasskey$default (Lio/zeroxkey/core/ZeroXKeyContext;Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/CreateSubOrgParams;ZLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun updateSession (Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun updateSession$default (Lio/zeroxkey/core/ZeroXKeyContext;Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun verifyOtp (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/zeroxkey/core/internal/storage/keys/PendingKeysStore {
+	public static final field INSTANCE Lio/zeroxkey/core/internal/storage/keys/PendingKeysStore;
+	public final fun add (Landroid/content/Context;Ljava/lang/String;D)V
+	public static synthetic fun add$default (Lio/zeroxkey/core/internal/storage/keys/PendingKeysStore;Landroid/content/Context;Ljava/lang/String;DILjava/lang/Object;)V
+	public final fun all (Landroid/content/Context;)Ljava/util/Map;
+	public final fun purge (Landroid/content/Context;)V
+	public final fun remove (Landroid/content/Context;Ljava/lang/String;)V
+}
+
+public final class io/zeroxkey/core/internal/storage/primitives/LocalStore {
+	public static final field INSTANCE Lio/zeroxkey/core/internal/storage/primitives/LocalStore;
+	public final fun delete (Landroid/content/Context;Ljava/lang/String;)V
+	public final fun getJson ()Lkotlinx/serialization/json/Json;
+	public final fun listKeys (Landroid/content/Context;)Ljava/util/List;
+	public final fun prefs (Landroid/content/Context;)Landroid/content/SharedPreferences;
+}
+
+public final class io/zeroxkey/core/internal/storage/sessions/AutoRefreshStore {
+	public static final field INSTANCE Lio/zeroxkey/core/internal/storage/sessions/AutoRefreshStore;
+	public final fun durationSeconds (Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+	public final fun remove (Landroid/content/Context;Ljava/lang/String;)V
+	public final fun set (Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class io/zeroxkey/core/internal/storage/sessions/JwtSessionStore : io/zeroxkey/core/models/KeyValueStore {
+	public static final field INSTANCE Lio/zeroxkey/core/internal/storage/sessions/JwtSessionStore;
+	public synthetic fun delete (Landroid/content/Context;Ljava/lang/Object;)V
+	public fun delete (Landroid/content/Context;Ljava/lang/String;)V
+	public final fun listKeys (Landroid/content/Context;)Ljava/util/List;
+	public synthetic fun load (Landroid/content/Context;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun load (Landroid/content/Context;Ljava/lang/String;)Lio/zeroxkey/core/models/Session;
+	public synthetic fun save (Landroid/content/Context;Ljava/lang/Object;Ljava/lang/Object;)V
+	public fun save (Landroid/content/Context;Ljava/lang/String;Lio/zeroxkey/core/models/Session;)V
+}
+
+public final class io/zeroxkey/core/internal/storage/sessions/SelectedSessionStore : io/zeroxkey/core/models/ValueStore {
+	public static final field INSTANCE Lio/zeroxkey/core/internal/storage/sessions/SelectedSessionStore;
+	public fun delete (Landroid/content/Context;)V
+	public synthetic fun load (Landroid/content/Context;)Ljava/lang/Object;
+	public fun load (Landroid/content/Context;)Ljava/lang/String;
+	public synthetic fun save (Landroid/content/Context;Ljava/lang/Object;)V
+	public fun save (Landroid/content/Context;Ljava/lang/String;)V
+}
+
+public final class io/zeroxkey/core/internal/storage/sessions/SessionRegistryStore {
+	public static final field INSTANCE Lio/zeroxkey/core/internal/storage/sessions/SessionRegistryStore;
+	public final fun add (Landroid/content/Context;Ljava/lang/String;)V
+	public final fun all (Landroid/content/Context;)Ljava/util/List;
+	public final fun purgeExpiredSessions (Landroid/content/Context;)V
+	public final fun remove (Landroid/content/Context;Ljava/lang/String;)V
+}
+
+public final class io/zeroxkey/core/internal/utils/ClientSignature {
+	public static final field INSTANCE Lio/zeroxkey/core/internal/utils/ClientSignature;
+	public final fun forLogin (Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/ClientSignaturePayload;
+	public static synthetic fun forLogin$default (Lio/zeroxkey/core/internal/utils/ClientSignature;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/ClientSignaturePayload;
+	public final fun forSignUp (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lio/zeroxkey/core/models/ClientSignaturePayload;
+	public static synthetic fun forSignUp$default (Lio/zeroxkey/core/internal/utils/ClientSignature;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lio/zeroxkey/core/models/ClientSignaturePayload;
+}
+
+public final class io/zeroxkey/core/internal/utils/Helpers {
+	public static final field INSTANCE Lio/zeroxkey/core/internal/utils/Helpers;
+	public final fun buildSecondaryOauthProviders (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Ljava/util/List;
+	public final fun buildSignUpBody (Lio/zeroxkey/core/models/CreateSubOrgParams;)Lio/zeroxkey/types/ProxyTSignupV2Body;
+	public final fun decodeVerificationToken (Ljava/lang/String;)Lio/zeroxkey/core/models/VerificationToken;
+	public final fun defaultsFor (Lio/zeroxkey/types/V1AddressFormat;)Lio/zeroxkey/core/models/Defaults;
+	public final fun encodeMessageBytes ([BLio/zeroxkey/types/V1PayloadEncoding;)Ljava/lang/String;
+	public final fun ethereumPrefixed ([B)[B
+	public final fun fetchAllWalletAccountsWithCursor (Lio/zeroxkey/http/ZeroXKeyClient;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun generateChallengePair (I)Lio/zeroxkey/core/models/ChallengePair;
+	public static synthetic fun generateChallengePair$default (Lio/zeroxkey/core/internal/utils/Helpers;IILjava/lang/Object;)Lio/zeroxkey/core/models/ChallengePair;
+	public final fun getCreateSubOrgParams (Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/ZeroXKeyConfig;Lio/zeroxkey/core/models/OverrideParams;)Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public final fun mapAccountsToWallet (Ljava/util/List;Ljava/util/List;)Ljava/util/List;
+	public final fun openCustomTab (Landroid/app/Activity;Ljava/lang/String;)V
+	public final fun randomVerifier (I)Ljava/lang/String;
+	public static synthetic fun randomVerifier$default (Lio/zeroxkey/core/internal/utils/Helpers;IILjava/lang/Object;)Ljava/lang/String;
+	public final fun sha256Hex (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/internal/utils/JwtDecoder {
+	public static final field INSTANCE Lio/zeroxkey/core/internal/utils/JwtDecoder;
+}
+
+public class io/zeroxkey/core/models/AuthConfig {
+	public fun <init> ()V
+	public fun <init> (Lio/zeroxkey/core/models/OAuthConfig;Ljava/lang/String;Lio/zeroxkey/core/models/MethodCreateSubOrgParams;Ljava/lang/String;)V
+	public synthetic fun <init> (Lio/zeroxkey/core/models/OAuthConfig;Ljava/lang/String;Lio/zeroxkey/core/models/MethodCreateSubOrgParams;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getCreateSubOrgParams ()Lio/zeroxkey/core/models/MethodCreateSubOrgParams;
+	public final fun getOAuthConfig ()Lio/zeroxkey/core/models/OAuthConfig;
+	public final fun getRpId ()Ljava/lang/String;
+	public fun getSessionExpirationSeconds ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/AuthKt {
+	public static final fun getOtpTypeToFilterTypeMap ()Ljava/util/Map;
+}
+
+public final class io/zeroxkey/core/models/AuthState : java/lang/Enum {
+	public static final field authenticated Lio/zeroxkey/core/models/AuthState;
+	public static final field loading Lio/zeroxkey/core/models/AuthState;
+	public static final field unauthenticated Lio/zeroxkey/core/models/AuthState;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/core/models/AuthState;
+	public static fun values ()[Lio/zeroxkey/core/models/AuthState;
+}
+
+public final class io/zeroxkey/core/models/ChallengePair {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/ChallengePair;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/ChallengePair;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/ChallengePair;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCodeChallenge ()Ljava/lang/String;
+	public final fun getVerifier ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/ClientSignaturePayload {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/ClientSignaturePayload;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/ClientSignaturePayload;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/ClientSignaturePayload;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getClientSignaturePublicKey ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/CreateSubOrgApiKey {
+	public static final field Companion Lio/zeroxkey/core/models/CreateSubOrgApiKey$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/types/V1ApiKeyCurve;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/types/V1ApiKeyCurve;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Lio/zeroxkey/types/V1ApiKeyCurve;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/types/V1ApiKeyCurve;)Lio/zeroxkey/core/models/CreateSubOrgApiKey;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/CreateSubOrgApiKey;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/types/V1ApiKeyCurve;ILjava/lang/Object;)Lio/zeroxkey/core/models/CreateSubOrgApiKey;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApiKeyName ()Ljava/lang/String;
+	public final fun getCurveType ()Lio/zeroxkey/types/V1ApiKeyCurve;
+	public final fun getExpirationSeconds ()Ljava/lang/String;
+	public final fun getPublicKey ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/zeroxkey/core/models/CreateSubOrgApiKey$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/zeroxkey/core/models/CreateSubOrgApiKey$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/core/models/CreateSubOrgApiKey;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/core/models/CreateSubOrgApiKey;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/CreateSubOrgApiKey$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/CreateSubOrgAuthenticator {
+	public static final field Companion Lio/zeroxkey/core/models/CreateSubOrgAuthenticator$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/types/V1Attestation;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/types/V1Attestation;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lio/zeroxkey/types/V1Attestation;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/types/V1Attestation;)Lio/zeroxkey/core/models/CreateSubOrgAuthenticator;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/CreateSubOrgAuthenticator;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/types/V1Attestation;ILjava/lang/Object;)Lio/zeroxkey/core/models/CreateSubOrgAuthenticator;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttestation ()Lio/zeroxkey/types/V1Attestation;
+	public final fun getAuthenticatorName ()Ljava/lang/String;
+	public final fun getChallenge ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/zeroxkey/core/models/CreateSubOrgAuthenticator$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/zeroxkey/core/models/CreateSubOrgAuthenticator$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/core/models/CreateSubOrgAuthenticator;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/core/models/CreateSubOrgAuthenticator;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/CreateSubOrgAuthenticator$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/CreateSubOrgParams {
+	public static final field Companion Lio/zeroxkey/core/models/CreateSubOrgParams$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lio/zeroxkey/core/models/CustomWallet;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lio/zeroxkey/core/models/CustomWallet;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/util/List;
+	public final fun component9 ()Lio/zeroxkey/core/models/CustomWallet;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lio/zeroxkey/core/models/CustomWallet;Ljava/util/List;)Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/CreateSubOrgParams;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lio/zeroxkey/core/models/CustomWallet;Ljava/util/List;ILjava/lang/Object;)Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApiKeys ()Ljava/util/List;
+	public final fun getAuthenticators ()Ljava/util/List;
+	public final fun getCustomWallet ()Lio/zeroxkey/core/models/CustomWallet;
+	public final fun getOauthProviders ()Ljava/util/List;
+	public final fun getSubOrgName ()Ljava/lang/String;
+	public final fun getUserEmail ()Ljava/lang/String;
+	public final fun getUserName ()Ljava/lang/String;
+	public final fun getUserPhoneNumber ()Ljava/lang/String;
+	public final fun getUserTag ()Ljava/lang/String;
+	public final fun getVerificationToken ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/zeroxkey/core/models/CreateSubOrgParams$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/zeroxkey/core/models/CreateSubOrgParams$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/core/models/CreateSubOrgParams;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/CreateSubOrgParams$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/CustomWallet {
+	public static final field Companion Lio/zeroxkey/core/models/CustomWallet$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;)Lio/zeroxkey/core/models/CustomWallet;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/CustomWallet;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lio/zeroxkey/core/models/CustomWallet;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getWalletAccounts ()Ljava/util/List;
+	public final fun getWalletName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/zeroxkey/core/models/CustomWallet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/zeroxkey/core/models/CustomWallet$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/core/models/CustomWallet;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/core/models/CustomWallet;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/CustomWallet$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/Defaults {
+	public fun <init> (Lio/zeroxkey/types/V1PayloadEncoding;Lio/zeroxkey/types/V1HashFunction;)V
+	public final fun component1 ()Lio/zeroxkey/types/V1PayloadEncoding;
+	public final fun component2 ()Lio/zeroxkey/types/V1HashFunction;
+	public final fun copy (Lio/zeroxkey/types/V1PayloadEncoding;Lio/zeroxkey/types/V1HashFunction;)Lio/zeroxkey/core/models/Defaults;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/Defaults;Lio/zeroxkey/types/V1PayloadEncoding;Lio/zeroxkey/types/V1HashFunction;ILjava/lang/Object;)Lio/zeroxkey/core/models/Defaults;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEncoding ()Lio/zeroxkey/types/V1PayloadEncoding;
+	public final fun getHashFunction ()Lio/zeroxkey/types/V1HashFunction;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/ExportWalletResult {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/zeroxkey/core/models/ExportWalletResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/ExportWalletResult;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/ExportWalletResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMnemonicPhrase ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/FilterType : java/lang/Enum {
+	public static final field EMAIL Lio/zeroxkey/core/models/FilterType;
+	public static final field PHONE_NUMBER Lio/zeroxkey/core/models/FilterType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/core/models/FilterType;
+	public static fun values ()[Lio/zeroxkey/core/models/FilterType;
+}
+
+public final class io/zeroxkey/core/models/InitOtpResult {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/InitOtpResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/InitOtpResult;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/InitOtpResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOtpEncryptionTargetBundle ()Ljava/lang/String;
+	public final fun getOtpId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class io/zeroxkey/core/models/KeyValueStore {
+	public abstract fun delete (Landroid/content/Context;Ljava/lang/Object;)V
+	public abstract fun load (Landroid/content/Context;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun save (Landroid/content/Context;Ljava/lang/Object;Ljava/lang/Object;)V
+}
+
+public final class io/zeroxkey/core/models/LoginOrSignUpWithOAuthResult {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/zeroxkey/core/models/LoginOrSignUpWithOAuthResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/LoginOrSignUpWithOAuthResult;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/LoginOrSignUpWithOAuthResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSessionJwt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/LoginOrSignUpWithOtpResult {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/zeroxkey/core/models/LoginOrSignUpWithOtpResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/LoginOrSignUpWithOtpResult;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/LoginOrSignUpWithOtpResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSessionJwt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/LoginWithOAuthResult {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/zeroxkey/core/models/LoginWithOAuthResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/LoginWithOAuthResult;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/LoginWithOAuthResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSessionJwt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/LoginWithOtpResult {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/zeroxkey/core/models/LoginWithOtpResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/LoginWithOtpResult;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/LoginWithOtpResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSessionJwt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/LoginWithPasskeyResult {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/zeroxkey/core/models/LoginWithPasskeyResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/LoginWithPasskeyResult;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/LoginWithPasskeyResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSessionJwt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/MethodCreateSubOrgParams {
+	public fun <init> ()V
+	public fun <init> (Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;)V
+	public synthetic fun <init> (Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public final fun component2 ()Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public final fun component3 ()Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public final fun component4 ()Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public final fun copy (Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;)Lio/zeroxkey/core/models/MethodCreateSubOrgParams;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/MethodCreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;Lio/zeroxkey/core/models/CreateSubOrgParams;ILjava/lang/Object;)Lio/zeroxkey/core/models/MethodCreateSubOrgParams;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEmailOtpAuth ()Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public final fun getOAuth ()Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public final fun getPasskeyAuth ()Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public final fun getSmsOtpAuth ()Lio/zeroxkey/core/models/CreateSubOrgParams;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/OAuth {
+	public static final field APPLE_AUTH_SCRIPT_URL Ljava/lang/String;
+	public static final field APPLE_AUTH_URL Ljava/lang/String;
+	public static final field DISCORD_AUTH_URL Ljava/lang/String;
+	public static final field INSTANCE Lio/zeroxkey/core/models/OAuth;
+	public static final field X_AUTH_URL Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/OAuthConfig {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lio/zeroxkey/core/models/OAuthProviderParams;
+	public final fun component4 ()Lio/zeroxkey/core/models/OAuthProviderParams;
+	public final fun component5 ()Lio/zeroxkey/core/models/OAuthProviderParams;
+	public final fun component6 ()Lio/zeroxkey/core/models/OAuthProviderParams;
+	public final fun component7 ()Lio/zeroxkey/core/models/OAuthProviderParams;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;)Lio/zeroxkey/core/models/OAuthConfig;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/OAuthConfig;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;Lio/zeroxkey/core/models/OAuthProviderParams;ILjava/lang/Object;)Lio/zeroxkey/core/models/OAuthConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApple ()Lio/zeroxkey/core/models/OAuthProviderParams;
+	public final fun getDiscord ()Lio/zeroxkey/core/models/OAuthProviderParams;
+	public final fun getFacebook ()Lio/zeroxkey/core/models/OAuthProviderParams;
+	public final fun getGoogle ()Lio/zeroxkey/core/models/OAuthProviderParams;
+	public final fun getOauthOriginUri ()Ljava/lang/String;
+	public final fun getOauthRedirectUri ()Ljava/lang/String;
+	public final fun getX ()Lio/zeroxkey/core/models/OAuthProviderParams;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/OAuthOverrideParams : io/zeroxkey/core/models/OverrideParams {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/OAuthOverrideParams;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/OAuthOverrideParams;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/OAuthOverrideParams;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOidcToken ()Ljava/lang/String;
+	public final fun getProviderName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/OAuthProviderParams {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;)Lio/zeroxkey/core/models/OAuthProviderParams;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/OAuthProviderParams;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/OAuthProviderParams;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPrimaryClientId ()Ljava/lang/String;
+	public final fun getRedirectUri ()Ljava/lang/String;
+	public final fun getSecondaryClientIds ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/OidcPayload {
+	public static final field Companion Lio/zeroxkey/core/models/OidcPayload$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/OidcPayload;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/OidcPayload;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/OidcPayload;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIss ()Ljava/lang/String;
+	public final fun getSub ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/zeroxkey/core/models/OidcPayload$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/zeroxkey/core/models/OidcPayload$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/core/models/OidcPayload;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/core/models/OidcPayload;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/OidcPayload$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/OtpOverrireParams : io/zeroxkey/core/models/OverrideParams {
+	public fun <init> (Lio/zeroxkey/core/models/OtpType;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Lio/zeroxkey/core/models/OtpType;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Lio/zeroxkey/core/models/OtpType;Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/OtpOverrireParams;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/OtpOverrireParams;Lio/zeroxkey/core/models/OtpType;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/OtpOverrireParams;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContact ()Ljava/lang/String;
+	public final fun getOtpType ()Lio/zeroxkey/core/models/OtpType;
+	public final fun getVerificationToken ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/OtpType : java/lang/Enum {
+	public static final field OTP_TYPE_EMAIL Lio/zeroxkey/core/models/OtpType;
+	public static final field OTP_TYPE_SMS Lio/zeroxkey/core/models/OtpType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/core/models/OtpType;
+	public static fun values ()[Lio/zeroxkey/core/models/OtpType;
+}
+
+public abstract interface class io/zeroxkey/core/models/OverrideParams {
+}
+
+public final class io/zeroxkey/core/models/PasskeyOverrideParams : io/zeroxkey/core/models/OverrideParams {
+	public fun <init> (Ljava/lang/String;Lio/zeroxkey/types/V1Attestation;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lio/zeroxkey/types/V1Attestation;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Lio/zeroxkey/types/V1Attestation;Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/PasskeyOverrideParams;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/PasskeyOverrideParams;Ljava/lang/String;Lio/zeroxkey/types/V1Attestation;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/PasskeyOverrideParams;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttestation ()Lio/zeroxkey/types/V1Attestation;
+	public final fun getEncodedChallenge ()Ljava/lang/String;
+	public final fun getPasskeyName ()Ljava/lang/String;
+	public final fun getTemporaryPublicKey ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/RuntimeAuthConfig : io/zeroxkey/core/models/AuthConfig {
+	public fun <init> ()V
+	public fun <init> (Lio/zeroxkey/core/models/OAuthConfig;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/MethodCreateSubOrgParams;)V
+	public synthetic fun <init> (Lio/zeroxkey/core/models/OAuthConfig;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/MethodCreateSubOrgParams;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getOtpAlphanumeric ()Ljava/lang/Boolean;
+	public final fun getOtpLength ()Ljava/lang/String;
+	public fun getSessionExpirationSeconds ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/Session {
+	public static final field Companion Lio/zeroxkey/core/models/Session$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;DLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()D
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;DLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/Session;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/Session;Ljava/lang/String;Ljava/lang/String;DLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/Session;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpirationSeconds ()Ljava/lang/String;
+	public final fun getExpiry ()D
+	public final fun getOrganizationId ()Ljava/lang/String;
+	public final fun getPublicKey ()Ljava/lang/String;
+	public final fun getSessionType ()Ljava/lang/String;
+	public final fun getToken ()Ljava/lang/String;
+	public final fun getUserId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/zeroxkey/core/models/Session$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/zeroxkey/core/models/Session$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/core/models/Session;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/core/models/Session;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/Session$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/SessionJwt {
+	public static final field Companion Lio/zeroxkey/core/models/SessionJwt$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;DLjava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()D
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;DLjava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/SessionJwt;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/SessionJwt;Ljava/lang/String;Ljava/lang/String;DLjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/SessionJwt;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpiry ()D
+	public final fun getOrganizationId ()Ljava/lang/String;
+	public final fun getPublicKey ()Ljava/lang/String;
+	public final fun getSessionType ()Ljava/lang/String;
+	public final fun getUserId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/zeroxkey/core/models/SessionJwt$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/zeroxkey/core/models/SessionJwt$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/core/models/SessionJwt;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/core/models/SessionJwt;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/SessionJwt$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/SessionStorage {
+	public static final field DEFAULT_EXPIRATION_SECONDS Ljava/lang/String;
+	public static final field DEFAULT_SESSION_KEY Ljava/lang/String;
+	public static final field INSTANCE Lio/zeroxkey/core/models/SessionStorage;
+}
+
+public final class io/zeroxkey/core/models/SignUpWithOAuthResult {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/zeroxkey/core/models/SignUpWithOAuthResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/SignUpWithOAuthResult;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/SignUpWithOAuthResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSessionJwt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/SignUpWithOtpResult {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/zeroxkey/core/models/SignUpWithOtpResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/SignUpWithOtpResult;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/SignUpWithOtpResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSessionJwt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/SignUpWithPasskeyResult {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/zeroxkey/core/models/SignUpWithPasskeyResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/SignUpWithPasskeyResult;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/SignUpWithPasskeyResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSessionJwt ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/Storage {
+	public static final field AUTO_REFRESH_STORE_KEY Ljava/lang/String;
+	public static final field INSTANCE Lio/zeroxkey/core/models/Storage;
+	public static final field PENDING_KEYS_STORE_KEY Ljava/lang/String;
+	public static final field SECURE_ACCOUNT Ljava/lang/String;
+	public static final field SELECTED_SESSION_KEY Ljava/lang/String;
+	public static final field SESSION_REGISTRY_KEY Ljava/lang/String;
+}
+
+public abstract interface class io/zeroxkey/core/models/ValueStore {
+	public abstract fun delete (Landroid/content/Context;)V
+	public abstract fun load (Landroid/content/Context;)Ljava/lang/Object;
+	public abstract fun save (Landroid/content/Context;Ljava/lang/Object;)V
+}
+
+public final class io/zeroxkey/core/models/VerificationToken {
+	public static final field Companion Lio/zeroxkey/core/models/VerificationToken$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Double;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/VerificationToken;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/VerificationToken;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/VerificationToken;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContact ()Ljava/lang/String;
+	public final fun getExp ()Ljava/lang/Double;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getOrganizationId ()Ljava/lang/String;
+	public final fun getPublicKey ()Ljava/lang/String;
+	public final fun getVerificationType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/zeroxkey/core/models/VerificationToken$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/zeroxkey/core/models/VerificationToken$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/core/models/VerificationToken;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/core/models/VerificationToken;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/VerificationToken$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/VerifyOtpResult {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/core/models/VerifyOtpResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/VerifyOtpResult;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/core/models/VerifyOtpResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPublicKey ()Ljava/lang/String;
+	public final fun getVerificationToken ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/Wallet {
+	public static final field Companion Lio/zeroxkey/core/models/Wallet$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lio/zeroxkey/core/models/Wallet;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/Wallet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lio/zeroxkey/core/models/Wallet;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccounts ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/zeroxkey/core/models/Wallet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/zeroxkey/core/models/Wallet$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/core/models/Wallet;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/core/models/Wallet;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/Wallet$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/core/models/ZeroXKey {
+	public static final field DEFAULT_API_URL Ljava/lang/String;
+	public static final field DEFAULT_AUTH_PROXY_URL Ljava/lang/String;
+	public static final field INSTANCE Lio/zeroxkey/core/models/ZeroXKey;
+	public static final field OAUTH_ORIGIN_URL Ljava/lang/String;
+	public static final field OAUTH_REDIRECT_URL Ljava/lang/String;
+}
+
+public class io/zeroxkey/core/models/ZeroXKeyConfig {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/AuthConfig;Ljava/lang/String;ZZLio/zeroxkey/http/utils/ActivityPollerConfig;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lio/zeroxkey/http/TransportSecurity;Lio/zeroxkey/crypto/TrustAnchors;Lio/zeroxkey/stamper/SessionKeyPolicy;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/AuthConfig;Ljava/lang/String;ZZLio/zeroxkey/http/utils/ActivityPollerConfig;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lio/zeroxkey/http/TransportSecurity;Lio/zeroxkey/crypto/TrustAnchors;Lio/zeroxkey/stamper/SessionKeyPolicy;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getActivityPoller ()Lio/zeroxkey/http/utils/ActivityPollerConfig;
+	public final fun getApiBaseUrl ()Ljava/lang/String;
+	public final fun getAppScheme ()Ljava/lang/String;
+	public fun getAuthConfig ()Lio/zeroxkey/core/models/AuthConfig;
+	public final fun getAuthProxyBaseUrl ()Ljava/lang/String;
+	public final fun getAuthProxyConfigId ()Ljava/lang/String;
+	public final fun getAutoFetchWalletKitConfig ()Z
+	public final fun getAutoRefreshManagedStates ()Z
+	public final fun getOnSessionCreated ()Lkotlin/jvm/functions/Function1;
+	public final fun getOnSessionExpired ()Lkotlin/jvm/functions/Function1;
+	public final fun getOnSessionRefreshed ()Lkotlin/jvm/functions/Function1;
+	public final fun getOnSessionSelected ()Lkotlin/jvm/functions/Function1;
+	public final fun getOrganizationId ()Ljava/lang/String;
+	public final fun getSessionKeyPolicy ()Lio/zeroxkey/stamper/SessionKeyPolicy;
+	public final fun getTransportSecurity ()Lio/zeroxkey/http/TransportSecurity;
+	public final fun getTrustAnchors ()Lio/zeroxkey/crypto/TrustAnchors;
+}
+
+public final class io/zeroxkey/core/models/ZeroXKeyRuntimeConfig : io/zeroxkey/core/models/ZeroXKeyConfig {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/RuntimeAuthConfig;Ljava/lang/String;ZZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lio/zeroxkey/http/utils/ActivityPollerConfig;Lio/zeroxkey/http/TransportSecurity;Lio/zeroxkey/crypto/TrustAnchors;Lio/zeroxkey/stamper/SessionKeyPolicy;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/core/models/RuntimeAuthConfig;Ljava/lang/String;ZZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lio/zeroxkey/http/utils/ActivityPollerConfig;Lio/zeroxkey/http/TransportSecurity;Lio/zeroxkey/crypto/TrustAnchors;Lio/zeroxkey/stamper/SessionKeyPolicy;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun getAuthConfig ()Lio/zeroxkey/core/models/AuthConfig;
+	public fun getAuthConfig ()Lio/zeroxkey/core/models/RuntimeAuthConfig;
+}
+
+public abstract class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError : java/lang/Exception {
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$ClientNotInitialized : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$ClientNotInitialized;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$ClientNotInitialized;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$ClientNotInitialized;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToAddPasskey : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToAddPasskey;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToAddPasskey;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToAddPasskey;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToBuildClientSignature : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToBuildClientSignature;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToBuildClientSignature;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToBuildClientSignature;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToClearAllSessions : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToClearAllSessions;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToClearAllSessions;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToClearAllSessions;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToClearSession : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToClearSession;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToClearSession;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToClearSession;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateKeyPair : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateKeyPair;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateKeyPair;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateKeyPair;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateSession : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateSession;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateSession;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateSession;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateWallet : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateWallet;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateWallet;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToCreateWallet;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToDeleteKeyPair : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToDeleteKeyPair;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToDeleteKeyPair;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToDeleteKeyPair;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getK ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToDeleteUnusedKeyPairs : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToDeleteUnusedKeyPairs;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToDeleteUnusedKeyPairs;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToDeleteUnusedKeyPairs;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToExportWallet : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToExportWallet;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToExportWallet;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToExportWallet;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToGetAuthProxyConfig : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToGetAuthProxyConfig;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToGetAuthProxyConfig;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToGetAuthProxyConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleAppleOAuth : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleAppleOAuth;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleAppleOAuth;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleAppleOAuth;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleDiscordOAuth : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleDiscordOAuth;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleDiscordOAuth;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleDiscordOAuth;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleGoogleOAuth : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleGoogleOAuth;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleGoogleOAuth;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleGoogleOAuth;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleXOAuth : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleXOAuth;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleXOAuth;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToHandleXOAuth;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToImportWallet : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToImportWallet;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToImportWallet;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToImportWallet;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToInitOtp : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToInitOtp;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToInitOtp;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToInitOtp;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginOrSignUpWithOAuth : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginOrSignUpWithOAuth;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginOrSignUpWithOAuth;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginOrSignUpWithOAuth;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginOrSignUpWithOtp : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginOrSignUpWithOtp;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginOrSignUpWithOtp;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginOrSignUpWithOtp;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithOAuth : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithOAuth;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithOAuth;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithOAuth;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithOtp : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithOtp;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithOtp;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithOtp;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithPasskey : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithPasskey;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithPasskey;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToLoginWithPasskey;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToPersistSession : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToPersistSession;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToPersistSession;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToPersistSession;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToPurgeSession : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToPurgeSession;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToPurgeSession;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToPurgeSession;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshSession : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshSession;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshSession;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshSession;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshUsers : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshUsers;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshUsers;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshUsers;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshWallets : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshWallets;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshWallets;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRefreshWallets;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRescheduleSessionExpiries : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRescheduleSessionExpiries;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRescheduleSessionExpiries;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToRescheduleSessionExpiries;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToScheduleExpiryTimer : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToScheduleExpiryTimer;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToScheduleExpiryTimer;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToScheduleExpiryTimer;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getS ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSetSelectedSession : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSetSelectedSession;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSetSelectedSession;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSetSelectedSession;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getE ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignMessage : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignMessage;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignMessage;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignMessage;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignRawPayload : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignRawPayload;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignRawPayload;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignRawPayload;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignTransaction : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignTransaction;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignTransaction;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignTransaction;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithOAuth : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithOAuth;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithOAuth;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithOAuth;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithOtp : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithOtp;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithOtp;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithOtp;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithPasskey : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithPasskey;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithPasskey;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToSignUpWithPasskey;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToUpdateSession : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToUpdateSession;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToUpdateSession;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToUpdateSession;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToVerifyOtp : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToVerifyOtp;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToVerifyOtp;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$FailedToVerifyOtp;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidMessage : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidMessage;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidMessage;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidMessage;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getS ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidParameter : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidParameter;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidParameter;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidParameter;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getS ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidRefreshTTL : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidRefreshTTL;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidRefreshTTL;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidRefreshTTL;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidResponse : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidResponse;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidResponse;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getS ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidSession : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidSession;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidSession;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$InvalidSession;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$KeyAlreadyExists : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$KeyAlreadyExists;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$KeyAlreadyExists;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$KeyAlreadyExists;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getSessionKey ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$KeyNotFound : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$KeyNotFound;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$KeyNotFound;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$KeyNotFound;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getSessionKey ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$MissingConfigParam : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$MissingConfigParam;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$MissingConfigParam;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$MissingConfigParam;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getS ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$MissingRpId : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$MissingRpId;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$MissingRpId;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$MissingRpId;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$NoSessionsFound : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$NoSessionsFound;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$NoSessionsFound;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$NoSessionsFound;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$OAuthStateMismatch : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$OAuthStateMismatch;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$OAuthStateMismatch;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$OAuthStateMismatch;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getS ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected;Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getReason ()Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason : java/lang/Enum {
+	public static final field EXPIRED Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;
+	public static final field MALFORMED Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;
+	public static final field MISSING_CLAIMS Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;
+	public static final field UNTRUSTED_SIGNATURE Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;
+	public final fun getDescription ()Ljava/lang/String;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;
+	public static fun values ()[Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SessionJwtRejected$Reason;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SignUpFailed : io/zeroxkey/core/models/errors/ZeroXKeyKotlinError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SignUpFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SignUpFailed;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyKotlinError$SignUpFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getS ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class io/zeroxkey/core/models/errors/ZeroXKeyStorageError : java/lang/Exception {
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyStorageError$DecodingFailed : io/zeroxkey/core/models/errors/ZeroXKeyStorageError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$DecodingFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$DecodingFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$DecodingFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyStorageError$InvalidJWT : io/zeroxkey/core/models/errors/ZeroXKeyStorageError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$InvalidJWT;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$InvalidJWT;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$InvalidJWT;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyDecodingFailed : io/zeroxkey/core/models/errors/ZeroXKeyStorageError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyDecodingFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyDecodingFailed;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyDecodingFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getKey ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyEncodingFailed : io/zeroxkey/core/models/errors/ZeroXKeyStorageError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyEncodingFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyEncodingFailed;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyEncodingFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getKey ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyNotFound : io/zeroxkey/core/models/errors/ZeroXKeyStorageError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyNotFound;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyNotFound;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$KeyNotFound;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/core/models/errors/ZeroXKeyStorageError$LocalStoreListKeysFailed : io/zeroxkey/core/models/errors/ZeroXKeyStorageError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$LocalStoreListKeysFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$LocalStoreListKeysFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/core/models/errors/ZeroXKeyStorageError$LocalStoreListKeysFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

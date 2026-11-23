@@ -1,0 +1,371 @@
+public final class io/zeroxkey/stamper/AttestedScheme : java/lang/Enum {
+	public static final field P256_OIDC Lio/zeroxkey/stamper/AttestedScheme;
+	public static final field P256_VERIFICATION_TOKEN Lio/zeroxkey/stamper/AttestedScheme;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getWireValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/stamper/AttestedScheme;
+	public static fun values ()[Lio/zeroxkey/stamper/AttestedScheme;
+}
+
+public abstract interface annotation class io/zeroxkey/stamper/InternalZeroXKeyApi : java/lang/annotation/Annotation {
+}
+
+public final class io/zeroxkey/stamper/KeySecurityLevel : java/lang/Enum {
+	public static final field LEGACY_SOFTWARE Lio/zeroxkey/stamper/KeySecurityLevel;
+	public static final field SECURE_HARDWARE Lio/zeroxkey/stamper/KeySecurityLevel;
+	public static final field SOFTWARE_KEYSTORE Lio/zeroxkey/stamper/KeySecurityLevel;
+	public static final field STRONGBOX Lio/zeroxkey/stamper/KeySecurityLevel;
+	public static final field TRUSTED_ENVIRONMENT Lio/zeroxkey/stamper/KeySecurityLevel;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun isHardwareBacked ()Z
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/stamper/KeySecurityLevel;
+	public static fun values ()[Lio/zeroxkey/stamper/KeySecurityLevel;
+}
+
+public final class io/zeroxkey/stamper/SessionKeyPolicy : java/lang/Enum {
+	public static final field REQUIRE_HARDWARE Lio/zeroxkey/stamper/SessionKeyPolicy;
+	public static final field REQUIRE_STRONGBOX Lio/zeroxkey/stamper/SessionKeyPolicy;
+	public static final field STRONGBOX_PREFERRED Lio/zeroxkey/stamper/SessionKeyPolicy;
+	public static final field TRUSTED_ENVIRONMENT_PREFERRED Lio/zeroxkey/stamper/SessionKeyPolicy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/stamper/SessionKeyPolicy;
+	public static fun values ()[Lio/zeroxkey/stamper/SessionKeyPolicy;
+}
+
+public final class io/zeroxkey/stamper/Stamper {
+	public static final field Companion Lio/zeroxkey/stamper/Stamper$Companion;
+	public synthetic fun <init> (Lio/zeroxkey/stamper/internal/keys/SessionKeySigner;Lio/zeroxkey/passkey/PasskeyStamper;Lkotlin/Pair;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun deleteOnDeviceKeyPair (Landroid/content/Context;Ljava/lang/String;)V
+	public static synthetic fun deleteOnDeviceKeyPair$default (Lio/zeroxkey/stamper/Stamper;Landroid/content/Context;Ljava/lang/String;ILjava/lang/Object;)V
+	public final fun sign (Landroid/content/Context;Ljava/lang/String;Lio/zeroxkey/stamper/utils/SignatureFormat;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun sign$default (Lio/zeroxkey/stamper/Stamper;Landroid/content/Context;Ljava/lang/String;Lio/zeroxkey/stamper/utils/SignatureFormat;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun stamp (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/zeroxkey/stamper/Stamper$Companion {
+	public final fun attested (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/stamper/AttestedScheme;)Lio/zeroxkey/stamper/Stamper;
+	public static synthetic fun attested$default (Lio/zeroxkey/stamper/Stamper$Companion;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/stamper/AttestedScheme;ILjava/lang/Object;)Lio/zeroxkey/stamper/Stamper;
+	public final fun attestedFromPublicKey (Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/stamper/AttestedScheme;)Lio/zeroxkey/stamper/Stamper;
+	public static synthetic fun attestedFromPublicKey$default (Lio/zeroxkey/stamper/Stamper$Companion;Ljava/lang/String;Ljava/lang/String;Lio/zeroxkey/stamper/AttestedScheme;ILjava/lang/Object;)Lio/zeroxkey/stamper/Stamper;
+	public final fun configure (Landroid/content/Context;Ljava/lang/String;Lio/zeroxkey/stamper/SessionKeyPolicy;)V
+	public static synthetic fun configure$default (Lio/zeroxkey/stamper/Stamper$Companion;Landroid/content/Context;Ljava/lang/String;Lio/zeroxkey/stamper/SessionKeyPolicy;ILjava/lang/Object;)V
+	public final fun createOnDeviceKeyPair (Landroid/content/Context;)Ljava/lang/String;
+	public static synthetic fun createOnDeviceKeyPair$default (Lio/zeroxkey/stamper/Stamper$Companion;Landroid/content/Context;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun deleteOnDeviceKeyPair (Landroid/content/Context;Ljava/lang/String;)V
+	public static synthetic fun deleteOnDeviceKeyPair$default (Lio/zeroxkey/stamper/Stamper$Companion;Landroid/content/Context;Ljava/lang/String;ILjava/lang/Object;)V
+	public final fun fromPasskey (Landroid/app/Activity;Ljava/lang/String;Ljava/util/List;)Lio/zeroxkey/stamper/Stamper;
+	public static synthetic fun fromPasskey$default (Lio/zeroxkey/stamper/Stamper$Companion;Landroid/app/Activity;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lio/zeroxkey/stamper/Stamper;
+	public final fun fromPublicKey (Ljava/lang/String;)Lio/zeroxkey/stamper/Stamper;
+	public final fun hasOnDeviceKeyPair (Landroid/content/Context;Ljava/lang/String;)Z
+	public static synthetic fun hasOnDeviceKeyPair$default (Lio/zeroxkey/stamper/Stamper$Companion;Landroid/content/Context;Ljava/lang/String;ILjava/lang/Object;)Z
+	public final fun invoke (Lio/zeroxkey/passkey/PasskeyStamper;)Lio/zeroxkey/stamper/Stamper;
+	public final fun invoke (Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/stamper/Stamper;
+	public final fun listOnDeviceKeyPairs (Landroid/content/Context;)Ljava/util/List;
+	public static synthetic fun listOnDeviceKeyPairs$default (Lio/zeroxkey/stamper/Stamper$Companion;Landroid/content/Context;ILjava/lang/Object;)Ljava/util/List;
+	public final fun onDeviceKeySecurityLevel (Landroid/content/Context;Ljava/lang/String;)Lio/zeroxkey/stamper/KeySecurityLevel;
+	public static synthetic fun onDeviceKeySecurityLevel$default (Lio/zeroxkey/stamper/Stamper$Companion;Landroid/content/Context;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/stamper/KeySecurityLevel;
+}
+
+public abstract interface annotation class io/zeroxkey/stamper/UnsafeSessionKeySigning : java/lang/annotation/Annotation {
+}
+
+public final class io/zeroxkey/stamper/internal/storage/KeyPairStore {
+	public static final field INSTANCE Lio/zeroxkey/stamper/internal/storage/KeyPairStore;
+	public final fun delete (Landroid/content/Context;Ljava/lang/String;)V
+	public final fun deleteAll (Landroid/content/Context;)V
+	public final fun getPrivateHex (Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+	public final fun listKeys (Landroid/content/Context;)Ljava/util/List;
+	public final fun save (Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class io/zeroxkey/stamper/internal/storage/SecureStore {
+	public static final field INSTANCE Lio/zeroxkey/stamper/internal/storage/SecureStore;
+	public final fun delete (Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun deleteAll (Landroid/content/Context;)V
+	public final fun get (Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)[B
+	public final fun listKeys (Landroid/content/Context;Ljava/lang/String;)Ljava/util/List;
+	public final fun set (Landroid/content/Context;[BLjava/lang/String;Ljava/lang/String;)V
+}
+
+public final class io/zeroxkey/stamper/utils/SignatureFormat : java/lang/Enum {
+	public static final field der Lio/zeroxkey/stamper/utils/SignatureFormat;
+	public static final field raw Lio/zeroxkey/stamper/utils/SignatureFormat;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/zeroxkey/stamper/utils/SignatureFormat;
+	public static fun values ()[Lio/zeroxkey/stamper/utils/SignatureFormat;
+}
+
+public abstract class io/zeroxkey/stamper/utils/ZeroXKeyStamperError : java/lang/Exception {
+	public static final field Companion Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$AssertionFailed : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$AssertionFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$AssertionFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$AssertionFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$Companion {
+	public final fun wrap (Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToEncodeStamp : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToEncodeStamp;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToEncodeStamp;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToEncodeStamp;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToSerializePayloadToJson : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToSerializePayloadToJson;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToSerializePayloadToJson;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToSerializePayloadToJson;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToSign : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToSign;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToSign;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToSign;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToStamp : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToStamp;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToStamp;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$FailedToStamp;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$HardwareKeyUnavailable : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (Lio/zeroxkey/stamper/SessionKeyPolicy;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Lio/zeroxkey/stamper/SessionKeyPolicy;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/zeroxkey/stamper/SessionKeyPolicy;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Lio/zeroxkey/stamper/SessionKeyPolicy;Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$HardwareKeyUnavailable;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$HardwareKeyUnavailable;Lio/zeroxkey/stamper/SessionKeyPolicy;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$HardwareKeyUnavailable;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getPolicy ()Lio/zeroxkey/stamper/SessionKeyPolicy;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidChallenge : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (IILjava/lang/Throwable;)V
+	public synthetic fun <init> (IILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/Throwable;
+	public final fun copy (IILjava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidChallenge;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidChallenge;IILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidChallenge;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getExpected ()I
+	public final fun getFound ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidCiphertext : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidCiphertext;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidCiphertext;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidCiphertext;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidDigestLength : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (ILjava/lang/Throwable;)V
+	public synthetic fun <init> (ILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (ILjava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidDigestLength;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidDigestLength;ILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidDigestLength;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getFound ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidHexCharacter : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidHexCharacter;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidHexCharacter;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidHexCharacter;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidJsonString : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidJsonString;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidJsonString;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidJsonString;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getFound ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPrivateKey : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPrivateKey;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPrivateKey;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPrivateKey;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPrivateKeyBytes : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (IILjava/lang/Throwable;)V
+	public synthetic fun <init> (IILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/Throwable;
+	public final fun copy (IILjava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPrivateKeyBytes;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPrivateKeyBytes;IILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPrivateKeyBytes;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getExpected ()I
+	public final fun getFound ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPublicKey : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPublicKey;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPublicKey;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$InvalidPublicKey;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getFound ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainAddFailed : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (ILjava/lang/Throwable;)V
+	public synthetic fun <init> (ILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (ILjava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainAddFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainAddFailed;ILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainAddFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getStatus ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainDeleteFailed : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (ILjava/lang/Throwable;)V
+	public synthetic fun <init> (ILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (ILjava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainDeleteFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainDeleteFailed;ILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainDeleteFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getStatus ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainFetchFailed : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (ILjava/lang/Throwable;)V
+	public synthetic fun <init> (ILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (ILjava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainFetchFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainFetchFailed;ILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainFetchFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getStatus ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainListKeysFailed : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (ILjava/lang/Throwable;)V
+	public synthetic fun <init> (ILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (ILjava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainListKeysFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainListKeysFailed;ILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$KeychainListKeysFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getStatus ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$MismatchedPublicKey : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$MismatchedPublicKey;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$MismatchedPublicKey;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$MismatchedPublicKey;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getExpected ()Ljava/lang/String;
+	public final fun getFound ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/stamper/utils/ZeroXKeyStamperError$OperationFailed : io/zeroxkey/stamper/utils/ZeroXKeyStamperError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$OperationFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$OperationFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/stamper/utils/ZeroXKeyStamperError$OperationFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

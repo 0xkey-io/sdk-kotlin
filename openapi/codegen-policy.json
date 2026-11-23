@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "rule": "Response-side and model properties whose schema is a $ref to an object (message) definition are generated as nullable with a null default, because the gateway serialises unset proto3 sub-messages as null. Scalars, arrays and enums keep swagger `required`. Request bodies (T*Body) are unchanged.",
+  "expectedNonOptionalMessageProperties": 176,
+  "allowlist": [
+    {
+      "def": "v1ActivityResponse",
+      "property": "activity",
+      "reason": "Activity envelope: every submit/get_activity/approve/reject response is v1ActivityResponse, whose only field is the activity itself; a response without it is a protocol error."
+    },
+    {
+      "kind": "activityResponse",
+      "property": "activity",
+      "reason": "T*Response for activity endpoints is constructed by the generated client from v1ActivityResponse.activity (allowlisted above); it is never decoded from JSON."
+    },
+    {
+      "kind": "activityResponse",
+      "property": "result",
+      "reason": "Constructed by the generated client from activity.result.<key>; the client throws ZeroXKeyHttpError.ActivityNotCompleted when the result is absent, so it is never null."
+    },
+    {
+      "kind": "oneOfVariant",
+      "reason": "Variant property of a oneOf sealed type; the variant is selected only when this property is present and non-null."
+    }
+  ]
+}

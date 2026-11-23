@@ -1,0 +1,18 @@
+0xkey Kotlin SDK
+Copyright 2026 0xkey
+
+This product is a fork of the Turnkey Kotlin SDK
+(https://github.com/tkhq/kotlin-sdk), based on release tag v2026.10.1
+(commit 4eb1fe30795596037b09446115b90880fbb05f1a), which is licensed under
+the Apache License, Version 2.0.
+
+Modified by 0xkey. Every upstream file that 0xkey modified or renamed after
+the fork point, including files that were only renamed, carries a
+"Modified by 0xkey" notice near its top; generated sources carry it in their
+generated header. Markdown and JSON files cannot carry such a notice reliably;
+each such file that differs from the fork point is hereby declared modified by
+0xkey. The original LICENSE files of each package are retained unchanged.
+
+Turnkey is a trademark of its respective owner. Use of the name in this
+repository is only to identify the origin of the code and does not imply
+endorsement.

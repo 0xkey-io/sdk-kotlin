@@ -1,0 +1,123 @@
+public final class io/zeroxkey/encoding/EncodingKt {
+	public static final fun base58CheckDecode (Ljava/lang/String;)[B
+	public static final fun base58CheckEncode ([B)Ljava/lang/String;
+	public static final fun base58Decode (Ljava/lang/String;)[B
+	public static final fun base58Encode ([B)Ljava/lang/String;
+	public static final fun base64UrlToBytesOrNull (Ljava/lang/String;)[B
+	public static final fun decodeBase64Url (Ljava/lang/String;)[B
+	public static final fun decodeHex (Ljava/lang/String;)[B
+	public static final fun decodeHexStrict (Ljava/lang/String;Ljava/lang/Integer;)[B
+	public static synthetic fun decodeHexStrict$default (Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)[B
+	public static final fun decodeUtf8Strict ([B)Ljava/lang/String;
+	public static final fun hexToBytesOrNull (Ljava/lang/String;)[B
+	public static final fun randomBytes (I)[B
+	public static final fun sha256 ([B)[B
+	public static final fun toBase64Url ([B)Ljava/lang/String;
+	public static final fun toHexString ([B)Ljava/lang/String;
+	public static final fun utf8ToBase64Url (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public abstract class io/zeroxkey/encoding/utils/ZeroXKeyEncodingError : java/lang/Exception {
+	public static final field Companion Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/encoding/utils/ZeroXKeyEncodingError$Companion {
+	public final fun wrap (Ljava/lang/Throwable;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError;
+}
+
+public final class io/zeroxkey/encoding/utils/ZeroXKeyEncodingError$EmptyHexString : io/zeroxkey/encoding/utils/ZeroXKeyEncodingError {
+	public fun <init> ()V
+}
+
+public final class io/zeroxkey/encoding/utils/ZeroXKeyEncodingError$HexTooLong : io/zeroxkey/encoding/utils/ZeroXKeyEncodingError {
+	public fun <init> (II)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun copy (II)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$HexTooLong;
+	public static synthetic fun copy$default (Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$HexTooLong;IIILjava/lang/Object;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$HexTooLong;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getByteLength ()I
+	public final fun getMaximum ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidBase58Check : io/zeroxkey/encoding/utils/ZeroXKeyEncodingError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidBase58Check;
+	public static synthetic fun copy$default (Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidBase58Check;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidBase58Check;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidBase64Url : io/zeroxkey/encoding/utils/ZeroXKeyEncodingError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidBase64Url;
+	public static synthetic fun copy$default (Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidBase64Url;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidBase64Url;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getInput ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidHexCharacter : io/zeroxkey/encoding/utils/ZeroXKeyEncodingError {
+	public fun <init> (CILjava/lang/Throwable;)V
+	public synthetic fun <init> (CILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()C
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/Throwable;
+	public final fun copy (CILjava/lang/Throwable;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidHexCharacter;
+	public static synthetic fun copy$default (Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidHexCharacter;CILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidHexCharacter;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getChar ()C
+	public final fun getIndex ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidUTF8 : io/zeroxkey/encoding/utils/ZeroXKeyEncodingError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidUTF8;
+	public static synthetic fun copy$default (Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidUTF8;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$InvalidUTF8;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/encoding/utils/ZeroXKeyEncodingError$OddLengthString : io/zeroxkey/encoding/utils/ZeroXKeyEncodingError {
+	public fun <init> (ILjava/lang/Throwable;)V
+	public synthetic fun <init> (ILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (ILjava/lang/Throwable;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$OddLengthString;
+	public static synthetic fun copy$default (Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$OddLengthString;ILjava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$OddLengthString;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getLength ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/encoding/utils/ZeroXKeyEncodingError$OperationFailed : io/zeroxkey/encoding/utils/ZeroXKeyEncodingError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$OperationFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$OperationFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/encoding/utils/ZeroXKeyEncodingError$OperationFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

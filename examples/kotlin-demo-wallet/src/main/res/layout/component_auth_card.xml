@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modified by 0xkey -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authCardRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="232dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/login_or_signup"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/acEmailInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginOrDivider">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/acEmailInput"
+            android:layout_width="match_parent"
+            android:hint="@string/email"
+            android:layout_height="wrap_content"
+            android:textColorLink="#140F0F"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/acSendOtpButton"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/send_otp_code"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:padding="4dp"
+        app:icon="@drawable/baseline_arrow_forward_12"
+        app:iconPadding="0dp"
+        app:iconSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/acEmailInputLayout"
+        app:layout_constraintEnd_toEndOf="@+id/acEmailInputLayout"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="@+id/acEmailInputLayout"
+        app:layout_constraintTop_toTopOf="@+id/acEmailInputLayout"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded" />
+
+    <io.zeroxkey.demo.ui.OrSeparatorView
+        android:id="@+id/oAuthOrDivider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/acEmailInputLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:labelText="or"
+        app:startMargin="20dp"
+        app:endMargin="20dp"
+        app:labelTopMargin="20dp"
+        app:dividerThickness="1dp"
+        app:dividerColor="@color/material_dynamic_neutral90" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/acLoginWithPasskeyButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/log_in_with_passkey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oAuthOrDivider"
+        app:backgroundTint="?attr/colorPrimary"
+        android:textColor="?attr/colorOnPrimary"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/acSignUpWithPasskeyButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/sign_up_with_passkey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acLoginWithPasskeyButton"
+        app:backgroundTint="?attr/colorOnPrimary"
+        android:textColor="?attr/colorPrimary"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/acGoogleOAuthButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/continue_with_google"
+        app:icon="@drawable/google_icon"
+        app:iconGravity="textStart"
+        app:iconPadding="12dp"
+        app:iconSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="?attr/colorOnSurface"
+        app:iconTint="?attr/colorOnSurface"
+        app:backgroundTint="?attr/colorSurface"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/acAppleOAuthButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="4dp"
+        android:gravity="center"
+        app:iconGravity="textStart"
+        android:text=""
+        app:icon="@drawable/apple_icon"
+        app:iconPadding="0dp"
+        app:iconSize="@null"
+        app:iconTint="?attr/colorOnSurface"
+        app:backgroundTint="?attr/colorSurface"
+        android:textColor="?attr/colorPrimary"
+        app:layout_constraintEnd_toStartOf="@id/acTwitterXOAuthButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acGoogleOAuthButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/acTwitterXOAuthButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="4dp"
+        android:gravity="center"
+        app:iconGravity="textStart"
+        android:text=""
+        app:icon="@drawable/x_icon"
+        app:iconPadding="0dp"
+        app:iconTint="?attr/colorOnSurface"
+        app:backgroundTint="?attr/colorSurface"
+        app:layout_constraintEnd_toStartOf="@id/acDiscordOAuthButton"
+        app:layout_constraintStart_toEndOf="@id/acAppleOAuthButton"
+        app:layout_constraintTop_toBottomOf="@+id/acGoogleOAuthButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/acDiscordOAuthButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        app:iconGravity="textStart"
+        android:text="@null"
+        app:icon="@drawable/discord_icon"
+        app:iconSize="@null"
+        app:iconPadding="0dp"
+        app:iconTint="?attr/colorOnSurface"
+        app:backgroundTint="?attr/colorSurface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/acTwitterXOAuthButton"
+        app:layout_constraintTop_toBottomOf="@+id/acGoogleOAuthButton" />
+
+    <io.zeroxkey.demo.ui.OrSeparatorView
+        android:id="@+id/loginOrDivider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/acAppleOAuthButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:labelText="or"
+        app:startMargin="20dp"
+        app:endMargin="20dp"
+        app:labelTopMargin="20dp"
+        app:dividerThickness="1dp"
+        app:dividerColor="@color/material_dynamic_neutral90" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,43 @@
+// Modified by 0xkey
+package io.zeroxkey.core.internal.storage.sessions
+
+import android.content.Context
+import io.zeroxkey.core.internal.storage.primitives.LocalStore
+import io.zeroxkey.core.models.KeyValueStore
+import io.zeroxkey.core.models.errors.ZeroXKeyStorageError
+import io.zeroxkey.core.models.Session
+
+/**
+ * Stores and retrieves decoded 0xkey session JWTs by session key.
+ * Persists session metadata (org ID, user ID, public key, expiry, etc.)
+ * so sessions can be restored/reused across app launches.
+ */
+object JwtSessionStore: KeyValueStore<String, Session> {
+
+    /**
+     * Save a decoded session under a caller-provided key (e.g., the session public key).
+     */
+    @Throws(ZeroXKeyStorageError::class)
+    override fun save(context: Context, key: String, value: Session) {
+        LocalStore.set(context, key, value)
+    }
+
+    /**
+     * Load a decoded session previously stored under [key], or null if missing.
+     */
+    @Throws(ZeroXKeyStorageError::class)
+    override fun load(context: Context, key: String): Session? {
+        return LocalStore.get(context, key)
+    }
+
+    fun listKeys(context: Context): List<String> {
+        return LocalStore.listKeys(context)
+    }
+
+    /**
+     * Remove the stored session (noop if not present).
+     */
+    override fun delete(context: Context, key: String) {
+        LocalStore.delete(context, key)
+    }
+}

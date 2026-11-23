@@ -1,0 +1,234 @@
+public final class io/zeroxkey/passkey/AndroidOriginKt {
+	public static final fun androidOriginFromSha256Fingerprint (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/PasskeyKt {
+	public static final fun createPasskey (Landroid/app/Activity;Lio/zeroxkey/passkey/PasskeyUser;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun createPasskey (Landroidx/fragment/app/Fragment;Lio/zeroxkey/passkey/PasskeyUser;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createPasskey$default (Landroid/app/Activity;Lio/zeroxkey/passkey/PasskeyUser;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun createPasskey$default (Landroidx/fragment/app/Fragment;Lio/zeroxkey/passkey/PasskeyUser;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/zeroxkey/passkey/PasskeyRegistrationResult {
+	public static final field Companion Lio/zeroxkey/passkey/PasskeyRegistrationResult$Companion;
+	public fun <init> (Ljava/lang/String;Lio/zeroxkey/types/V1Attestation;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lio/zeroxkey/types/V1Attestation;
+	public final fun copy (Ljava/lang/String;Lio/zeroxkey/types/V1Attestation;)Lio/zeroxkey/passkey/PasskeyRegistrationResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/PasskeyRegistrationResult;Ljava/lang/String;Lio/zeroxkey/types/V1Attestation;ILjava/lang/Object;)Lio/zeroxkey/passkey/PasskeyRegistrationResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttestation ()Lio/zeroxkey/types/V1Attestation;
+	public final fun getChallenge ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/zeroxkey/passkey/PasskeyRegistrationResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/zeroxkey/passkey/PasskeyRegistrationResult$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/passkey/PasskeyRegistrationResult;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/passkey/PasskeyRegistrationResult;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/passkey/PasskeyRegistrationResult$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/zeroxkey/passkey/PasskeyStamper {
+	public fun <init> (Landroid/app/Activity;Ljava/util/List;Ljava/lang/String;)V
+	public synthetic fun <init> (Landroid/app/Activity;Ljava/util/List;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun assert ([BLjava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun assert$default (Lio/zeroxkey/passkey/PasskeyStamper;[BLjava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/zeroxkey/passkey/PasskeyUser {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/passkey/PasskeyUser;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/PasskeyUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/passkey/PasskeyUser;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/internal/AssertionResult {
+	public fun <init> ([B[B[B[B[B)V
+	public final fun component1 ()[B
+	public final fun component2 ()[B
+	public final fun component3 ()[B
+	public final fun component4 ()[B
+	public final fun component5 ()[B
+	public final fun copy ([B[B[B[B[B)Lio/zeroxkey/passkey/internal/AssertionResult;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/internal/AssertionResult;[B[B[B[B[BILjava/lang/Object;)Lio/zeroxkey/passkey/internal/AssertionResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAuthenticatorData ()[B
+	public final fun getClientDataBytes ()[B
+	public final fun getCredentialId ()[B
+	public final fun getSignature ()[B
+	public final fun getUserHandle ()[B
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/JsonKt {
+	public static final fun buildCreatePublicKeyOptionsJson (Ljava/lang/String;[BLjava/lang/String;[BLjava/util/List;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun buildCreatePublicKeyOptionsJson$default (Ljava/lang/String;[BLjava/lang/String;[BLjava/util/List;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun buildGetPublicKeyOptionsJson (Ljava/lang/String;[BLjava/util/List;)Ljava/lang/String;
+	public static synthetic fun buildGetPublicKeyOptionsJson$default (Ljava/lang/String;[BLjava/util/List;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public abstract class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError : java/lang/Exception {
+	public static final field Companion Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$AssertionFailed : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$AssertionFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$AssertionFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$AssertionFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$Cancelled : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$Cancelled;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$Cancelled;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$Cancelled;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$Companion {
+	public final fun wrap (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$CredentialConversionFailed : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$CredentialConversionFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$CredentialConversionFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$CredentialConversionFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$DecodeFailed : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$DecodeFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$DecodeFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$DecodeFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$HandleAssertionResultFailed : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$HandleAssertionResultFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$HandleAssertionResultFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$HandleAssertionResultFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$HandleRegistrationResultFailed : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$HandleRegistrationResultFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$HandleRegistrationResultFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$HandleRegistrationResultFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$InvalidChallenge : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$InvalidChallenge;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$InvalidChallenge;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$InvalidChallenge;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getFound ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$InvalidUserId : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$InvalidUserId;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$InvalidUserId;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$InvalidUserId;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public final fun getFound ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$MissingAttestationObject : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$MissingAttestationObject;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$MissingAttestationObject;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$MissingAttestationObject;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$OperationFailed : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$OperationFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$OperationFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$OperationFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$RegistrationFailed : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$RegistrationFailed;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$RegistrationFailed;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$RegistrationFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$UnsupportedOperation : io/zeroxkey/passkey/utils/ZeroXKeyPasskeyError {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$UnsupportedOperation;
+	public static synthetic fun copy$default (Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$UnsupportedOperation;Ljava/lang/Throwable;ILjava/lang/Object;)Lio/zeroxkey/passkey/utils/ZeroXKeyPasskeyError$UnsupportedOperation;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCause ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
