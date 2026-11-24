@@ -2,6 +2,14 @@
 
 All modules share one version. Per-module `CHANGELOG.md` files under `packages/` point here; release history from before the fork point is not carried over.
 
+## 0.1.1 (2026-11-24)
+
+No API or behavior changes from 0.1.0.
+
+- Also distributed through JitPack as `com.github.0xkey-io.sdk-kotlin:<module>:v0.1.1`, without credentials (`jitpack.yml`). GitHub Packages keeps `io.0xkey:<module>:0.1.1`. See README "Installation".
+- `X-Client-Version` is `0xkey-kotlin/0.1.1`.
+- Documentation: the repository is public; removed the access request and a link to a document that is not in the repository.
+
 ## 0.1.0 (2026-11-23)
 
 First 0xkey release, forked from the upstream Kotlin SDK named in [NOTICE](NOTICE) at tag `v2026.10.1` (`sdk-kotlin` 2.1.0, `http` 2.2.0, `types` 2.1.0, `crypto` 1.0.1, `encoding` 1.0.0, `passkey` 1.0.3, `stamper` 1.0.3). Differences from upstream:

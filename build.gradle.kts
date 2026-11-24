@@ -78,7 +78,7 @@ val publishable = listOf(
 )
 
 group = "io.0xkey"
-version = "0.1.0"
+version = "0.1.1"
 
 /** GitHub Packages registry of this repository: the only remote publishing target. */
 val githubPackagesUrl = "https://maven.pkg.github.com/0xkey-io/sdk-kotlin"
