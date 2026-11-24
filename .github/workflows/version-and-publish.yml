@@ -1,8 +1,8 @@
 # Modified by 0xkey
 name: Publish to GitHub Packages (Kotlin)
 
-# Publishes every publishable module (see `publishable` in build.gradle.kts) to the private registry
-# https://maven.pkg.github.com/0xkey-io/sdk-kotlin. Runs only when started by hand or when a `v*`
+# Publishes every publishable module (see `publishable` in build.gradle.kts) to the GitHub Packages
+# registry https://maven.pkg.github.com/0xkey-io/sdk-kotlin. Runs only when started by hand or when a `v*`
 # tag is pushed; merging a pull request or pushing to a branch never publishes.
 #
 #   - tag `vX.Y.Z`: every module must be at version X.Y.Z, and the tagged commit must be on main;

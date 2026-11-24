@@ -9,7 +9,7 @@ First 0xkey release, forked from the upstream Kotlin SDK named in [NOTICE](NOTIC
 ### Breaking: names and coordinates
 
 - Maven group `io.0xkey`; packages `io.zeroxkey.*`; type prefix `ZeroXKey*` (e.g. `ZeroXKeyContext`, `ZeroXKeyClient`, `ZeroXKeyConfig`, `ZeroXKeyHttpError`). All modules are versioned `0.1.0`.
-- Distributed through the private GitHub Packages registry `https://maven.pkg.github.com/0xkey-io/sdk-kotlin` (needs a token with `read:packages`, see README "Installation") instead of Maven Central.
+- Distributed through GitHub Packages `https://maven.pkg.github.com/0xkey-io/sdk-kotlin` instead of Maven Central. The packages are public; Gradle needs a GitHub token with `read:packages` from any account (see README "Installation").
 - Storage identifiers (shared preferences, key store aliases) are renamed, so sessions and keys stored by an upstream build are not read.
 - Method signatures stay the same as upstream's, apart from the differences listed here. There is no compatibility module that keeps the old package or type names.
 
