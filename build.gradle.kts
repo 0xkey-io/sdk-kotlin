@@ -24,7 +24,7 @@ plugins {
 /**
  * Line-coverage floors of the JVM unit tests, checked by `koverVerifyUnit` in CI. Raise a floor when
  * coverage rises; never lower one to make a change pass. Generated code and adapters that only run on
- * a device (covered by instrumented tests and docs/device-verification.md) are excluded.
+ * a device (covered by instrumented tests) are excluded.
  */
 val coverageFloors = mapOf(
     ":packages:crypto" to 85,
@@ -80,7 +80,7 @@ val publishable = listOf(
 group = "io.0xkey"
 version = "0.1.0"
 
-/** Private GitHub Packages registry of this repository: the only remote publishing target. */
+/** GitHub Packages registry of this repository: the only remote publishing target. */
 val githubPackagesUrl = "https://maven.pkg.github.com/0xkey-io/sdk-kotlin"
 
 configure(publishable.map { project(it) }) {
@@ -171,7 +171,7 @@ tasks.register("publishAllToMavenLocal") {
 // All publishable modules share one version, so a release publishes all of them.
 tasks.register("publishAllToGitHubPackages") {
     group = "publishing"
-    description = "Publish all modules to the private GitHub Packages registry (needs GITHUB_ACTOR / GITHUB_TOKEN)"
+    description = "Publish all modules to the GitHub Packages registry (needs GITHUB_ACTOR / GITHUB_TOKEN)"
 
     dependsOn("verifyPublishVersion")
     dependsOn(

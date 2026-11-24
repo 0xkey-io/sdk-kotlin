@@ -23,14 +23,14 @@ Most apps only need `io.0xkey:sdk-kotlin`.
 
 ## Installation
 
-The packages are published to the private GitHub Packages registry
-`https://maven.pkg.github.com/0xkey-io/sdk-kotlin`. GitHub Packages does not allow anonymous Maven
-downloads, so you need:
+The packages are published to GitHub Packages at
+`https://maven.pkg.github.com/0xkey-io/sdk-kotlin`. The repository and its packages are public, but
+GitHub Packages does not allow anonymous Maven downloads, so Gradle needs a GitHub token from any
+GitHub account. Distribution through JitPack, which needs no token, is being set up.
 
-1. **Read access**: 0xkey grants your GitHub account (or a machine user for CI) read access to the
-   `0xkey-io/sdk-kotlin` repository. Ask your 0xkey contact.
-2. **A token**: on that account, create a personal access token (classic) with the `read:packages`
-   scope. Keep it out of the repository, for example in `~/.gradle/gradle.properties`:
+1. **A token**: create a personal access token (classic) with the `read:packages` scope on any
+   GitHub account (or a machine user for CI). Keep it out of the repository, for example in
+   `~/.gradle/gradle.properties`:
 
    ```properties
    gpr.user=<your-github-username>
@@ -39,7 +39,7 @@ downloads, so you need:
 
    On CI, pass the same values as the environment variables `GPR_USER` / `GPR_TOKEN` from your CI secrets.
 
-3. **The repository** in `settings.gradle.kts`:
+2. **The repository** in `settings.gradle.kts`:
 
    ```kotlin
    dependencyResolutionManagement {
@@ -60,7 +60,7 @@ downloads, so you need:
 
    `includeGroup` makes Gradle ask this registry only for `io.0xkey` artifacts.
 
-4. **The dependency** in `app/build.gradle.kts`:
+3. **The dependency** in `app/build.gradle.kts`:
 
    ```kotlin
    dependencies {
@@ -331,8 +331,7 @@ or `dangerously`, so it is easy to find in review.
   `REQUIRE_HARDWARE` or `REQUIRE_STRONGBOX` to refuse devices without it
   (`ZeroXKeyStamperError.HardwareKeyUnavailable`), or `TRUSTED_ENVIRONMENT_PREFERRED` if StrongBox
   signing latency matters more. Keys do not move to another device: if your app enables Android backup,
-  a restored session cannot sign and the user logs in again. Device verification steps:
-  [docs/device-verification.md](docs/device-verification.md).
+  a restored session cannot sign and the user logs in again.
 - **Session storage.** The session record, including its JWT, is kept as JSON in the app's private
   shared preferences. The JWT is a bearer of identity claims, not a credential: requests are
   authenticated by the session key's signature, never by the JWT.
