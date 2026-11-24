@@ -1,0 +1,7 @@
+# JitPack build: publishes only the seven SDK modules to Maven Local. The default JitPack command
+# assembles every project (including the example app and tools) and runs out of the default Gradle
+# daemon memory while generating the javadoc of the types module.
+jdk:
+  - openjdk17
+install:
+  - ./gradlew publishAllToMavenLocal -x test --no-daemon --console=plain "-Dorg.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=1g"
