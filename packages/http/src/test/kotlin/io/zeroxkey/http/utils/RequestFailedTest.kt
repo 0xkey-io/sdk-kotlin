@@ -102,6 +102,23 @@ class RequestFailedTest {
     }
 
     @Test
+    fun `signed digits are string codes, not gRPC codes`() {
+        for (text in listOf("+7", "-7", "7.5", " 7")) {
+            val body = ErrorBody.parse(403, """{"code":"$text","message":"denied"}""")
+            assertEquals(text, body.errorCode, text)
+            assertEquals(7, body.code, text) // derived from HTTP 403
+        }
+        // A JSON number is still the code, negative or not.
+        assertEquals(-7, ErrorBody.parse(403, """{"code":-7,"message":"denied"}""").code)
+    }
+
+    @Test
+    fun `ErrorBody keeps its four-argument constructor`() {
+        val body = ErrorBody(ErrorBody.Kind.GRPC_STATUS, 3, "bad", emptyList())
+        assertNull(body.errorCode)
+    }
+
+    @Test
     fun `a known string code gets the named error`() {
         assertIs<ZeroXKeyHttpError.RequestFailed.WebAuthnRpIdNotAllowed>(
             ZeroXKeyHttpError.RequestFailed("/p", 401, """{"error":"rp","code":"WEBAUTHN_RP_ID_NOT_ALLOWED"}"""))

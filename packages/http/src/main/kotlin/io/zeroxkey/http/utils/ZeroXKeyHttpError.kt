@@ -144,7 +144,7 @@ sealed class ZeroXKeyHttpError (message: String, cause: Throwable? = null): Exce
 }
 
 /** Parsed non-2xx response body. */
-data class ErrorBody(
+data class ErrorBody @JvmOverloads constructor(
     val kind: Kind,
     val code: Int,
     val message: String,
@@ -168,7 +168,12 @@ data class ErrorBody(
             val obj = runCatching { Json.parseToJsonElement(text) as? JsonObject }.getOrNull()
             if (obj != null && ("code" in obj || "message" in obj)) {
                 val codePrimitive = obj["code"] as? JsonPrimitive
-                val numericCode = codePrimitive?.intOrNull
+                // A JSON number is the code. A string is a number only when it is digits only: "+7" and "-7"
+                // are string codes (the same rule as sdk-js and sdk-swift).
+                val numericCode = codePrimitive?.let { p ->
+                    if (p.isString) p.content.takeIf { text -> text.isNotEmpty() && text.all { it in '0'..'9' } }?.toIntOrNull()
+                    else p.intOrNull
+                }
                 val stringCode = codePrimitive?.takeIf { numericCode == null && it.isString }?.content?.takeIf { it.isNotEmpty() }
                 // Auth Proxy bodies carry the text in `error`; `message` wins when it is not empty.
                 val message = obj.text("message") ?: obj.text("error") ?: ""
