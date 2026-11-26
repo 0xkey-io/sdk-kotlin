@@ -29,19 +29,24 @@ sealed class ZeroXKeyHttpError (message: String, cause: Throwable? = null): Exce
     /**
      * The 0xkey API or Auth Proxy answered [path] with the non-2xx [httpStatus].
      *
-     * Two body shapes are parsed: gRPC status JSON `{"code":16,"message":"…","details":[…]}` and
-     * plain text such as `Unauthorized: RP ID hash mismatch`. For plain-text and empty bodies,
-     * [code] is derived from [httpStatus]. Known `google.rpc.ErrorInfo` reasons get their own
-     * subclasses; everything else is [Generic].
+     * Three body shapes are parsed: gRPC status JSON `{"code":16,"message":"…","details":[…]}`,
+     * Auth Proxy JSON `{"error":"…","code":"OIDC_…"}` (the text is read from `error` when `message`
+     * is missing or empty, and the string code is kept as [errorCode]), and plain text such as
+     * `Unauthorized: RP ID hash mismatch`. For plain-text and empty bodies, and for a string
+     * [errorCode], [code] is derived from [httpStatus]. Known `google.rpc.ErrorInfo` reasons (or a
+     * known string [errorCode]) get their own subclasses; everything else is [Generic].
      */
     sealed class RequestFailed(
         val path: String,
         val httpStatus: Int,
         val rawBody: String?,
         val body: ErrorBody,
-    ) : ZeroXKeyHttpError("0xkey error ${body.code} (HTTP $httpStatus) from $path: ${body.message}") {
+    ) : ZeroXKeyHttpError("0xkey error ${body.errorCode ?: body.code} (HTTP $httpStatus) from $path: ${body.message}") {
         val kind: ErrorBody.Kind get() = body.kind
         val code: Int get() = body.code
+
+        /** String `code` of the body, for example `OIDC_TOKEN_EXPIRED`; null when the code is numeric or absent. */
+        val errorCode: String? get() = body.errorCode
         val errorMessage: String get() = body.message
         val details: List<JsonElement> get() = body.details
 
@@ -65,7 +70,7 @@ sealed class ZeroXKeyHttpError (message: String, cause: Throwable? = null): Exce
         companion object {
             operator fun invoke(path: String, httpStatus: Int, rawBody: String?): RequestFailed {
                 val body = ErrorBody.parse(httpStatus, rawBody)
-                val reason = body.errorInfoReasons.firstOrNull()
+                val reason = body.errorInfoReasons.firstOrNull() ?: body.errorCode
                 return when {
                     reason == "WEBAUTHN_RP_ID_NOT_ALLOWED" -> WebAuthnRpIdNotAllowed(path, httpStatus, rawBody, body)
                     reason == "WEBAUTHN_ORIGIN_NOT_ALLOWED" -> WebAuthnOriginNotAllowed(path, httpStatus, rawBody, body)
@@ -139,11 +144,13 @@ sealed class ZeroXKeyHttpError (message: String, cause: Throwable? = null): Exce
 }
 
 /** Parsed non-2xx response body. */
-data class ErrorBody(
+data class ErrorBody @JvmOverloads constructor(
     val kind: Kind,
     val code: Int,
     val message: String,
     val details: List<JsonElement>,
+    /** String `code` of the body (for example `OIDC_TOKEN_EXPIRED`); [code] is then derived from the HTTP status. */
+    val errorCode: String? = null,
 ) {
     enum class Kind { GRPC_STATUS, PLAIN_TEXT, EMPTY }
 
@@ -160,11 +167,22 @@ data class ErrorBody(
             val text = rawBody?.trim().orEmpty()
             val obj = runCatching { Json.parseToJsonElement(text) as? JsonObject }.getOrNull()
             if (obj != null && ("code" in obj || "message" in obj)) {
+                val codePrimitive = obj["code"] as? JsonPrimitive
+                // A JSON number is the code. A string is a number only when it is digits only: "+7" and "-7"
+                // are string codes (the same rule as sdk-js and sdk-swift).
+                val numericCode = codePrimitive?.let { p ->
+                    if (p.isString) p.content.takeIf { text -> text.isNotEmpty() && text.all { it in '0'..'9' } }?.toIntOrNull()
+                    else p.intOrNull
+                }
+                val stringCode = codePrimitive?.takeIf { numericCode == null && it.isString }?.content?.takeIf { it.isNotEmpty() }
+                // Auth Proxy bodies carry the text in `error`; `message` wins when it is not empty.
+                val message = obj.text("message") ?: obj.text("error") ?: ""
                 return ErrorBody(
                     kind = Kind.GRPC_STATUS,
-                    code = (obj["code"] as? JsonPrimitive)?.intOrNull ?: grpcCode(httpStatus),
-                    message = (obj["message"] as? JsonPrimitive)?.content.orEmpty(),
+                    code = numericCode ?: grpcCode(httpStatus),
+                    message = message,
                     details = (obj["details"] as? JsonArray)?.toList().orEmpty(),
+                    errorCode = stringCode,
                 )
             }
             return ErrorBody(
@@ -174,6 +192,10 @@ data class ErrorBody(
                 details = emptyList(),
             )
         }
+
+        /** The non-empty string value of [key], or null when it is absent, empty, null or not a string. */
+        private fun JsonObject.text(key: String): String? =
+            (this[key] as? JsonPrimitive)?.takeIf { it.isString }?.content?.takeIf { it.isNotEmpty() }
 
         /** HTTP status to gRPC code (grpc-gateway mapping, reversed). */
         fun grpcCode(httpStatus: Int): Int = when (httpStatus) {
