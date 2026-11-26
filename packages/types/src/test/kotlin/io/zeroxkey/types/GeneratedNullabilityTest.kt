@@ -16,7 +16,7 @@ class GeneratedNullabilityTest {
         }
     }
 
-    // 628 generated types
+    // 637 generated types
 
     @Test
     fun decodesNullAndMissing_1() {
@@ -53,6 +53,18 @@ class GeneratedNullabilityTest {
         check(V1ApproveActivityIntent.serializer(), "{\"fingerprint\":\"\"}", "{\"fingerprint\":\"\"}")
         check(V1ApproveActivityRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1Attestation.serializer(), "{\"attestationObject\":\"\",\"clientDataJson\":\"\",\"credentialId\":\"\",\"transports\":[]}", "{\"attestationObject\":\"\",\"clientDataJson\":\"\",\"credentialId\":\"\",\"transports\":[]}")
+        check(V1AuthProxySecurityAudienceGrant.serializer(), "{\"clientIds\":null,\"usage\":null}", "{}")
+        check(V1AuthProxySecurityPolicy.serializer(), "{\"allowedAuthMethods\":null,\"piiProofRequired\":null,\"providers\":null,\"registrations\":null}", "{}")
+        check(V1AuthProxySecurityProvider.serializer(), "{\"audienceGrants\":null,\"enabled\":null,\"key\":null}", "{}")
+        check(V1AuthProxySecurityProviderKey.serializer(), "{\"issuer\":null,\"kind\":null}", "{}")
+        check(V1AuthProxySecurityRegistration.serializer(), "{\"callbackUri\":null,\"clientId\":null,\"enabled\":null,\"platform\":null,\"provider\":null,\"registrationId\":null,\"returnUri\":null}", "{}")
+        check(V1AuthProxySecuritySelector.serializer(), "{\"configId\":null,\"generation\":null,\"revision\":null}", "{}")
+        check(V1AuthProxySecurityTransition.serializer(), "{\"allowedAuthMethods\":null,\"expected\":null,\"kind\":null,\"piiProofRequired\":null,\"policy\":null}", "{}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_2() {
+        check(V1AuthProxySecurityTransitionV2.serializer(), "{\"captchaBinding\":null,\"captchaEnabled\":null,\"expected\":null,\"kind\":null,\"readyWitness\":null}", "{}")
         check(V1AuthenticationMethod.serializer(), "{\"id\":null,\"type\":\"AUTHENTICATION_TYPE_EMAIL_OTP\"}", "{\"type\":\"AUTHENTICATION_TYPE_EMAIL_OTP\"}")
         check(V1AuthenticationMethodParams.serializer(), "{\"id\":null,\"type\":\"AUTHENTICATION_TYPE_EMAIL_OTP\"}", "{\"type\":\"AUTHENTICATION_TYPE_EMAIL_OTP\"}")
         check(V1Authenticator.serializer(), "{\"aaguid\":\"\",\"attestationType\":\"\",\"authenticatorId\":\"\",\"authenticatorName\":\"\",\"createdAt\":null,\"credential\":null,\"credentialId\":\"\",\"model\":\"\",\"transports\":[],\"updatedAt\":null}", "{\"aaguid\":\"\",\"attestationType\":\"\",\"authenticatorId\":\"\",\"authenticatorName\":\"\",\"credentialId\":\"\",\"model\":\"\",\"transports\":[]}")
@@ -60,11 +72,9 @@ class GeneratedNullabilityTest {
         check(V1AuthenticatorParams.serializer(), "{\"attestation\":null,\"authenticatorName\":\"\",\"challenge\":\"\",\"userId\":\"\"}", "{\"authenticatorName\":\"\",\"challenge\":\"\",\"userId\":\"\"}")
         check(V1AuthenticatorParamsV2.serializer(), "{\"attestation\":null,\"authenticatorName\":\"\",\"challenge\":\"\"}", "{\"authenticatorName\":\"\",\"challenge\":\"\"}")
         check(V1BootProof.serializer(), "{\"awsAttestationDocB64\":\"\",\"createdAt\":null,\"deploymentLabel\":\"\",\"enclaveApp\":\"\",\"ephemeralPublicKeyHex\":\"\",\"owner\":\"\",\"qosManifestB64\":\"\",\"qosManifestEnvelopeB64\":\"\"}", "{\"awsAttestationDocB64\":\"\",\"deploymentLabel\":\"\",\"enclaveApp\":\"\",\"ephemeralPublicKeyHex\":\"\",\"owner\":\"\",\"qosManifestB64\":\"\",\"qosManifestEnvelopeB64\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_2() {
         check(V1BootProofResponse.serializer(), "{\"bootProof\":null}", "{}")
+        check(V1CaptchaReadyWitnessV1.serializer(), "{\"payload\":null,\"signature\":null}", "{}")
+        check(V1CaptchaResourceBindingV1.serializer(), "{\"allowedHostnames\":null,\"cloudflareAccountId\":null,\"environment\":null,\"resourceVersion\":null,\"secretArn\":null,\"siteKey\":null}", "{}")
         check(V1ClientSignature.serializer(), "{\"message\":\"\",\"publicKey\":\"\",\"scheme\":\"CLIENT_SIGNATURE_SCHEME_UNSPECIFIED\",\"signature\":\"\"}", "{\"message\":\"\",\"publicKey\":\"\",\"scheme\":\"CLIENT_SIGNATURE_SCHEME_UNSPECIFIED\",\"signature\":\"\"}")
         check(V1Config.serializer(), "{\"features\":null,\"quorum\":null}", "{}")
         check(V1CreateApiKeysIntent.serializer(), "{\"apiKeys\":[],\"userId\":\"\"}", "{\"apiKeys\":[],\"userId\":\"\"}")
@@ -94,20 +104,20 @@ class GeneratedNullabilityTest {
         check(V1CreateOauthProvidersRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1CreateOauthProvidersResult.serializer(), "{\"providerIds\":[]}", "{\"providerIds\":[]}")
         check(V1CreateOauthProvidersResultV2.serializer(), "{\"providerIds\":[]}", "{\"providerIds\":[]}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_3() {
         check(V1CreateOidcProviderIntent.serializer(), "{\"audiences\":[],\"issuer\":\"\",\"providerName\":\"\"}", "{\"audiences\":[],\"issuer\":\"\",\"providerName\":\"\"}")
         check(V1CreateOidcProviderRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1CreateOidcProviderResult.serializer(), "{\"providerId\":\"\"}", "{\"providerId\":\"\"}")
         check(V1CreateOrganizationIntent.serializer(), "{\"organizationName\":\"\",\"rootAuthenticator\":null,\"rootEmail\":\"\",\"rootUserId\":null}", "{\"organizationName\":\"\",\"rootEmail\":\"\"}")
-        check(V1CreateOrganizationIntentV2.serializer(), "{\"importedRootAuthenticator\":null,\"organizationName\":\"\",\"rootAuthenticator\":null,\"rootEmail\":\"\",\"rootUserId\":null}", "{\"organizationName\":\"\",\"rootEmail\":\"\"}")
+        check(V1CreateOrganizationIntentV2.serializer(), "{\"organizationName\":\"\",\"rootAuthenticator\":null,\"rootEmail\":\"\",\"rootUserId\":null}", "{\"organizationName\":\"\",\"rootEmail\":\"\"}")
         check(V1CreateOrganizationResult.serializer(), "{\"organizationId\":\"\"}", "{\"organizationId\":\"\"}")
         check(V1CreatePoliciesIntent.serializer(), "{\"policies\":[]}", "{\"policies\":[]}")
         check(V1CreatePoliciesRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1CreatePoliciesResult.serializer(), "{\"policyIds\":[]}", "{\"policyIds\":[]}")
         check(V1CreatePolicyIntent.serializer(), "{\"effect\":\"EFFECT_UNSPECIFIED\",\"notes\":null,\"policyName\":\"\",\"selectors\":[]}", "{\"effect\":\"EFFECT_UNSPECIFIED\",\"policyName\":\"\",\"selectors\":[]}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_3() {
         check(V1CreatePolicyIntentV2.serializer(), "{\"effect\":\"EFFECT_UNSPECIFIED\",\"notes\":null,\"policyName\":\"\",\"selectors\":[]}", "{\"effect\":\"EFFECT_UNSPECIFIED\",\"policyName\":\"\",\"selectors\":[]}")
         check(V1CreatePolicyIntentV3.serializer(), "{\"condition\":null,\"consensus\":null,\"effect\":\"EFFECT_UNSPECIFIED\",\"notes\":\"\",\"policyName\":\"\"}", "{\"effect\":\"EFFECT_UNSPECIFIED\",\"notes\":\"\",\"policyName\":\"\"}")
         check(V1CreatePolicyRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
@@ -138,6 +148,10 @@ class GeneratedNullabilityTest {
         check(V1CreateSubOrganizationIntentV3.serializer(), "{\"privateKeys\":[],\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\"}", "{\"privateKeys\":[],\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\"}")
         check(V1CreateSubOrganizationIntentV4.serializer(), "{\"disableEmailAuth\":null,\"disableEmailRecovery\":null,\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\",\"wallet\":null}", "{\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\"}")
         check(V1CreateSubOrganizationIntentV5.serializer(), "{\"disableEmailAuth\":null,\"disableEmailRecovery\":null,\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\",\"wallet\":null}", "{\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\"}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_4() {
         check(V1CreateSubOrganizationIntentV6.serializer(), "{\"disableEmailAuth\":null,\"disableEmailRecovery\":null,\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\",\"wallet\":null}", "{\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\"}")
         check(V1CreateSubOrganizationIntentV7.serializer(), "{\"clientSignature\":null,\"disableEmailAuth\":null,\"disableEmailRecovery\":null,\"disableOtpEmailAuth\":null,\"disableSmsAuth\":null,\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\",\"verificationToken\":null,\"wallet\":null}", "{\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\"}")
         check(V1CreateSubOrganizationIntentV8.serializer(), "{\"clientSignature\":null,\"disableEmailAuth\":null,\"disableEmailRecovery\":null,\"disableOtpEmailAuth\":null,\"disableSmsAuth\":null,\"organizationProtectionProfile\":null,\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\",\"verificationToken\":null,\"wallet\":null}", "{\"rootQuorumThreshold\":0,\"rootUsers\":[],\"subOrganizationName\":\"\"}")
@@ -148,10 +162,6 @@ class GeneratedNullabilityTest {
         check(V1CreateSubOrganizationResultV5.serializer(), "{\"rootUserIds\":null,\"subOrganizationId\":\"\",\"wallet\":null}", "{\"subOrganizationId\":\"\"}")
         check(V1CreateSubOrganizationResultV6.serializer(), "{\"rootUserIds\":null,\"subOrganizationId\":\"\",\"wallet\":null}", "{\"subOrganizationId\":\"\"}")
         check(V1CreateSubOrganizationResultV7.serializer(), "{\"rootUserIds\":null,\"subOrganizationId\":\"\",\"wallet\":null}", "{\"subOrganizationId\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_4() {
         check(V1CreateSubOrganizationResultV8.serializer(), "{\"rootUserIds\":null,\"subOrganizationId\":\"\",\"wallet\":null}", "{\"subOrganizationId\":\"\"}")
         check(V1CreateTvcAppIntent.serializer(), "{\"externalConnectivity\":null,\"manifestSetId\":null,\"manifestSetParams\":null,\"name\":\"\",\"quorumPublicKey\":\"\",\"shareSetId\":null,\"shareSetParams\":null}", "{\"name\":\"\",\"quorumPublicKey\":\"\"}")
         check(V1CreateTvcAppResult.serializer(), "{\"appId\":\"\",\"manifestSetId\":\"\",\"manifestSetOperatorIds\":[],\"manifestSetThreshold\":0}", "{\"appId\":\"\",\"manifestSetId\":\"\",\"manifestSetOperatorIds\":[],\"manifestSetThreshold\":0}")
@@ -182,6 +192,10 @@ class GeneratedNullabilityTest {
         check(V1DeleteApiKeysIntent.serializer(), "{\"apiKeyIds\":[],\"userId\":\"\"}", "{\"apiKeyIds\":[],\"userId\":\"\"}")
         check(V1DeleteApiKeysRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1DeleteApiKeysResult.serializer(), "{\"apiKeyIds\":[]}", "{\"apiKeyIds\":[]}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_5() {
         check(V1DeleteAuthenticatorsIntent.serializer(), "{\"authenticatorIds\":[],\"userId\":\"\"}", "{\"authenticatorIds\":[],\"userId\":\"\"}")
         check(V1DeleteAuthenticatorsRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1DeleteAuthenticatorsResult.serializer(), "{\"authenticatorIds\":[]}", "{\"authenticatorIds\":[]}")
@@ -192,10 +206,6 @@ class GeneratedNullabilityTest {
         check(V1DeleteInvitationRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1DeleteInvitationResult.serializer(), "{\"invitationId\":\"\"}", "{\"invitationId\":\"\"}")
         check(V1DeleteMfaPolicyIntent.serializer(), "{\"mfaPolicyId\":\"\",\"userId\":\"\"}", "{\"mfaPolicyId\":\"\",\"userId\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_5() {
         check(V1DeleteMfaPolicyRequest.serializer(), "{\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1DeleteMfaPolicyResult.serializer(), "{\"mfaPolicyId\":\"\"}", "{\"mfaPolicyId\":\"\"}")
         check(V1DeleteOauth2CredentialIntent.serializer(), "{\"oauth2CredentialId\":\"\"}", "{\"oauth2CredentialId\":\"\"}")
@@ -226,6 +236,10 @@ class GeneratedNullabilityTest {
         check(V1DeleteSmartContractInterfaceRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1DeleteSmartContractInterfaceResult.serializer(), "{\"smartContractInterfaceId\":\"\"}", "{\"smartContractInterfaceId\":\"\"}")
         check(V1DeleteSubOrganizationIntent.serializer(), "{\"deleteWithoutExport\":null}", "{}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_6() {
         check(V1DeleteSubOrganizationRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1DeleteSubOrganizationResult.serializer(), "{\"subOrganizationUuid\":\"\"}", "{\"subOrganizationUuid\":\"\"}")
         check(V1DeleteUserTagsIntent.serializer(), "{\"userTagIds\":[]}", "{\"userTagIds\":[]}")
@@ -236,10 +250,6 @@ class GeneratedNullabilityTest {
         check(V1DeleteUsersResult.serializer(), "{\"userIds\":[]}", "{\"userIds\":[]}")
         check(V1DeleteWalletAccountsIntent.serializer(), "{\"deleteWithoutExport\":null,\"walletAccountIds\":[]}", "{\"walletAccountIds\":[]}")
         check(V1DeleteWalletAccountsRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_6() {
         check(V1DeleteWalletAccountsResult.serializer(), "{\"walletAccountIds\":[]}", "{\"walletAccountIds\":[]}")
         check(V1DeleteWalletsIntent.serializer(), "{\"deleteWithoutExport\":null,\"walletIds\":[]}", "{\"walletIds\":[]}")
         check(V1DeleteWalletsRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
@@ -247,6 +257,7 @@ class GeneratedNullabilityTest {
         check(V1DeleteWebhookEndpointIntent.serializer(), "{\"endpointId\":\"\"}", "{\"endpointId\":\"\"}")
         check(V1DeleteWebhookEndpointRequest.serializer(), "{\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1DeleteWebhookEndpointResult.serializer(), "{\"endpointId\":\"\"}", "{\"endpointId\":\"\"}")
+        check(V1DisableAuthProxyIntent.serializer(), "{\"authProxySecurityTransition\":null}", "{}")
         check(V1DisablePrivateKeyIntent.serializer(), "{\"privateKeyId\":\"\"}", "{\"privateKeyId\":\"\"}")
         check(V1DisablePrivateKeyResult.serializer(), "{\"privateKeyId\":\"\"}", "{\"privateKeyId\":\"\"}")
         check(V1Eip7702Authorization.serializer(), "{\"address\":\"\",\"chainId\":\"\",\"nonce\":\"\",\"r\":\"\",\"s\":\"\",\"yParity\":0}", "{\"address\":\"\",\"chainId\":\"\",\"nonce\":\"\",\"r\":\"\",\"s\":\"\",\"yParity\":0}")
@@ -261,6 +272,7 @@ class GeneratedNullabilityTest {
         check(V1EmailVerifyInitRequest.serializer(), "{\"email\":\"\",\"mode\":\"\"}", "{\"email\":\"\",\"mode\":\"\"}")
         check(V1EmailVerifyInitResponse.serializer(), "{\"mode\":null,\"sent\":null}", "{}")
         check(V1EmailVerifyRedirectResponse.serializer(), "{\"email\":null,\"mode\":null,\"sessionToken\":null,\"verified\":null}", "{}")
+        check(V1EnableAuthProxyIntent.serializer(), "{\"authProxySecurityTransition\":null}", "{}")
         check(V1EnableAuthProxyResult.serializer(), "{\"encryptedApiKey\":\"\",\"userId\":\"\"}", "{\"encryptedApiKey\":\"\",\"userId\":\"\"}")
         check(V1EthFailureDetails.serializer(), "{\"revertChain\":null}", "{}")
         check(V1EthSendRawTransactionIntent.serializer(), "{\"caip2\":\"\",\"replacesStatusId\":null,\"reservationId\":null,\"signedTransaction\":\"\"}", "{\"caip2\":\"\",\"signedTransaction\":\"\"}")
@@ -268,6 +280,10 @@ class GeneratedNullabilityTest {
         check(V1EthSendTransactionIntent.serializer(), "{\"caip2\":\"\",\"data\":null,\"deadline\":null,\"from\":\"\",\"gasLimit\":null,\"gasStationNonce\":null,\"maxFeePerGas\":null,\"maxPriorityFeePerGas\":null,\"nonce\":null,\"sponsor\":null,\"to\":\"\",\"userIntentSignature\":null,\"value\":null}", "{\"caip2\":\"\",\"from\":\"\",\"to\":\"\"}")
         check(V1EthSendTransactionRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1EthSendTransactionResult.serializer(), "{\"sendTransactionStatusId\":\"\"}", "{\"sendTransactionStatusId\":\"\"}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_7() {
         check(V1EthSendTransactionStatus.serializer(), "{\"txHash\":null}", "{}")
         check(V1ExportPrivateKeyIntent.serializer(), "{\"privateKeyId\":\"\",\"targetPublicKey\":\"\"}", "{\"privateKeyId\":\"\",\"targetPublicKey\":\"\"}")
         check(V1ExportPrivateKeyRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
@@ -280,10 +296,6 @@ class GeneratedNullabilityTest {
         check(V1ExportWalletResult.serializer(), "{\"exportBundle\":\"\",\"walletId\":\"\"}", "{\"exportBundle\":\"\",\"walletId\":\"\"}")
         check(V1Feature.serializer(), "{\"name\":null,\"value\":null}", "{}")
         check(V1FiatOnRampCredential.serializer(), "{\"createdAt\":null,\"encryptedPrivateApiKey\":null,\"encryptedSecretApiKey\":\"\",\"fiatOnrampCredentialId\":\"\",\"onrampProvider\":\"FIAT_ON_RAMP_PROVIDER_UNSPECIFIED\",\"organizationId\":\"\",\"projectId\":null,\"publishableApiKey\":\"\",\"sandboxMode\":null,\"updatedAt\":null}", "{\"encryptedSecretApiKey\":\"\",\"fiatOnrampCredentialId\":\"\",\"onrampProvider\":\"FIAT_ON_RAMP_PROVIDER_UNSPECIFIED\",\"organizationId\":\"\",\"publishableApiKey\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_7() {
         check(V1GasSponsorshipUsageEntry.serializer(), "{\"activityId\":null,\"blockNumber\":null,\"caip2\":null,\"eoa\":null,\"gasFeeAtomic\":null,\"gasFeeNative\":null,\"gasFeeUsd\":null,\"recordedAt\":null,\"sendTransactionStatusId\":null,\"status\":null,\"txHash\":null,\"userTo\":null,\"userValue\":null}", "{}")
         check(V1GetActivitiesRequest.serializer(), "{\"filterByStatus\":null,\"filterByType\":null,\"organizationId\":\"\",\"paginationOptions\":null}", "{\"organizationId\":\"\"}")
         check(V1GetActivitiesResponse.serializer(), "{\"activities\":[]}", "{\"activities\":[]}")
@@ -312,6 +324,10 @@ class GeneratedNullabilityTest {
         check(V1GetMfaStatusResponse.serializer(), "{\"mfaStatuses\":[]}", "{\"mfaStatuses\":[]}")
         check(V1GetNoncesRequest.serializer(), "{\"address\":\"\",\"caip2\":\"\",\"gasStationNonce\":null,\"nonce\":null,\"organizationId\":\"\"}", "{\"address\":\"\",\"caip2\":\"\",\"organizationId\":\"\"}")
         check(V1GetNoncesResponse.serializer(), "{\"gasStationNonce\":null,\"nonce\":null}", "{}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_8() {
         check(V1GetOauth2CredentialRequest.serializer(), "{\"oauth2CredentialId\":\"\",\"organizationId\":\"\"}", "{\"oauth2CredentialId\":\"\",\"organizationId\":\"\"}")
         check(V1GetOauth2CredentialResponse.serializer(), "{\"oauth2Credential\":null}", "{}")
         check(V1GetOauthProvidersRequest.serializer(), "{\"organizationId\":\"\",\"userId\":null}", "{\"organizationId\":\"\"}")
@@ -324,10 +340,6 @@ class GeneratedNullabilityTest {
         check(V1GetOrganizationConfigsResponse.serializer(), "{\"configs\":null}", "{}")
         check(V1GetPoliciesRequest.serializer(), "{\"organizationId\":\"\"}", "{\"organizationId\":\"\"}")
         check(V1GetPoliciesResponse.serializer(), "{\"policies\":[]}", "{\"policies\":[]}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_8() {
         check(V1GetPolicyEvaluationsRequest.serializer(), "{\"activityId\":\"\",\"organizationId\":\"\"}", "{\"activityId\":\"\",\"organizationId\":\"\"}")
         check(V1GetPolicyEvaluationsResponse.serializer(), "{\"policyEvaluations\":[]}", "{\"policyEvaluations\":[]}")
         check(V1GetPolicyRequest.serializer(), "{\"organizationId\":\"\",\"policyId\":\"\"}", "{\"organizationId\":\"\",\"policyId\":\"\"}")
@@ -356,6 +368,10 @@ class GeneratedNullabilityTest {
         check(V1GetVerifiedSubOrgIdsResponse.serializer(), "{\"organizationIds\":[]}", "{\"organizationIds\":[]}")
         check(V1GetWalletAccountRequest.serializer(), "{\"address\":null,\"organizationId\":\"\",\"path\":null,\"walletId\":\"\"}", "{\"organizationId\":\"\",\"walletId\":\"\"}")
         check(V1GetWalletAccountResponse.serializer(), "{\"account\":null}", "{}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_9() {
         check(V1GetWalletAccountsRequest.serializer(), "{\"includeWalletDetails\":null,\"organizationId\":\"\",\"paginationOptions\":null,\"walletId\":null}", "{\"organizationId\":\"\"}")
         check(V1GetWalletAccountsResponse.serializer(), "{\"accounts\":[]}", "{\"accounts\":[]}")
         check(V1GetWalletRequest.serializer(), "{\"organizationId\":\"\",\"walletId\":\"\"}", "{\"organizationId\":\"\",\"walletId\":\"\"}")
@@ -368,13 +384,8 @@ class GeneratedNullabilityTest {
         check(V1ImportPrivateKeyRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1ImportPrivateKeyResult.serializer(), "{\"addresses\":[],\"privateKeyId\":\"\"}", "{\"addresses\":[],\"privateKeyId\":\"\"}")
         check(V1ImportWalletIntent.serializer(), "{\"accounts\":[],\"encryptedBundle\":\"\",\"userId\":\"\",\"walletName\":\"\"}", "{\"accounts\":[],\"encryptedBundle\":\"\",\"userId\":\"\",\"walletName\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_9() {
         check(V1ImportWalletRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1ImportWalletResult.serializer(), "{\"addresses\":[],\"walletId\":\"\"}", "{\"addresses\":[],\"walletId\":\"\"}")
-        check(V1ImportedRootAuthenticatorParams.serializer(), "{\"aaguid\":null,\"authenticatorName\":\"\",\"credentialId\":\"\",\"publicKey\":\"\",\"transports\":null}", "{\"authenticatorName\":\"\",\"credentialId\":\"\",\"publicKey\":\"\"}")
         check(V1InitFiatOnRampIntent.serializer(), "{\"countryCode\":null,\"countrySubdivisionCode\":null,\"cryptoCurrencyCode\":\"FIAT_ON_RAMP_CRYPTO_CURRENCY_UNSPECIFIED\",\"fiatCurrencyAmount\":null,\"fiatCurrencyCode\":null,\"network\":\"FIAT_ON_RAMP_BLOCKCHAIN_NETWORK_UNSPECIFIED\",\"onrampProvider\":\"FIAT_ON_RAMP_PROVIDER_UNSPECIFIED\",\"paymentMethod\":null,\"sandboxMode\":null,\"urlForSignature\":null,\"walletAddress\":\"\"}", "{\"cryptoCurrencyCode\":\"FIAT_ON_RAMP_CRYPTO_CURRENCY_UNSPECIFIED\",\"network\":\"FIAT_ON_RAMP_BLOCKCHAIN_NETWORK_UNSPECIFIED\",\"onrampProvider\":\"FIAT_ON_RAMP_PROVIDER_UNSPECIFIED\",\"walletAddress\":\"\"}")
         check(V1InitFiatOnRampRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1InitFiatOnRampResult.serializer(), "{\"onRampTransactionId\":\"\",\"onRampUrl\":\"\",\"onRampUrlSignature\":null}", "{\"onRampTransactionId\":\"\",\"onRampUrl\":\"\"}")
@@ -401,6 +412,10 @@ class GeneratedNullabilityTest {
         check(V1InitUserEmailRecoveryRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1InitUserEmailRecoveryResult.serializer(), "{\"userId\":\"\"}", "{\"userId\":\"\"}")
         check(V1InitialSignupRequest.serializer(), "{\"email\":\"\"}", "{\"email\":\"\"}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_10() {
         check(V1InitialSignupResponse.serializer(), "{\"ok\":null}", "{}")
         check(V1Intent.serializer(), "{\"acceptInvitationIntent\":null,\"acceptInvitationIntentV2\":null,\"activateBillingTierIntent\":null,\"approveActivityIntent\":null,\"createApiKeysIntent\":null,\"createApiKeysIntentV2\":null,\"createApiOnlyUsersIntent\":null,\"createAuthenticatorsIntent\":null,\"createAuthenticatorsIntentV2\":null,\"createFiatOnRampCredentialIntent\":null,\"createInvitationsIntent\":null,\"createMfaPolicyIntent\":null,\"createOauth2CredentialIntent\":null,\"createOauthProvidersIntent\":null,\"createOauthProvidersIntentV2\":null,\"createOrganizationIntent\":null,\"createOrganizationIntentV2\":null,\"createPoliciesIntent\":null,\"createPolicyIntent\":null,\"createPolicyIntentV2\":null,\"createPolicyIntentV3\":null,\"createPrivateKeyTagIntent\":null,\"createPrivateKeysIntent\":null,\"createPrivateKeysIntentV2\":null,\"createReadOnlySessionIntent\":null,\"createReadWriteSessionIntent\":null,\"createReadWriteSessionIntentV2\":null,\"createSessionProfileIntent\":null,\"createSmartContractInterfaceIntent\":null,\"createSubOrganizationIntent\":null,\"createSubOrganizationIntentV2\":null,\"createSubOrganizationIntentV3\":null,\"createSubOrganizationIntentV4\":null,\"createSubOrganizationIntentV5\":null,\"createSubOrganizationIntentV6\":null,\"createSubOrganizationIntentV7\":null,\"createSubOrganizationIntentV8\":null,\"createTvcAppIntent\":null,\"createTvcDeploymentIntent\":null,\"createTvcManifestApprovalsIntent\":null,\"createUserTagIntent\":null,\"createUsersIntent\":null,\"createUsersIntentV2\":null,\"createUsersIntentV3\":null,\"createUsersIntentV4\":null,\"createWalletAccountsIntent\":null,\"createWalletIntent\":null,\"createWebhookEndpointIntent\":null,\"deleteApiKeysIntent\":null,\"deleteAuthenticatorsIntent\":null,\"deleteFiatOnRampCredentialIntent\":null,\"deleteInvitationIntent\":null,\"deleteMfaPolicyIntent\":null,\"deleteOauth2CredentialIntent\":null,\"deleteOauthProvidersIntent\":null,\"deleteOrganizationIntent\":null,\"deletePaymentMethodIntent\":null,\"deletePoliciesIntent\":null,\"deletePolicyIntent\":null,\"deletePrivateKeyTagsIntent\":null,\"deletePrivateKeysIntent\":null,\"deleteSmartContractInterfaceIntent\":null,\"deleteSubOrganizationIntent\":null,\"deleteUserTagsIntent\":null,\"deleteUsersIntent\":null,\"deleteWalletAccountsIntent\":null,\"deleteWalletsIntent\":null,\"deleteWebhookEndpointIntent\":null,\"disableAuthProxyIntent\":null,\"disablePrivateKeyIntent\":null,\"emailAuthIntent\":null,\"emailAuthIntentV2\":null,\"emailAuthIntentV3\":null,\"enableAuthProxyIntent\":null,\"ethSendRawTransactionIntent\":null,\"ethSendTransactionIntent\":null,\"exportPrivateKeyIntent\":null,\"exportWalletAccountIntent\":null,\"exportWalletIntent\":null,\"importPrivateKeyIntent\":null,\"importWalletIntent\":null,\"initFiatOnRampIntent\":null,\"initImportPrivateKeyIntent\":null,\"initImportWalletIntent\":null,\"initOtpAuthIntent\":null,\"initOtpAuthIntentV2\":null,\"initOtpAuthIntentV3\":null,\"initOtpIntent\":null,\"initOtpIntentV2\":null,\"initOtpIntentV3\":null,\"initUserEmailRecoveryIntent\":null,\"initUserEmailRecoveryIntentV2\":null,\"oauth2AuthenticateIntent\":null,\"oauthIntent\":null,\"oauthLoginIntent\":null,\"otpAuthIntent\":null,\"otpLoginIntent\":null,\"otpLoginIntentV2\":null,\"recoverUserIntent\":null,\"rejectActivityIntent\":null,\"removeOrganizationFeatureIntent\":null,\"setOrganizationFeatureIntent\":null,\"setPaymentMethodIntent\":null,\"setPaymentMethodIntentV2\":null,\"signRawPayloadIntent\":null,\"signRawPayloadIntentV2\":null,\"signRawPayloadsIntent\":null,\"signTransactionIntent\":null,\"signTransactionIntentV2\":null,\"solSendRawTransactionIntent\":null,\"solSendTransactionIntent\":null,\"stampLoginIntent\":null,\"tronSendTransactionIntent\":null,\"updateAllowedOriginsIntent\":null,\"updateAuthProxyConfigIntent\":null,\"updateFiatOnRampCredentialIntent\":null,\"updateMfaPolicyIntent\":null,\"updateOauth2CredentialIntent\":null,\"updateOrganizationNameIntent\":null,\"updatePolicyIntent\":null,\"updatePolicyIntentV2\":null,\"updatePrivateKeyTagIntent\":null,\"updateRootQuorumIntent\":null,\"updateUserEmailIntent\":null,\"updateUserIntent\":null,\"updateUserNameIntent\":null,\"updateUserPhoneNumberIntent\":null,\"updateUserTagIntent\":null,\"updateWalletIntent\":null,\"updateWebhookEndpointIntent\":null,\"upsertGasUsageConfigIntent\":null,\"verifyOtpIntent\":null,\"verifyOtpIntentV2\":null}", "{}")
         check(V1InvitationParams.serializer(), "{\"accessType\":\"ACCESS_TYPE_UNSPECIFIED\",\"receiverUserEmail\":\"\",\"receiverUserName\":\"\",\"receiverUserTags\":[],\"senderUserId\":\"\"}", "{\"accessType\":\"ACCESS_TYPE_UNSPECIFIED\",\"receiverUserEmail\":\"\",\"receiverUserName\":\"\",\"receiverUserTags\":[],\"senderUserId\":\"\"}")
@@ -412,10 +427,6 @@ class GeneratedNullabilityTest {
         check(V1ListOauth2CredentialsResponse.serializer(), "{\"oauth2Credentials\":[]}", "{\"oauth2Credentials\":[]}")
         check(V1ListPrivateKeyTagsRequest.serializer(), "{\"organizationId\":\"\"}", "{\"organizationId\":\"\"}")
         check(V1ListPrivateKeyTagsResponse.serializer(), "{\"privateKeyTags\":[]}", "{\"privateKeyTags\":[]}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_10() {
         check(V1ListSendTransactionsRequest.serializer(), "{\"createdAfter\":null,\"createdBefore\":null,\"cursor\":null,\"filterByAddress\":null,\"filterByCaip2\":null,\"filterByStatus\":null,\"includeSubOrganizations\":null,\"limit\":null,\"offset\":null,\"organizationId\":\"\",\"pageSize\":null}", "{\"organizationId\":\"\"}")
         check(V1ListSendTransactionsResponse.serializer(), "{\"nextCursor\":null,\"sendTransactions\":null}", "{}")
         check(V1ListUserTagsRequest.serializer(), "{\"organizationId\":\"\"}", "{\"organizationId\":\"\"}")
@@ -445,6 +456,10 @@ class GeneratedNullabilityTest {
         check(V1OtpAuthIntent.serializer(), "{\"apiKeyName\":null,\"expirationSeconds\":null,\"invalidateExisting\":null,\"otpCode\":\"\",\"otpId\":\"\",\"targetPublicKey\":\"\"}", "{\"otpCode\":\"\",\"otpId\":\"\",\"targetPublicKey\":\"\"}")
         check(V1OtpAuthRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1OtpAuthResult.serializer(), "{\"apiKeyId\":null,\"credentialBundle\":null,\"userId\":\"\"}", "{\"userId\":\"\"}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_11() {
         check(V1OtpLoginIntent.serializer(), "{\"clientSignature\":null,\"expirationSeconds\":null,\"invalidateExisting\":null,\"publicKey\":\"\",\"sessionProfileId\":null,\"verificationToken\":\"\"}", "{\"publicKey\":\"\",\"verificationToken\":\"\"}")
         check(V1OtpLoginIntentV2.serializer(), "{\"clientSignature\":null,\"expirationSeconds\":null,\"invalidateExisting\":null,\"publicKey\":\"\",\"sessionProfileId\":null,\"verificationToken\":\"\"}", "{\"publicKey\":\"\",\"verificationToken\":\"\"}")
         check(V1OtpLoginRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
@@ -456,10 +471,6 @@ class GeneratedNullabilityTest {
         check(V1PrepareSolTransactionRequest.serializer(), "{\"caip2\":\"\",\"from\":\"\",\"lamports\":\"\",\"organizationId\":\"\",\"sponsor\":null,\"to\":\"\",\"tokenMint\":null}", "{\"caip2\":\"\",\"from\":\"\",\"lamports\":\"\",\"organizationId\":\"\",\"to\":\"\"}")
         check(V1PrepareSolTransactionResponse.serializer(), "{\"blockhash\":null,\"feePayer\":null,\"lastValidBlockHeight\":null,\"txType\":null,\"unsignedTransaction\":null}", "{}")
         check(V1PrivateKey.serializer(), "{\"addresses\":[],\"createdAt\":null,\"curve\":\"CURVE_UNSPECIFIED\",\"exported\":false,\"imported\":false,\"privateKeyId\":\"\",\"privateKeyName\":\"\",\"privateKeyTags\":[],\"publicKey\":\"\",\"updatedAt\":null}", "{\"addresses\":[],\"curve\":\"CURVE_UNSPECIFIED\",\"exported\":false,\"imported\":false,\"privateKeyId\":\"\",\"privateKeyName\":\"\",\"privateKeyTags\":[],\"publicKey\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_11() {
         check(V1PrivateKeyParams.serializer(), "{\"addressFormats\":[],\"curve\":\"CURVE_UNSPECIFIED\",\"privateKeyName\":\"\",\"privateKeyTags\":[]}", "{\"addressFormats\":[],\"curve\":\"CURVE_UNSPECIFIED\",\"privateKeyName\":\"\",\"privateKeyTags\":[]}")
         check(V1PrivateKeyResult.serializer(), "{\"addresses\":null,\"privateKeyId\":null}", "{}")
         check(V1PublicKeyCredentialWithAttestation.serializer(), "{\"authenticatorAttachment\":null,\"clientExtensionResults\":null,\"id\":\"\",\"rawId\":\"\",\"response\":null,\"type\":\"\"}", "{\"id\":\"\",\"rawId\":\"\",\"type\":\"\"}")
@@ -489,6 +500,10 @@ class GeneratedNullabilityTest {
         check(V1SetOrganizationFeatureIntent.serializer(), "{\"name\":\"FEATURE_NAME_UNSPECIFIED\",\"value\":\"\"}", "{\"name\":\"FEATURE_NAME_UNSPECIFIED\",\"value\":\"\"}")
         check(V1SetOrganizationFeatureRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1SetOrganizationFeatureResult.serializer(), "{\"features\":[]}", "{\"features\":[]}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_12() {
         check(V1SetPaymentMethodRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1SignRawPayloadIntent.serializer(), "{\"encoding\":\"PAYLOAD_ENCODING_UNSPECIFIED\",\"hashFunction\":\"HASH_FUNCTION_UNSPECIFIED\",\"payload\":\"\",\"privateKeyId\":\"\"}", "{\"encoding\":\"PAYLOAD_ENCODING_UNSPECIFIED\",\"hashFunction\":\"HASH_FUNCTION_UNSPECIFIED\",\"payload\":\"\",\"privateKeyId\":\"\"}")
         check(V1SignRawPayloadIntentV2.serializer(), "{\"encoding\":\"PAYLOAD_ENCODING_UNSPECIFIED\",\"hashFunction\":\"HASH_FUNCTION_UNSPECIFIED\",\"payload\":\"\",\"signWith\":\"\"}", "{\"encoding\":\"PAYLOAD_ENCODING_UNSPECIFIED\",\"hashFunction\":\"HASH_FUNCTION_UNSPECIFIED\",\"payload\":\"\",\"signWith\":\"\"}")
@@ -500,10 +515,6 @@ class GeneratedNullabilityTest {
         check(V1SignTransactionIntent.serializer(), "{\"privateKeyId\":\"\",\"type\":\"TRANSACTION_TYPE_UNSPECIFIED\",\"unsignedTransaction\":\"\"}", "{\"privateKeyId\":\"\",\"type\":\"TRANSACTION_TYPE_UNSPECIFIED\",\"unsignedTransaction\":\"\"}")
         check(V1SignTransactionIntentV2.serializer(), "{\"signWith\":\"\",\"type\":\"TRANSACTION_TYPE_UNSPECIFIED\",\"unsignedTransaction\":\"\"}", "{\"signWith\":\"\",\"type\":\"TRANSACTION_TYPE_UNSPECIFIED\",\"unsignedTransaction\":\"\"}")
         check(V1SignTransactionRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_12() {
         check(V1SignTransactionResult.serializer(), "{\"signedTransaction\":\"\"}", "{\"signedTransaction\":\"\"}")
         check(V1SignupUsage.serializer(), "{\"apiKeys\":null,\"authenticators\":null,\"email\":null,\"oauthProviders\":null,\"phoneNumber\":null}", "{}")
         check(V1SignupUsageV2.serializer(), "{\"apiKeys\":null,\"authenticators\":null,\"email\":null,\"oauthProviders\":null,\"phoneNumber\":null}", "{}")
@@ -533,10 +544,14 @@ class GeneratedNullabilityTest {
         check(V1TvcManifestApproval.serializer(), "{\"operatorId\":\"\",\"signature\":\"\"}", "{\"operatorId\":\"\",\"signature\":\"\"}")
         check(V1TvcOperatorParams.serializer(), "{\"name\":\"\",\"publicKey\":\"\"}", "{\"name\":\"\",\"publicKey\":\"\"}")
         check(V1TvcOperatorSetParams.serializer(), "{\"existingOperatorIds\":null,\"name\":\"\",\"newOperators\":null,\"threshold\":0}", "{\"name\":\"\",\"threshold\":0}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_13() {
         check(V1TxError.serializer(), "{\"eth\":null,\"message\":null,\"revertChain\":null,\"solana\":null}", "{}")
         check(V1UnknownRevertError.serializer(), "{\"data\":null,\"selector\":null}", "{}")
         check(V1UpdateAllowedOriginsIntent.serializer(), "{\"allowedOrigins\":[]}", "{\"allowedOrigins\":[]}")
-        check(V1UpdateAuthProxyConfigIntent.serializer(), "{\"allowedAuthMethods\":null,\"allowedOrigins\":null,\"captchaEnabled\":null,\"emailAuthTemplateId\":null,\"emailCustomizationParams\":null,\"otpAlphanumeric\":null,\"otpExpirationSeconds\":null,\"otpLength\":null,\"otpTemplateId\":null,\"replyToEmailAddress\":null,\"sendFromEmailAddress\":null,\"sendFromEmailSenderName\":null,\"sessionExpirationSeconds\":null,\"smsCustomizationParams\":null,\"socialLinkingClientIds\":null,\"verificationTokenExpirationSeconds\":null,\"verificationTokenRequiredForGetAccountPii\":null,\"walletKitSettings\":null}", "{}")
+        check(V1UpdateAuthProxyConfigIntent.serializer(), "{\"allowedAuthMethods\":null,\"allowedOrigins\":null,\"authProxySecurityTransition\":null,\"authProxySecurityTransitionV2\":null,\"captchaEnabled\":null,\"emailAuthTemplateId\":null,\"emailCustomizationParams\":null,\"otpAlphanumeric\":null,\"otpExpirationSeconds\":null,\"otpLength\":null,\"otpTemplateId\":null,\"replyToEmailAddress\":null,\"sendFromEmailAddress\":null,\"sendFromEmailSenderName\":null,\"sessionExpirationSeconds\":null,\"smsCustomizationParams\":null,\"socialLinkingClientIds\":null,\"verificationTokenExpirationSeconds\":null,\"verificationTokenRequiredForGetAccountPii\":null,\"walletKitSettings\":null}", "{}")
         check(V1UpdateAuthProxyConfigResult.serializer(), "{\"configId\":null}", "{}")
         check(V1UpdateFiatOnRampCredentialIntent.serializer(), "{\"encryptedPrivateApiKey\":null,\"encryptedSecretApiKey\":\"\",\"fiatOnrampCredentialId\":\"\",\"onrampProvider\":\"FIAT_ON_RAMP_PROVIDER_UNSPECIFIED\",\"projectId\":null,\"publishableApiKey\":\"\"}", "{\"encryptedSecretApiKey\":\"\",\"fiatOnrampCredentialId\":\"\",\"onrampProvider\":\"FIAT_ON_RAMP_PROVIDER_UNSPECIFIED\",\"publishableApiKey\":\"\"}")
         check(V1UpdateFiatOnRampCredentialRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
@@ -544,10 +559,6 @@ class GeneratedNullabilityTest {
         check(V1UpdateMfaPolicyIntent.serializer(), "{\"condition\":null,\"mfaPolicyId\":\"\",\"mfaPolicyName\":null,\"notes\":null,\"order\":null,\"requiredAuthenticationMethods\":null,\"userId\":\"\"}", "{\"mfaPolicyId\":\"\",\"userId\":\"\"}")
         check(V1UpdateMfaPolicyRequest.serializer(), "{\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1UpdateMfaPolicyResult.serializer(), "{\"mfaPolicyId\":\"\"}", "{\"mfaPolicyId\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_13() {
         check(V1UpdateOauth2CredentialIntent.serializer(), "{\"clientId\":\"\",\"encryptedClientSecret\":\"\",\"oauth2CredentialId\":\"\",\"provider\":\"OAUTH2_PROVIDER_UNSPECIFIED\"}", "{\"clientId\":\"\",\"encryptedClientSecret\":\"\",\"oauth2CredentialId\":\"\",\"provider\":\"OAUTH2_PROVIDER_UNSPECIFIED\"}")
         check(V1UpdateOauth2CredentialRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1UpdateOauth2CredentialResult.serializer(), "{\"oauth2CredentialId\":\"\"}", "{\"oauth2CredentialId\":\"\"}")
@@ -577,6 +588,10 @@ class GeneratedNullabilityTest {
         check(V1UpdateUserPhoneNumberIntent.serializer(), "{\"userId\":\"\",\"userPhoneNumber\":\"\",\"verificationToken\":null}", "{\"userId\":\"\",\"userPhoneNumber\":\"\"}")
         check(V1UpdateUserPhoneNumberRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1UpdateUserPhoneNumberResult.serializer(), "{\"userId\":\"\"}", "{\"userId\":\"\"}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_14() {
         check(V1UpdateUserRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1UpdateUserResult.serializer(), "{\"userId\":\"\"}", "{\"userId\":\"\"}")
         check(V1UpdateUserTagIntent.serializer(), "{\"addUserIds\":[],\"newUserTagName\":null,\"removeUserIds\":[],\"userTagId\":\"\"}", "{\"addUserIds\":[],\"removeUserIds\":[],\"userTagId\":\"\"}")
@@ -588,10 +603,6 @@ class GeneratedNullabilityTest {
         check(V1UpdateWebhookEndpointIntent.serializer(), "{\"endpointId\":\"\",\"isActive\":null,\"name\":null,\"url\":null}", "{\"endpointId\":\"\"}")
         check(V1UpdateWebhookEndpointRequest.serializer(), "{\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
         check(V1UpdateWebhookEndpointResult.serializer(), "{\"endpointId\":\"\"}", "{\"endpointId\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_14() {
         check(V1UpsertGasUsageConfigIntent.serializer(), "{\"orgWindowLimitUsd\":\"\",\"subOrgWindowLimitUsd\":\"\",\"windowDurationMinutes\":\"\"}", "{\"orgWindowLimitUsd\":\"\",\"subOrgWindowLimitUsd\":\"\",\"windowDurationMinutes\":\"\"}")
         check(V1UpsertGasUsageConfigResponse.serializer(), "{\"enabled\":null,\"windowDurationMinutes\":null,\"windowLimitLamports\":null,\"windowLimitNative\":null}", "{}")
         check(V1UpsertGasUsageConfigResult.serializer(), "{\"gasUsageConfigId\":\"\"}", "{\"gasUsageConfigId\":\"\"}")
@@ -600,8 +611,6 @@ class GeneratedNullabilityTest {
         check(V1UserParamsV2.serializer(), "{\"apiKeys\":[],\"authenticators\":[],\"userEmail\":null,\"userName\":\"\",\"userTags\":[]}", "{\"apiKeys\":[],\"authenticators\":[],\"userName\":\"\",\"userTags\":[]}")
         check(V1UserParamsV3.serializer(), "{\"apiKeys\":[],\"authenticators\":[],\"oauthProviders\":[],\"userEmail\":null,\"userName\":\"\",\"userPhoneNumber\":null,\"userTags\":[]}", "{\"apiKeys\":[],\"authenticators\":[],\"oauthProviders\":[],\"userName\":\"\",\"userTags\":[]}")
         check(V1UserParamsV4.serializer(), "{\"apiKeys\":[],\"authenticators\":[],\"oauthProviders\":[],\"userEmail\":null,\"userName\":\"\",\"userPhoneNumber\":null,\"userTags\":[]}", "{\"apiKeys\":[],\"authenticators\":[],\"oauthProviders\":[],\"userName\":\"\",\"userTags\":[]}")
-        check(V1ValidateSessionRequest.serializer(), "{\"sessionToken\":\"\"}", "{\"sessionToken\":\"\"}")
-        check(V1ValidateSessionResponse.serializer(), "{\"email\":null,\"organizationId\":null,\"sessionType\":null,\"userId\":null,\"valid\":null}", "{}")
         check(V1VerifyOtpIntent.serializer(), "{\"expirationSeconds\":null,\"otpCode\":\"\",\"otpId\":\"\",\"publicKey\":null}", "{\"otpCode\":\"\",\"otpId\":\"\"}")
         check(V1VerifyOtpIntentV2.serializer(), "{\"encryptedOtpBundle\":\"\",\"expirationSeconds\":null,\"otpId\":\"\"}", "{\"encryptedOtpBundle\":\"\",\"otpId\":\"\"}")
         check(V1VerifyOtpRequest.serializer(), "{\"generateAppProofs\":null,\"organizationId\":\"\",\"parameters\":null,\"timestampMs\":\"\",\"type\":\"\"}", "{\"organizationId\":\"\",\"timestampMs\":\"\",\"type\":\"\"}")
@@ -623,6 +632,10 @@ class GeneratedNullabilityTest {
         check(V1InitOtpResponse.serializer(), "{\"otpId\":\"\"}", "{\"otpId\":\"\"}")
         check(V1InitOtpV2Request.serializer(), "{\"contact\":\"\",\"otpType\":\"\"}", "{\"contact\":\"\",\"otpType\":\"\"}")
         check(V1InitOtpV2Response.serializer(), "{\"otpEncryptionTargetBundle\":\"\",\"otpId\":\"\"}", "{\"otpEncryptionTargetBundle\":\"\",\"otpId\":\"\"}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_15() {
         check(V1OAuth2AuthenticateResponse.serializer(), "{\"oidcToken\":\"\"}", "{\"oidcToken\":\"\"}")
         check(V1OAuthLoginResponse.serializer(), "{\"session\":\"\"}", "{\"session\":\"\"}")
         check(V1OtpLoginResponse.serializer(), "{\"session\":\"\"}", "{\"session\":\"\"}")
@@ -632,10 +645,6 @@ class GeneratedNullabilityTest {
         check(V1SignupResponse.serializer(), "{\"appProofs\":null,\"organizationId\":\"\",\"userId\":\"\",\"wallet\":null}", "{\"organizationId\":\"\",\"userId\":\"\"}")
         check(V1SignupV2Request.serializer(), "{\"apiKeys\":[],\"authenticators\":[],\"clientSignature\":null,\"oauthProviders\":[],\"organizationName\":null,\"userEmail\":null,\"userName\":null,\"userPhoneNumber\":null,\"userTag\":null,\"verificationToken\":null,\"wallet\":null}", "{\"apiKeys\":[],\"authenticators\":[],\"oauthProviders\":[]}")
         check(V1SignupV2Response.serializer(), "{\"appProofs\":null,\"organizationId\":\"\",\"userId\":\"\",\"wallet\":null}", "{\"organizationId\":\"\",\"userId\":\"\"}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_15() {
         check(V1VerifyOtpResponse.serializer(), "{\"verificationToken\":\"\"}", "{\"verificationToken\":\"\"}")
         check(V1VerifyOtpV2Request.serializer(), "{\"encryptedOtpBundle\":\"\",\"otpId\":\"\"}", "{\"encryptedOtpBundle\":\"\",\"otpId\":\"\"}")
         check(V1VerifyOtpV2Response.serializer(), "{\"verificationToken\":\"\"}", "{\"verificationToken\":\"\"}")
@@ -667,6 +676,10 @@ class GeneratedNullabilityTest {
         check(TGetSmartContractInterfaceResponse.serializer(), "{\"smartContractInterface\":null}", "{}")
         check(TGetUserResponse.serializer(), "{\"user\":null}", "{}")
         check(TGetWalletResponse.serializer(), "{\"wallet\":null}", "{}")
+    }
+
+    @Test
+    fun decodesNullAndMissing_16() {
         check(TGetWalletAccountResponse.serializer(), "{\"account\":null}", "{}")
         check(TGetActivitiesResponse.serializer(), "{\"activities\":[]}", "{\"activities\":[]}")
         check(TGetAppProofsResponse.serializer(), "{\"appProofs\":[]}", "{\"appProofs\":[]}")
@@ -676,10 +689,6 @@ class GeneratedNullabilityTest {
         check(TGetPoliciesResponse.serializer(), "{\"policies\":[]}", "{\"policies\":[]}")
         check(TListPrivateKeyTagsResponse.serializer(), "{\"privateKeyTags\":[]}", "{\"privateKeyTags\":[]}")
         check(TGetPrivateKeysResponse.serializer(), "{\"privateKeys\":[]}", "{\"privateKeys\":[]}")
-    }
-
-    @Test
-    fun decodesNullAndMissing_16() {
         check(TListSendTransactionsResponse.serializer(), "{\"nextCursor\":null,\"sendTransactions\":null}", "{}")
         check(TGetSmartContractInterfacesResponse.serializer(), "{\"smartContractInterfaces\":[]}", "{\"smartContractInterfaces\":[]}")
         check(TGetSubOrgIdsResponse.serializer(), "{\"organizationIds\":[]}", "{\"organizationIds\":[]}")

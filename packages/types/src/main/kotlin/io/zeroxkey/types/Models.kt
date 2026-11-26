@@ -542,6 +542,16 @@ public enum class V1FeatureName {
   FEATURE_NAME_OTP_EMAIL_AUTH,
   @SerialName("FEATURE_NAME_AUTH_PROXY")
   FEATURE_NAME_AUTH_PROXY,
+  @SerialName("FEATURE_NAME_SOLANA_RENT_PREFUND_ENABLED")
+  FEATURE_NAME_SOLANA_RENT_PREFUND_ENABLED,
+  @SerialName("FEATURE_NAME_SWAP_CONFIG")
+  FEATURE_NAME_SWAP_CONFIG,
+  @SerialName("FEATURE_NAME_EARN_CONFIG")
+  FEATURE_NAME_EARN_CONFIG,
+  @SerialName("FEATURE_NAME_SWAP_FEE_SPONSORSHIP")
+  FEATURE_NAME_SWAP_FEE_SPONSORSHIP,
+  @SerialName("FEATURE_NAME_SWAP_FIXED_RATE")
+  FEATURE_NAME_SWAP_FIXED_RATE,
 }
 
 @Serializable
@@ -1650,6 +1660,131 @@ public data class V1Attestation(
   public val transports: List<V1AuthenticatorTransport>,
 )
 
+/**
+ * 0xkey extension audience draft; business strings require the strict parser.
+ */
+@Serializable
+public data class V1AuthProxySecurityAudienceGrant(
+  @SerialName("clientIds")
+  public val clientIds: List<String>? = null,
+  @SerialName("usage")
+  public val usage: String? = null,
+)
+
+/**
+ * 0xkey extension policy draft; unauthenticated until activation checks pass.
+ */
+@Serializable
+public data class V1AuthProxySecurityPolicy(
+  @SerialName("allowedAuthMethods")
+  public val allowedAuthMethods: List<String>? = null,
+  @SerialName("piiProofRequired")
+  public val piiProofRequired: Boolean? = null,
+  @SerialName("providers")
+  public val providers: List<V1AuthProxySecurityProvider>? = null,
+  @SerialName("registrations")
+  public val registrations: List<V1AuthProxySecurityRegistration>? = null,
+)
+
+/**
+ * 0xkey extension provider draft; unauthenticated until activation checks pass.
+ */
+@Serializable
+public data class V1AuthProxySecurityProvider(
+  @SerialName("audienceGrants")
+  public val audienceGrants: List<V1AuthProxySecurityAudienceGrant>? = null,
+  @SerialName("enabled")
+  public val enabled: Boolean? = null,
+  @SerialName("key")
+  public val key: V1AuthProxySecurityProviderKey? = null,
+)
+
+/**
+ * 0xkey extension provider key; business strings require the strict parser.
+ */
+@Serializable
+public data class V1AuthProxySecurityProviderKey(
+  @SerialName("issuer")
+  public val issuer: String? = null,
+  @SerialName("kind")
+  public val kind: String? = null,
+)
+
+/**
+ * 0xkey extension registration draft; unauthenticated until activation checks pass.
+ */
+@Serializable
+public data class V1AuthProxySecurityRegistration(
+  @SerialName("callbackUri")
+  public val callbackUri: String? = null,
+  @SerialName("clientId")
+  public val clientId: String? = null,
+  @SerialName("enabled")
+  public val enabled: Boolean? = null,
+  @SerialName("platform")
+  public val platform: String? = null,
+  @SerialName("provider")
+  public val provider: V1AuthProxySecurityProviderKey? = null,
+  @SerialName("registrationId")
+  public val registrationId: String? = null,
+  @SerialName("returnUri")
+  public val returnUri: String? = null,
+)
+
+/**
+ * 0xkey extension selector; unauthenticated until strict entry and authorization.
+ */
+@Serializable
+public data class V1AuthProxySecuritySelector(
+  @SerialName("configId")
+  public val configId: String? = null,
+  @SerialName("generation")
+  public val generation: String? = null,
+  /**
+   * 0xkey extension. Strict wire requires a JSON integer from 1 through 18446744073709551615. Generic protobuf acceptance of strings does not authorize string revision; default protojson output must not replace the original signed request.
+   */
+  @SerialName("revision")
+  public val revision: Long? = null,
+)
+
+/**
+ * 0xkey extension carrying unauthenticated configuration input. Activation
+ * requires the strict raw entry to validate the original signed bytes and
+ * compare the complete typed intent before dispatch. Protobuf cannot preserve
+ * repeated-field presence or prove rejection of duplicates, unknowns or null.
+ */
+@Serializable
+public data class V1AuthProxySecurityTransition(
+  @SerialName("allowedAuthMethods")
+  public val allowedAuthMethods: List<String>? = null,
+  @SerialName("expected")
+  public val expected: V1AuthProxySecuritySelector? = null,
+  @SerialName("kind")
+  public val kind: String? = null,
+  @SerialName("piiProofRequired")
+  public val piiProofRequired: Boolean? = null,
+  @SerialName("policy")
+  public val policy: V1AuthProxySecurityPolicy? = null,
+)
+
+/**
+ * 0xkey Captcha V2 input only. This transport does not authorize execution.
+ * Strict signed-JSON presence and complete raw/typed equivalence are required.
+ */
+@Serializable
+public data class V1AuthProxySecurityTransitionV2(
+  @SerialName("captchaBinding")
+  public val captchaBinding: V1CaptchaResourceBindingV1? = null,
+  @SerialName("captchaEnabled")
+  public val captchaEnabled: Boolean? = null,
+  @SerialName("expected")
+  public val expected: V1AuthProxySecuritySelector? = null,
+  @SerialName("kind")
+  public val kind: String? = null,
+  @SerialName("readyWitness")
+  public val readyWitness: V1CaptchaReadyWitnessV1? = null,
+)
+
 @Serializable
 public data class V1AuthenticationMethod(
   @SerialName("id")
@@ -1808,6 +1943,37 @@ public data class V1BootProof(
 public data class V1BootProofResponse(
   @SerialName("bootProof")
   public val bootProof: V1BootProof? = null,
+)
+
+/**
+ * Signed Captcha ready witness, verified only against pinned issuer keys.
+ * Both fields are canonical unpadded base64url; signature is low-S DER.
+ */
+@Serializable
+public data class V1CaptchaReadyWitnessV1(
+  @SerialName("payload")
+  public val payload: String? = null,
+  @SerialName("signature")
+  public val signature: String? = null,
+)
+
+/**
+ * Non-secret resource reference; secret_arn names a secret, not its value.
+ */
+@Serializable
+public data class V1CaptchaResourceBindingV1(
+  @SerialName("allowedHostnames")
+  public val allowedHostnames: List<String>? = null,
+  @SerialName("cloudflareAccountId")
+  public val cloudflareAccountId: String? = null,
+  @SerialName("environment")
+  public val environment: String? = null,
+  @SerialName("resourceVersion")
+  public val resourceVersion: String? = null,
+  @SerialName("secretArn")
+  public val secretArn: String? = null,
+  @SerialName("siteKey")
+  public val siteKey: String? = null,
 )
 
 @Serializable
@@ -2306,19 +2472,6 @@ public data class V1CreateOrganizationIntent(
 
 @Serializable
 public data class V1CreateOrganizationIntentV2(
-  /**
-   * INTERNAL ONLY: import an already-registered authenticator's public key
-   * (no attestation) as this new root organization's sole root authenticator.
-   * Used for secondary-root-organization creation, where the same physical
-   * passkey already exists under another root org of the same tenant — see
-   * docs/strategy/billing/09-multi-org-billing.md §3.3. Coordinator rejects
-   * this field unless the call carries a valid internal M2M token
-   * (`SECONDARY_ORG_IMPORT_TOKEN`); the public API Gateway has no such
-   * token, so external callers can never reach this path even though the
-   * field is visible on the wire.
-   */
-  @SerialName("importedRootAuthenticator")
-  public val importedRootAuthenticator: V1ImportedRootAuthenticatorParams? = null,
   /**
    * Human-readable name for an Organization.
    */
@@ -4461,6 +4614,15 @@ public data class V1DeleteWebhookEndpointResult(
 )
 
 @Serializable
+public data class V1DisableAuthProxyIntent(
+  /**
+   * 0xkey extension, not a Turnkey native field. Unauthenticated transport only; strict validation of original signed bytes and full raw/typed comparison are required before activation and dispatch.
+   */
+  @SerialName("authProxySecurityTransition")
+  public val authProxySecurityTransition: V1AuthProxySecurityTransition? = null,
+)
+
+@Serializable
 public data class V1DisablePrivateKeyIntent(
   /**
    * Unique identifier for a given Private Key.
@@ -4843,6 +5005,15 @@ public data class V1EmailVerifyRedirectResponse(
    */
   @SerialName("verified")
   public val verified: Boolean? = null,
+)
+
+@Serializable
+public data class V1EnableAuthProxyIntent(
+  /**
+   * 0xkey extension, not a Turnkey native field. Unauthenticated transport only; strict validation of original signed bytes and full raw/typed comparison are required before activation and dispatch.
+   */
+  @SerialName("authProxySecurityTransition")
+  public val authProxySecurityTransition: V1AuthProxySecurityTransition? = null,
 )
 
 @Serializable
@@ -6324,25 +6495,6 @@ public data class V1ImportWalletResult(
    */
   @SerialName("walletId")
   public val walletId: String,
-)
-
-/**
- * See `CreateOrganizationIntentV2.imported_root_authenticator`. The public
- * key / aaguid / transports MUST be resolved server-side from Coordinator's
- * own authenticator store (never trusted verbatim from an HTTP client).
- */
-@Serializable
-public data class V1ImportedRootAuthenticatorParams(
-  @SerialName("aaguid")
-  public val aaguid: String? = null,
-  @SerialName("authenticatorName")
-  public val authenticatorName: String,
-  @SerialName("credentialId")
-  public val credentialId: String,
-  @SerialName("publicKey")
-  public val publicKey: String,
-  @SerialName("transports")
-  public val transports: List<V1AuthenticatorTransport>? = null,
 )
 
 @Serializable
@@ -10058,6 +10210,16 @@ public data class V1UpdateAuthProxyConfigIntent(
   @SerialName("allowedOrigins")
   public val allowedOrigins: List<String>? = null,
   /**
+   * 0xkey extension, not a Turnkey native field. Unauthenticated transport only; strict validation of original signed bytes and full raw/typed comparison are required before activation and dispatch.
+   */
+  @SerialName("authProxySecurityTransition")
+  public val authProxySecurityTransition: V1AuthProxySecurityTransition? = null,
+  /**
+   * 0xkey Captcha V2 extension. Default closed; legacy captchaEnabled does not authorize it. Strict validation of signed bytes and raw/typed comparison are required.
+   */
+  @SerialName("authProxySecurityTransitionV2")
+  public val authProxySecurityTransitionV2: V1AuthProxySecurityTransitionV2? = null,
+  /**
    * Whether captcha verification is required on sign up and OTP init.
    */
   @SerialName("captchaEnabled")
@@ -11182,44 +11344,6 @@ public data class V1UserParamsV4(
 )
 
 @Serializable
-public data class V1ValidateSessionRequest(
-  /**
-   * Session token from __Host-session cookie.
-   */
-  @SerialName("sessionToken")
-  public val sessionToken: String,
-)
-
-@Serializable
-public data class V1ValidateSessionResponse(
-  /**
-   * Email associated with the session.
-   */
-  @SerialName("email")
-  public val email: String? = null,
-  /**
-   * Organization ID (may be empty for initial-registration before org creation).
-   */
-  @SerialName("organizationId")
-  public val organizationId: String? = null,
-  /**
-   * Session type: 'initial-registration' or 'standard'.
-   */
-  @SerialName("sessionType")
-  public val sessionType: String? = null,
-  /**
-   * User ID (may be empty for initial-registration).
-   */
-  @SerialName("userId")
-  public val userId: String? = null,
-  /**
-   * Whether the session is valid.
-   */
-  @SerialName("valid")
-  public val valid: Boolean? = null,
-)
-
-@Serializable
 public data class V1VerifyOtpIntent(
   /**
    * Expiration window (in seconds) indicating how long the verification token is valid for. If not provided, a default of 1 hour will be used. Maximum value is 86400 seconds (24 hours)
@@ -11931,13 +12055,7 @@ public data class V1WalletKitClientParamsUnavailableError(
 public class V1CreateReadOnlySessionIntent()
 
 @Serializable
-public class V1DisableAuthProxyIntent()
-
-@Serializable
 public class V1DisableAuthProxyResult()
-
-@Serializable
-public class V1EnableAuthProxyIntent()
 
 @Serializable
 public class V1UpdateAllowedOriginsResult()
