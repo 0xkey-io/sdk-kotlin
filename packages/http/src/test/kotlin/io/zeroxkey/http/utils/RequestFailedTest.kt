@@ -3,6 +3,7 @@ package io.zeroxkey.http.utils
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class RequestFailedTest {
@@ -61,6 +62,49 @@ class RequestFailedTest {
         val e = ZeroXKeyHttpError.RequestFailed("/p", 500, """{"error":"x"}""")
         assertEquals(ErrorBody.Kind.PLAIN_TEXT, e.kind)
         assertEquals(13, e.code)
+    }
+
+    @Test
+    fun `Auth Proxy body reads the text from error and keeps the string code`() {
+        val e = ZeroXKeyHttpError.RequestFailed(
+            "/p", 401, """{"error":"OIDC token has expired","code":"OIDC_TOKEN_EXPIRED"}""")
+
+        assertIs<ZeroXKeyHttpError.RequestFailed.Generic>(e)
+        assertEquals(ErrorBody.Kind.GRPC_STATUS, e.kind)
+        assertEquals("OIDC token has expired", e.errorMessage)
+        assertEquals("OIDC_TOKEN_EXPIRED", e.errorCode)
+        assertEquals(16, e.code)
+        assertTrue(e.isUnauthenticated)
+        assertTrue(e.message!!.contains("OIDC_TOKEN_EXPIRED") && e.message!!.contains("OIDC token has expired"), e.message)
+    }
+
+    @Test
+    fun `empty message falls back to error and message wins when present`() {
+        val empty = ErrorBody.parse(400, """{"message":"","error":"bad input","code":"INVALID_INPUT"}""")
+        assertEquals("bad input", empty.message)
+        assertEquals("INVALID_INPUT", empty.errorCode)
+        assertEquals(3, empty.code)
+
+        val both = ErrorBody.parse(400, """{"message":"from message","error":"from error","code":3}""")
+        assertEquals("from message", both.message)
+        assertEquals(3, both.code)
+        assertNull(both.errorCode)
+    }
+
+    @Test
+    fun `numeric string code is the gRPC code and a null message is empty`() {
+        val numeric = ErrorBody.parse(403, """{"code":"7","message":"denied"}""")
+        assertEquals(7, numeric.code)
+        assertNull(numeric.errorCode)
+
+        val nullMessage = ErrorBody.parse(403, """{"code":7,"message":null}""")
+        assertEquals("", nullMessage.message)
+    }
+
+    @Test
+    fun `a known string code gets the named error`() {
+        assertIs<ZeroXKeyHttpError.RequestFailed.WebAuthnRpIdNotAllowed>(
+            ZeroXKeyHttpError.RequestFailed("/p", 401, """{"error":"rp","code":"WEBAUTHN_RP_ID_NOT_ALLOWED"}"""))
     }
 
     @Test

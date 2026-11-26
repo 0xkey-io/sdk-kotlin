@@ -1,0 +1,4 @@
+packages:
+  http: patch
+changelog: |-
+  `ZeroXKeyHttpError.RequestFailed` now reads Auth Proxy error bodies of the form `{"error":"…","code":"OIDC_…"}`. The message falls back to `error` when `message` is missing or empty, and a string `code` is kept in the new `errorCode` property (`ErrorBody.errorCode`); `code` stays the gRPC code derived from the HTTP status. A known string code such as `WEBAUTHN_RP_ID_NOT_ALLOWED` selects the named subclass like the `ErrorInfo` reason does. A `null` message is now an empty message instead of the text `null`. `ErrorBody` gets a trailing `errorCode` parameter with a default, so existing callers still compile.
