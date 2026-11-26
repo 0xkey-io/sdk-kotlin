@@ -13703,17 +13703,15 @@ public final class io/zeroxkey/types/V1CreateOrganizationIntent$Companion {
 
 public final class io/zeroxkey/types/V1CreateOrganizationIntentV2 {
 	public static final field Companion Lio/zeroxkey/types/V1CreateOrganizationIntentV2$Companion;
-	public fun <init> (Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;Ljava/lang/String;Lio/zeroxkey/types/V1AuthenticatorParamsV2;Ljava/lang/String;Ljava/lang/String;)V
-	public synthetic fun <init> (Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;Ljava/lang/String;Lio/zeroxkey/types/V1AuthenticatorParamsV2;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Lio/zeroxkey/types/V1AuthenticatorParamsV2;
+	public fun <init> (Ljava/lang/String;Lio/zeroxkey/types/V1AuthenticatorParamsV2;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Lio/zeroxkey/types/V1AuthenticatorParamsV2;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lio/zeroxkey/types/V1AuthenticatorParamsV2;
+	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
-	public final fun component5 ()Ljava/lang/String;
-	public final fun copy (Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;Ljava/lang/String;Lio/zeroxkey/types/V1AuthenticatorParamsV2;Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/types/V1CreateOrganizationIntentV2;
-	public static synthetic fun copy$default (Lio/zeroxkey/types/V1CreateOrganizationIntentV2;Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;Ljava/lang/String;Lio/zeroxkey/types/V1AuthenticatorParamsV2;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/types/V1CreateOrganizationIntentV2;
+	public final fun copy (Ljava/lang/String;Lio/zeroxkey/types/V1AuthenticatorParamsV2;Ljava/lang/String;Ljava/lang/String;)Lio/zeroxkey/types/V1CreateOrganizationIntentV2;
+	public static synthetic fun copy$default (Lio/zeroxkey/types/V1CreateOrganizationIntentV2;Ljava/lang/String;Lio/zeroxkey/types/V1AuthenticatorParamsV2;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/types/V1CreateOrganizationIntentV2;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getImportedRootAuthenticator ()Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;
 	public final fun getOrganizationName ()Ljava/lang/String;
 	public final fun getRootAuthenticator ()Lio/zeroxkey/types/V1AuthenticatorParamsV2;
 	public final fun getRootEmail ()Ljava/lang/String;
@@ -19107,11 +19105,16 @@ public final class io/zeroxkey/types/V1Feature$Companion {
 public final class io/zeroxkey/types/V1FeatureName : java/lang/Enum {
 	public static final field Companion Lio/zeroxkey/types/V1FeatureName$Companion;
 	public static final field FEATURE_NAME_AUTH_PROXY Lio/zeroxkey/types/V1FeatureName;
+	public static final field FEATURE_NAME_EARN_CONFIG Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_EMAIL_AUTH Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_EMAIL_RECOVERY Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_OTP_EMAIL_AUTH Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_ROOT_USER_EMAIL_RECOVERY Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_SMS_AUTH Lio/zeroxkey/types/V1FeatureName;
+	public static final field FEATURE_NAME_SOLANA_RENT_PREFUND_ENABLED Lio/zeroxkey/types/V1FeatureName;
+	public static final field FEATURE_NAME_SWAP_CONFIG Lio/zeroxkey/types/V1FeatureName;
+	public static final field FEATURE_NAME_SWAP_FEE_SPONSORSHIP Lio/zeroxkey/types/V1FeatureName;
+	public static final field FEATURE_NAME_SWAP_FIXED_RATE Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_UNSPECIFIED Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_WEBAUTHN_ORIGINS Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_WEBHOOK Lio/zeroxkey/types/V1FeatureName;
@@ -21908,42 +21911,6 @@ public final synthetic class io/zeroxkey/types/V1ImportWalletResult$$serializer 
 }
 
 public final class io/zeroxkey/types/V1ImportWalletResult$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/zeroxkey/types/V1ImportedRootAuthenticatorParams {
-	public static final field Companion Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/lang/String;
-	public final fun component5 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;
-	public static synthetic fun copy$default (Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAaguid ()Ljava/lang/String;
-	public final fun getAuthenticatorName ()Ljava/lang/String;
-	public final fun getCredentialId ()Ljava/lang/String;
-	public final fun getPublicKey ()Ljava/lang/String;
-	public final fun getTransports ()Ljava/util/List;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class io/zeroxkey/types/V1ImportedRootAuthenticatorParams$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/types/V1ImportedRootAuthenticatorParams;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/zeroxkey/types/V1ImportedRootAuthenticatorParams$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -30012,70 +29979,6 @@ public final synthetic class io/zeroxkey/types/V1UserParamsV4$$serializer : kotl
 }
 
 public final class io/zeroxkey/types/V1UserParamsV4$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/zeroxkey/types/V1ValidateSessionRequest {
-	public static final field Companion Lio/zeroxkey/types/V1ValidateSessionRequest$Companion;
-	public fun <init> (Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Lio/zeroxkey/types/V1ValidateSessionRequest;
-	public static synthetic fun copy$default (Lio/zeroxkey/types/V1ValidateSessionRequest;Ljava/lang/String;ILjava/lang/Object;)Lio/zeroxkey/types/V1ValidateSessionRequest;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getSessionToken ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class io/zeroxkey/types/V1ValidateSessionRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/zeroxkey/types/V1ValidateSessionRequest$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/types/V1ValidateSessionRequest;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/types/V1ValidateSessionRequest;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/zeroxkey/types/V1ValidateSessionRequest$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/zeroxkey/types/V1ValidateSessionResponse {
-	public static final field Companion Lio/zeroxkey/types/V1ValidateSessionResponse$Companion;
-	public fun <init> ()V
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/lang/String;
-	public final fun component5 ()Ljava/lang/Boolean;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;)Lio/zeroxkey/types/V1ValidateSessionResponse;
-	public static synthetic fun copy$default (Lio/zeroxkey/types/V1ValidateSessionResponse;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;ILjava/lang/Object;)Lio/zeroxkey/types/V1ValidateSessionResponse;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getEmail ()Ljava/lang/String;
-	public final fun getOrganizationId ()Ljava/lang/String;
-	public final fun getSessionType ()Ljava/lang/String;
-	public final fun getUserId ()Ljava/lang/String;
-	public final fun getValid ()Ljava/lang/Boolean;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class io/zeroxkey/types/V1ValidateSessionResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/zeroxkey/types/V1ValidateSessionResponse$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/zeroxkey/types/V1ValidateSessionResponse;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/zeroxkey/types/V1ValidateSessionResponse;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/zeroxkey/types/V1ValidateSessionResponse$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
