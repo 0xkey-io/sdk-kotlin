@@ -1,20 +1,18 @@
 # OpenAPI sources
 
 The specs in this directory are copied from the 0xkey JS SDK
-(`github.com/0xkey-io/sdk-js`) at commit `850ef7ef68287d481655b39ab555f181abdc54f8`.
+(`github.com/0xkey-io/sdk-js`) at commit `5accc3b3f98010cfdb2b9cb19c0961ced9036493`.
 They replace the upstream specs; regenerate with
 `./gradlew :packages:types:types-codegen :packages:http:client-codegen`.
 
 | File | Source path in sdk-js | sha256 |
 | --- | --- | --- |
-| `public_api.swagger.json` | `contracts/services-public-api.swagger.json` | source `cca6a179db09bb9ea1d01deabd0b9e7122f4dbc1f27735efdcf433700aee42e2`, local `bb1edc37c200429f584bd2b6a5d1f2895c48b51175cdbde07dd33ada9e810df0` |
+| `public_api.swagger.json` | `contracts/services-public-api.swagger.json` | `d4d8d48e23e9b9b11b90af853473872d3f569fb6c9cdfdf4f91804b9723957aa` |
 | `auth_proxy.swagger.json` | `packages/core/src/__inputs__/auth_proxy.swagger.json` | `6b035dbbae61dfbe4533a1e24ccbe2e83ef56ccf81023a38b2ae47535c9c71fe` |
 | `sdk_compatibility_definitions.json` | `contracts/sdk-compatibility-definitions.json` | `d71f9343a6bac827c2e80038af7560550cb81c7539b10d3b6a475180dc7fbc4f` |
 
-Local edits: `public_api.swagger.json` differs from the source in two description strings only
-(the example in the `v1CreateOidcProviderIntent.name` description is replaced with
-`"Example IdP"`, and the attestation `app` description names the `ump` alias without the upstream
-brand). Re-apply both edits after re-copying.
+`public_api.swagger.json` is an unmodified copy of the source (the source no longer needs local
+description edits).
 
 `sdk_compatibility_definitions.json` holds SDK-side definitions (client-signature token usage,
 transaction failure details, WebAuthn stamp). The types generator merges them into the public spec
@@ -23,7 +21,7 @@ and lets them override same-named definitions, matching the JS SDK's OpenAPI pro
 ## Generation scope
 
 - Public API: only POST operations under `/public/v1/query/` and `/public/v1/submit/` are generated
-  (140 of 145 paths). Auth Proxy: all 13 operations.
+  (140 of 144 paths). Auth Proxy: all 13 operations.
 - Compared with the upstream spec (177 public paths), 53 upstream public paths no longer exist
   in the 0xkey spec (swap, earn, TVC, velocity control, IP allowlist, ...) and 21 paths are new.
   The generated client went from 367 to 293 public methods.

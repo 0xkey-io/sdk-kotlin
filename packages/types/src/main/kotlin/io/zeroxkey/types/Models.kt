@@ -2307,19 +2307,6 @@ public data class V1CreateOrganizationIntent(
 @Serializable
 public data class V1CreateOrganizationIntentV2(
   /**
-   * INTERNAL ONLY: import an already-registered authenticator's public key
-   * (no attestation) as this new root organization's sole root authenticator.
-   * Used for secondary-root-organization creation, where the same physical
-   * passkey already exists under another root org of the same tenant — see
-   * docs/strategy/billing/09-multi-org-billing.md §3.3. Coordinator rejects
-   * this field unless the call carries a valid internal M2M token
-   * (`SECONDARY_ORG_IMPORT_TOKEN`); the public API Gateway has no such
-   * token, so external callers can never reach this path even though the
-   * field is visible on the wire.
-   */
-  @SerialName("importedRootAuthenticator")
-  public val importedRootAuthenticator: V1ImportedRootAuthenticatorParams? = null,
-  /**
    * Human-readable name for an Organization.
    */
   @SerialName("organizationName")
@@ -6324,25 +6311,6 @@ public data class V1ImportWalletResult(
    */
   @SerialName("walletId")
   public val walletId: String,
-)
-
-/**
- * See `CreateOrganizationIntentV2.imported_root_authenticator`. The public
- * key / aaguid / transports MUST be resolved server-side from Coordinator's
- * own authenticator store (never trusted verbatim from an HTTP client).
- */
-@Serializable
-public data class V1ImportedRootAuthenticatorParams(
-  @SerialName("aaguid")
-  public val aaguid: String? = null,
-  @SerialName("authenticatorName")
-  public val authenticatorName: String,
-  @SerialName("credentialId")
-  public val credentialId: String,
-  @SerialName("publicKey")
-  public val publicKey: String,
-  @SerialName("transports")
-  public val transports: List<V1AuthenticatorTransport>? = null,
 )
 
 @Serializable
@@ -11179,44 +11147,6 @@ public data class V1UserParamsV4(
    */
   @SerialName("userTags")
   public val userTags: List<String>,
-)
-
-@Serializable
-public data class V1ValidateSessionRequest(
-  /**
-   * Session token from __Host-session cookie.
-   */
-  @SerialName("sessionToken")
-  public val sessionToken: String,
-)
-
-@Serializable
-public data class V1ValidateSessionResponse(
-  /**
-   * Email associated with the session.
-   */
-  @SerialName("email")
-  public val email: String? = null,
-  /**
-   * Organization ID (may be empty for initial-registration before org creation).
-   */
-  @SerialName("organizationId")
-  public val organizationId: String? = null,
-  /**
-   * Session type: 'initial-registration' or 'standard'.
-   */
-  @SerialName("sessionType")
-  public val sessionType: String? = null,
-  /**
-   * User ID (may be empty for initial-registration).
-   */
-  @SerialName("userId")
-  public val userId: String? = null,
-  /**
-   * Whether the session is valid.
-   */
-  @SerialName("valid")
-  public val valid: Boolean? = null,
 )
 
 @Serializable
