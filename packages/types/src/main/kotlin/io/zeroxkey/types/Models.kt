@@ -1660,131 +1660,6 @@ public data class V1Attestation(
   public val transports: List<V1AuthenticatorTransport>,
 )
 
-/**
- * 0xkey extension audience draft; business strings require the strict parser.
- */
-@Serializable
-public data class V1AuthProxySecurityAudienceGrant(
-  @SerialName("clientIds")
-  public val clientIds: List<String>? = null,
-  @SerialName("usage")
-  public val usage: String? = null,
-)
-
-/**
- * 0xkey extension policy draft; unauthenticated until activation checks pass.
- */
-@Serializable
-public data class V1AuthProxySecurityPolicy(
-  @SerialName("allowedAuthMethods")
-  public val allowedAuthMethods: List<String>? = null,
-  @SerialName("piiProofRequired")
-  public val piiProofRequired: Boolean? = null,
-  @SerialName("providers")
-  public val providers: List<V1AuthProxySecurityProvider>? = null,
-  @SerialName("registrations")
-  public val registrations: List<V1AuthProxySecurityRegistration>? = null,
-)
-
-/**
- * 0xkey extension provider draft; unauthenticated until activation checks pass.
- */
-@Serializable
-public data class V1AuthProxySecurityProvider(
-  @SerialName("audienceGrants")
-  public val audienceGrants: List<V1AuthProxySecurityAudienceGrant>? = null,
-  @SerialName("enabled")
-  public val enabled: Boolean? = null,
-  @SerialName("key")
-  public val key: V1AuthProxySecurityProviderKey? = null,
-)
-
-/**
- * 0xkey extension provider key; business strings require the strict parser.
- */
-@Serializable
-public data class V1AuthProxySecurityProviderKey(
-  @SerialName("issuer")
-  public val issuer: String? = null,
-  @SerialName("kind")
-  public val kind: String? = null,
-)
-
-/**
- * 0xkey extension registration draft; unauthenticated until activation checks pass.
- */
-@Serializable
-public data class V1AuthProxySecurityRegistration(
-  @SerialName("callbackUri")
-  public val callbackUri: String? = null,
-  @SerialName("clientId")
-  public val clientId: String? = null,
-  @SerialName("enabled")
-  public val enabled: Boolean? = null,
-  @SerialName("platform")
-  public val platform: String? = null,
-  @SerialName("provider")
-  public val provider: V1AuthProxySecurityProviderKey? = null,
-  @SerialName("registrationId")
-  public val registrationId: String? = null,
-  @SerialName("returnUri")
-  public val returnUri: String? = null,
-)
-
-/**
- * 0xkey extension selector; unauthenticated until strict entry and authorization.
- */
-@Serializable
-public data class V1AuthProxySecuritySelector(
-  @SerialName("configId")
-  public val configId: String? = null,
-  @SerialName("generation")
-  public val generation: String? = null,
-  /**
-   * 0xkey extension. Strict wire requires a JSON integer from 1 through 18446744073709551615. Generic protobuf acceptance of strings does not authorize string revision; default protojson output must not replace the original signed request.
-   */
-  @SerialName("revision")
-  public val revision: Long? = null,
-)
-
-/**
- * 0xkey extension carrying unauthenticated configuration input. Activation
- * requires the strict raw entry to validate the original signed bytes and
- * compare the complete typed intent before dispatch. Protobuf cannot preserve
- * repeated-field presence or prove rejection of duplicates, unknowns or null.
- */
-@Serializable
-public data class V1AuthProxySecurityTransition(
-  @SerialName("allowedAuthMethods")
-  public val allowedAuthMethods: List<String>? = null,
-  @SerialName("expected")
-  public val expected: V1AuthProxySecuritySelector? = null,
-  @SerialName("kind")
-  public val kind: String? = null,
-  @SerialName("piiProofRequired")
-  public val piiProofRequired: Boolean? = null,
-  @SerialName("policy")
-  public val policy: V1AuthProxySecurityPolicy? = null,
-)
-
-/**
- * 0xkey Captcha V2 input only. This transport does not authorize execution.
- * Strict signed-JSON presence and complete raw/typed equivalence are required.
- */
-@Serializable
-public data class V1AuthProxySecurityTransitionV2(
-  @SerialName("captchaBinding")
-  public val captchaBinding: V1CaptchaResourceBindingV1? = null,
-  @SerialName("captchaEnabled")
-  public val captchaEnabled: Boolean? = null,
-  @SerialName("expected")
-  public val expected: V1AuthProxySecuritySelector? = null,
-  @SerialName("kind")
-  public val kind: String? = null,
-  @SerialName("readyWitness")
-  public val readyWitness: V1CaptchaReadyWitnessV1? = null,
-)
-
 @Serializable
 public data class V1AuthenticationMethod(
   @SerialName("id")
@@ -1943,37 +1818,6 @@ public data class V1BootProof(
 public data class V1BootProofResponse(
   @SerialName("bootProof")
   public val bootProof: V1BootProof? = null,
-)
-
-/**
- * Signed Captcha ready witness, verified only against pinned issuer keys.
- * Both fields are canonical unpadded base64url; signature is low-S DER.
- */
-@Serializable
-public data class V1CaptchaReadyWitnessV1(
-  @SerialName("payload")
-  public val payload: String? = null,
-  @SerialName("signature")
-  public val signature: String? = null,
-)
-
-/**
- * Non-secret resource reference; secret_arn names a secret, not its value.
- */
-@Serializable
-public data class V1CaptchaResourceBindingV1(
-  @SerialName("allowedHostnames")
-  public val allowedHostnames: List<String>? = null,
-  @SerialName("cloudflareAccountId")
-  public val cloudflareAccountId: String? = null,
-  @SerialName("environment")
-  public val environment: String? = null,
-  @SerialName("resourceVersion")
-  public val resourceVersion: String? = null,
-  @SerialName("secretArn")
-  public val secretArn: String? = null,
-  @SerialName("siteKey")
-  public val siteKey: String? = null,
 )
 
 @Serializable
@@ -4614,15 +4458,6 @@ public data class V1DeleteWebhookEndpointResult(
 )
 
 @Serializable
-public data class V1DisableAuthProxyIntent(
-  /**
-   * 0xkey extension, not a Turnkey native field. Unauthenticated transport only; strict validation of original signed bytes and full raw/typed comparison are required before activation and dispatch.
-   */
-  @SerialName("authProxySecurityTransition")
-  public val authProxySecurityTransition: V1AuthProxySecurityTransition? = null,
-)
-
-@Serializable
 public data class V1DisablePrivateKeyIntent(
   /**
    * Unique identifier for a given Private Key.
@@ -5005,15 +4840,6 @@ public data class V1EmailVerifyRedirectResponse(
    */
   @SerialName("verified")
   public val verified: Boolean? = null,
-)
-
-@Serializable
-public data class V1EnableAuthProxyIntent(
-  /**
-   * 0xkey extension, not a Turnkey native field. Unauthenticated transport only; strict validation of original signed bytes and full raw/typed comparison are required before activation and dispatch.
-   */
-  @SerialName("authProxySecurityTransition")
-  public val authProxySecurityTransition: V1AuthProxySecurityTransition? = null,
 )
 
 @Serializable
@@ -10210,16 +10036,6 @@ public data class V1UpdateAuthProxyConfigIntent(
   @SerialName("allowedOrigins")
   public val allowedOrigins: List<String>? = null,
   /**
-   * 0xkey extension, not a Turnkey native field. Unauthenticated transport only; strict validation of original signed bytes and full raw/typed comparison are required before activation and dispatch.
-   */
-  @SerialName("authProxySecurityTransition")
-  public val authProxySecurityTransition: V1AuthProxySecurityTransition? = null,
-  /**
-   * 0xkey Captcha V2 extension. Default closed; legacy captchaEnabled does not authorize it. Strict validation of signed bytes and raw/typed comparison are required.
-   */
-  @SerialName("authProxySecurityTransitionV2")
-  public val authProxySecurityTransitionV2: V1AuthProxySecurityTransitionV2? = null,
-  /**
    * Whether captcha verification is required on sign up and OTP init.
    */
   @SerialName("captchaEnabled")
@@ -12055,7 +11871,13 @@ public data class V1WalletKitClientParamsUnavailableError(
 public class V1CreateReadOnlySessionIntent()
 
 @Serializable
+public class V1DisableAuthProxyIntent()
+
+@Serializable
 public class V1DisableAuthProxyResult()
+
+@Serializable
+public class V1EnableAuthProxyIntent()
 
 @Serializable
 public class V1UpdateAllowedOriginsResult()
