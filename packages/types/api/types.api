@@ -19105,16 +19105,11 @@ public final class io/zeroxkey/types/V1Feature$Companion {
 public final class io/zeroxkey/types/V1FeatureName : java/lang/Enum {
 	public static final field Companion Lio/zeroxkey/types/V1FeatureName$Companion;
 	public static final field FEATURE_NAME_AUTH_PROXY Lio/zeroxkey/types/V1FeatureName;
-	public static final field FEATURE_NAME_EARN_CONFIG Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_EMAIL_AUTH Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_EMAIL_RECOVERY Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_OTP_EMAIL_AUTH Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_ROOT_USER_EMAIL_RECOVERY Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_SMS_AUTH Lio/zeroxkey/types/V1FeatureName;
-	public static final field FEATURE_NAME_SOLANA_RENT_PREFUND_ENABLED Lio/zeroxkey/types/V1FeatureName;
-	public static final field FEATURE_NAME_SWAP_CONFIG Lio/zeroxkey/types/V1FeatureName;
-	public static final field FEATURE_NAME_SWAP_FEE_SPONSORSHIP Lio/zeroxkey/types/V1FeatureName;
-	public static final field FEATURE_NAME_SWAP_FIXED_RATE Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_UNSPECIFIED Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_WEBAUTHN_ORIGINS Lio/zeroxkey/types/V1FeatureName;
 	public static final field FEATURE_NAME_WEBHOOK Lio/zeroxkey/types/V1FeatureName;

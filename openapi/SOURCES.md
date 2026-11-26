@@ -1,13 +1,13 @@
 # OpenAPI sources
 
 The specs in this directory are copied from the 0xkey JS SDK
-(`github.com/0xkey-io/sdk-js`) at commit `4519de9650d783e8cf032b783d7f6d9eed235649`.
+(`github.com/0xkey-io/sdk-js`) at commit `5accc3b3f98010cfdb2b9cb19c0961ced9036493`.
 They replace the upstream specs; regenerate with
 `./gradlew :packages:types:types-codegen :packages:http:client-codegen`.
 
 | File | Source path in sdk-js | sha256 |
 | --- | --- | --- |
-| `public_api.swagger.json` | `contracts/services-public-api.swagger.json` | `51bbd0129ec359ec8b931922164364ae67c12e90aa16c8321bf39c0351234a3d` |
+| `public_api.swagger.json` | `contracts/services-public-api.swagger.json` | `d4d8d48e23e9b9b11b90af853473872d3f569fb6c9cdfdf4f91804b9723957aa` |
 | `auth_proxy.swagger.json` | `packages/core/src/__inputs__/auth_proxy.swagger.json` | `6b035dbbae61dfbe4533a1e24ccbe2e83ef56ccf81023a38b2ae47535c9c71fe` |
 | `sdk_compatibility_definitions.json` | `contracts/sdk-compatibility-definitions.json` | `d71f9343a6bac827c2e80038af7560550cb81c7539b10d3b6a475180dc7fbc4f` |
 
