@@ -1,6 +1,0 @@
-packages:
-  http: minor
-changelog: |-
-  `ZeroXKeyHttpError.RequestFailed` now reads Auth Proxy error bodies of the form `{"error":"…","code":"OIDC_…"}`. The message falls back to `error` when `message` is missing or empty (`message` still wins when it is present), and a string `code` is kept in the new `errorCode` property (`ErrorBody.errorCode`, `RequestFailed.errorCode`; sdk-js and sdk-swift use the same name). Only strings of digits count as numbers: `"7"` is the gRPC code 7, while `"+7"` and `"-7"` are kept as `errorCode`. `code` stays the gRPC code derived from the HTTP status. A known string code such as `WEBAUTHN_RP_ID_NOT_ALLOWED` selects the named `RequestFailed` subclass, like the `ErrorInfo` reason does.
-
-  Compatibility: this is a minor release because `ErrorBody` gains a fifth constructor parameter, which changes the generated `copy` and `copy$default` signatures and `component5` (binary-incompatible for code compiled against the old `copy`). The four-argument constructor is kept through `@JvmOverloads`, and source that calls `ErrorBody(...)` or `copy(...)` with named or positional arguments still compiles. Behavior change: a `message` that is not a string (`null`, a number) is now an empty message instead of the text `null` or the number.
