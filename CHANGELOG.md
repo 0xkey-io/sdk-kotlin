@@ -2,6 +2,30 @@
 
 All modules share one version. Per-module `CHANGELOG.md` files under `packages/` point here; release history from before the fork point is not carried over.
 
+## 0.2.0 (2026-11-27)
+
+Contains breaking changes to generated types (0.x: minor release) and a change in how error bodies are parsed. All modules move to 0.2.0.
+
+### Breaking: removed generated types
+
+The generated models were regenerated from the cleaned public OpenAPI document (`openapi/SOURCES.md`). In `io.zeroxkey.types`:
+
+- `V1ImportedRootAuthenticatorParams` is removed, and with it the first constructor parameter and property `importedRootAuthenticator` of `V1CreateOrganizationIntentV2`. Positional constructor calls, `copy(...)` and `component1()`..`component5()` of that class shift; calls with named arguments that did not use `importedRootAuthenticator` still compile.
+- `V1ValidateSessionRequest` and `V1ValidateSessionResponse` are removed.
+
+The SDK's own sign-in, session, wallet and signing APIs do not use them.
+
+### Changed: error parsing
+
+- `ZeroXKeyHttpError.RequestFailed` now reads Auth Proxy error bodies of the form `{"error":"…","code":"OIDC_…"}`. The message falls back to `error` when `message` is missing or empty (`message` still wins when it is present), and a string `code` is kept in the new `errorCode` property (`ErrorBody.errorCode`, `RequestFailed.errorCode`; sdk-js and sdk-swift use the same name). Only strings of digits count as numbers: `"7"` is the gRPC code 7, while `"+7"` and `"-7"` are kept as `errorCode`. `code` stays the gRPC code derived from the HTTP status. A known string code such as `WEBAUTHN_RP_ID_NOT_ALLOWED` selects the named `RequestFailed` subclass, like the `ErrorInfo` reason does.
+- Compatibility: `ErrorBody` gains a fifth constructor parameter, which changes the generated `copy` and `copy$default` signatures and `component5` (binary-incompatible for code compiled against the old `copy`). The four-argument constructor is kept through `@JvmOverloads`, and source that calls `ErrorBody(...)` or `copy(...)` with named or positional arguments still compiles.
+- Behavior change: a `message` that is not a string (`null`, a number) is now an empty message instead of the text `null` or the number.
+
+### Other
+
+- `X-Client-Version` is `0xkey-kotlin/0.2.0`.
+- Distribution is unchanged: JitPack `com.github.0xkey-io.sdk-kotlin:<module>:v0.2.0` and GitHub Packages `io.0xkey:<module>:0.2.0`.
+
 ## 0.1.1 (2026-11-24)
 
 No API or behavior changes from 0.1.0.

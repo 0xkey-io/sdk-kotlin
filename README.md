@@ -6,7 +6,7 @@ Kotlin / Android SDK for building embedded wallets on 0xkey: passkey and email O
 wallets, per-transaction passkey signing, and wallet import that keeps existing addresses.
 
 - Android minSdk 28, compileSdk 36; Kotlin coroutines and `StateFlow`
-- All modules share one version. Current version: **0.1.1** ([CHANGELOG](CHANGELOG.md))
+- All modules share one version. Current version: **0.2.0** ([CHANGELOG](CHANGELOG.md))
 - Attribution: this SDK is derived from an Apache-2.0 Kotlin SDK, see [NOTICE](NOTICE)
 
 | Module | Purpose |
@@ -45,16 +45,16 @@ JitPack the same modules are `com.github.0xkey-io.sdk-kotlin:<module>`.
 
    ```kotlin
    dependencies {
-       implementation("com.github.0xkey-io.sdk-kotlin:sdk-kotlin:v0.1.1")
+       implementation("com.github.0xkey-io.sdk-kotlin:sdk-kotlin:v0.2.0")
    }
    ```
 
    The other modules follow the same pattern, for example
-   `com.github.0xkey-io.sdk-kotlin:crypto:v0.1.1`.
+   `com.github.0xkey-io.sdk-kotlin:crypto:v0.2.0`.
 
 ### GitHub Packages (alternative)
 
-The same modules are published to GitHub Packages as `io.0xkey:<module>:0.1.1` at
+The same modules are published to GitHub Packages as `io.0xkey:<module>:0.2.0` at
 `https://maven.pkg.github.com/0xkey-io/sdk-kotlin`. The packages are public, but GitHub Packages does
 not allow anonymous Maven downloads, so Gradle needs a GitHub token from any GitHub account. Use one
 source per build: mixing `io.0xkey` and `com.github.0xkey-io.sdk-kotlin` artifacts puts the same
@@ -96,7 +96,7 @@ classes on the classpath twice.
 
    ```kotlin
    dependencies {
-       implementation("io.0xkey:sdk-kotlin:0.1.1")
+       implementation("io.0xkey:sdk-kotlin:0.2.0")
    }
    ```
 

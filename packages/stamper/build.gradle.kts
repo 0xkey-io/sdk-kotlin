@@ -24,7 +24,7 @@ android {
 }
 
 group = "io.0xkey"
-version = "0.1.1"
+version = "0.2.0"
 
 mavenPublishing {
     coordinates("io.0xkey", "stamper", version.toString())
